@@ -1,0 +1,12 @@
+{
+"directory": "lab_1",
+"folder1": "task1",
+"folder2": "task2",
+"given_text": "base_text.txt",
+"encryption": "encryption_text.txt",
+"key_file": "key.json",
+"decryption": "decryption_text.txt",
+"original_text": "code4.txt",
+"freq_analys": "freq.json",
+"step": 3 
+}
