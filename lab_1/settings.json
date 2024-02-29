@@ -1,0 +1,14 @@
+{
+    "dir":"lab_1",
+    "folder":"part2",
+    "txt":"text.txt",
+    "encryption":"encryption.txt",
+    "decryption":"decryption.txt",
+    "result": "result.txt",
+    "text":"cod6.txt",
+    "dict": "dictionary.json",
+    "freq_dict": "frequency.json",
+    "keyword_dict": "part1.json",
+    "alphabet":"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ",
+    "keyword":"ГРАНАТ"
+}
