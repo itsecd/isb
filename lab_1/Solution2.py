@@ -1,37 +1,61 @@
 from decryption.D_ReplaceOneLetter import D_ReplaceOneLetter as DCrypt
 
-with open('Solution2/encode.txt', 'r') as file:
-    text = file.read()
+try:
+    with open('Solution2/encode.txt', 'r') as file:
+        text = file.read()
 
-text = text.replace("\n", "")
-decryptor = DCrypt(text)
+    text = text.replace("\n", "")
 
-# алфавит основанный на вероятности, так как decryptor имеет функции для вероятностей
-testAlphabet = "_ОИЕАНТСРВМЛДЯКПЗЫЬУЧЖГХФЙЮБЦШЩЭ"
-
-# расшифрованный ключ для вероятностей на основе частотного анализа подробнее как его получили 
-# смотри Solution2.ipynb, а также см. файл Solution2/history.txt - представлены замены символов
-# которые использовались в функциях замены 
-goodAlphabet = "_ОЕТИАСНВЛРМПДКЯГЧЖЫБЮЬЙЦЩЭХУЗФШ"
+    decryptor = DCrypt(text)
 
 
-print("С неправильным ключом вероятности:")
-print(text)
-translate = decryptor.decryptionSortFrequency(testAlphabet)
-print("\n" + translate)
+    with open('Solution2/encode.txt', 'r') as file:
+        text = file.read()
 
-print("\nС правильным ключом вероятности:")
-print(text)
-translate = decryptor.decryptionSortFrequency(goodAlphabet)
-print("\n" + translate)
 
-with open('Solution2/translate.txt', 'w') as file:
-    file.write(translate)
+    with open('Solution2/alphabet_for_program.txt', 'r') as file:
+        goodAlphabet = file.read()
 
-dic = decryptor.sortDictValues_s(decryptor.getTranslateDictFrequency(goodAlphabet))
+    print("\nШифр:")
+    print(text)
+    translate = decryptor.decryptionSortFrequency(goodAlphabet)
 
-alphabet = ''.join(dic.values())[::-1]
-key = ''.join(dic.keys())[::-1].replace(" ", "_")
+    print("\nАнализ:")
 
-with open('Solution2/key_and_alphabet.txt', 'w') as file:
-    file.write("alphabet:\n" + alphabet + "\nkey:\n" + key)
+    for i in range(1, 20):
+        lenth = decryptor.countWordSizeInText([">"], i)
+        if lenth != 0:
+            average = decryptor.wordSizeInTextFrequency([">"], i)
+            print(f"\n{i}, {lenth}, {average}")
+            print(decryptor.splitTextBySize([">"], i))
+            print(DCrypt.splitTextBySize_s(translate, ["_"], i))
+
+
+    print("\n\n-----------------------------------------------------------------------\n\n")
+
+    dic = decryptor.getTranslateDictFrequency(goodAlphabet)
+    print(decryptor.analysisTextAndSortFrequency())
+    print('\n')
+    print(list(dic.keys()))
+    print(list(dic.values()))
+
+    print("\nПрименим ключ:")
+    print("\n" + translate)
+
+    with open('Solution2/translate.txt', 'w') as file:
+        file.write(translate)
+
+
+    dic = decryptor.sortDictValues_s(decryptor.getTranslateDictFrequency(goodAlphabet))
+    alphabet = ''.join(dic.values())[::-1]
+    key = ''.join(dic.keys())[::-1].replace(" ", "_")
+
+    with open('Solution2/alphabet.txt', 'w') as file:
+        file.write(alphabet)
+
+    with open('Solution2/key.txt', 'w') as file:
+        file.write(key)
+except Exception as ex:
+    print(ex)
+finally:
+    print("\nУспешно\n")
