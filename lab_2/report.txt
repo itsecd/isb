@@ -1,0 +1,6 @@
+INFO:root:Bitwise Frequency Test Result for C++: 0.2888443663464849
+INFO:root:Consecutive Bits Test Result for C++: 0.7976653440785991
+INFO:root:Longest Sequence Units Test Result for C++: 0.504756542439496
+INFO:root:Bitwise Frequency Test Result for Java: 0.5958830905651779
+INFO:root:Consecutive Bits Test Result for Java: 0.5779293102278323
+INFO:root:Longest Sequence Units Test Result for Java: 0.672579486582824
