@@ -1,0 +1,6 @@
+{
+    "input_file": "C:/Users/zhura/Desktop/isb/lab_1/part1/original_text.txt",
+    "output_file": "C:/Users/zhura/Desktop/isb/lab_1/part1/crypted.txt",
+    "shift": 3,
+    "key": "C:/Users/zhura/Desktop/isb/lab_1/part1/key1.json"
+}
