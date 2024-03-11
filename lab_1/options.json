@@ -1,0 +1,10 @@
+{
+    "key": "lab_1/part_1/key_1.json",
+    "original_text": "lab_1/part_1/original_text.txt",
+    "encrypted_text": "lab_1/part_1/encrypted_text.txt",
+    "decrypted_text": "lab_1/part_1/decrypted_text.txt",
+    "input_file": "lab_1/part_2/code6.txt",
+    "output_file": "lab_1/part_2/frequency_analysis.json",
+    "output_file2": "lab_1/part_2/decrypted_text.txt",
+    "json_file": "lab_1/part_2/key.json"
+}
