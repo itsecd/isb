@@ -10,12 +10,13 @@ def read_file(path: str) -> list[str]:
     except:
         logging.error('error in read_file')
     
-def write_file(path: str, new_text: str):
+def write_file(path: str, new_text: list[str]):
     """
     write data to file
     """
     try:
         with open(path, 'w', encoding ='utf-8') as file:
-            file.write(new_text)
+            for char in new_text: 
+                file.write(char)
     except:
         logging.error('error in write_file')
