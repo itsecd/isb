@@ -1,19 +1,43 @@
+from work_w_files import read_file, json_to_dict, write_file
+import argparse
 import sys
 sys.path.insert(1, '../first_task')
-from work_w_files import read_file
 
-def get_statistics(text: list[str])->list[str]:
-    freq={}
+
+def get_statistics(text: str) -> list[str]:
+    """
+    counts the number of letters in the text
+    returns a list of letters sorted by descending frequency in the text
+    """
+    freq = {}
     for char in text:
-        if char!='\n':
-            freq[char]=freq[char]+1 if char in freq else 1
-    return [elem[0] for elem in sorted(freq.items(),key=lambda item:item[1], reverse=True)]
+        if char != '\n':
+            freq[char] = freq[char] + 1 if char in freq else 1
+    return [
+        elem[0] for elem in sorted(
+            freq.items(),
+            key=lambda item: item[1],
+            reverse=True)]
 
-def get_new_text(text: list[str])->list[str]:
-    for line in text:
-        for i in range(len(sorted_alphabet)):
-            print(line.replace(get_statistics(text)[i],sorted_alphabet[i]))
+
+def get_new_text(text: str, key: dict) -> str:
+    """
+    replaces letters in the source text according to the key
+    """
+    for old, new in key.items():
+        text = text.replace(old, new)
     return text
 
 
-            
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description="Input file path,output file path, path to key")
+    parser.add_argument("-i", "--input", help="Input file path", type=str)
+    parser.add_argument("-o", "--output", help="output file path", type=str)
+    parser.add_argument("-k", "--key", help="path to json key", type=str)
+    args = parser.parse_args()
+    write_file(
+        args.output, get_new_text(
+            read_file(
+                args.input), json_to_dict(
+                args.key)))
