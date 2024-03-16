@@ -1,22 +1,18 @@
 import argparse
 from work_w_files import write_file, read_file
 
-def encrypt_w_caesar_cipher(text:list[str],shift=5):
+def encrypt_w_caesar_cipher(text:list[str],shift=5) -> list[str]:
     """
     Each character shifts by 'shift' value
     """
     new_letters=[]
-    for line in text:
-        line.replace('ё','е').replace('Ё','Е')
-
-    for line in text:
-        for char in line:
-            if(char>='а' and char<='я'):
-                new_letters.append(chr((ord(char)+shift-ord('а'))%32+ord('а')))
-            elif(char>='А' and char<='Я'):
-                new_letters.append(chr((ord(char)+shift-ord('А'))%32+ord('А')))
-            else:
-                new_letters.append(char)
+    for char in text.replace('ё','е').replace('Ё','Е'):
+        if(char>='а' and char<='я'):
+            new_letters.append(chr((ord(char)+shift-ord('а'))%32+ord('а')))
+        elif(char>='А' and char<='Я'):
+            new_letters.append(chr((ord(char)+shift-ord('А'))%32+ord('А')))
+        else:
+            new_letters.append(char)
     return new_letters
 
 if __name__ == '__main__':
