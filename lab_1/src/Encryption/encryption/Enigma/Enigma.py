@@ -145,23 +145,21 @@ class Enigma:
         return new_text
 
     @staticmethod
-    def createEnigmaIntoKey(key: str) -> "Enigma":
+    def createEnigmaIntoKey(key: str, seed: str="x(ГkшЪ+4sЩJpШ)0,хRCЕD`ьQEрP2уйXыj.HЙGгЖж*фЭzhfgч№VFтцСtмнХ ЗТ}KЛ%»-Y1ПУ{кMНв3!oZепД;ЦS7:iu#яcЮmO]dОАзъ@8бБqлР/о'«9ЧvAщynЬbЁ[UаI~LewюКэaМд56B&TWФиЯЫё^ВNсrlИ=") -> "Enigma":
 
         if len(set(key)) < 3:
             raise Exception("Бессмысленно строить ключи меньше трёх")
 
-
         sizeAlphabet = len(set(key))
         alphabet = "".join(sorted(set(key)))
 
-        summ = len(Enigma.CONST_FOR_CREATE_KEY)
+        summ = len(seed)
         for i in range(len(key)):
             summ += ord(key[i]) * i
 
 
-
         trash = ""
-        ak = Enigma.CONST_FOR_CREATE_KEY
+        ak = seed
         trash = ak[0:summ % len(ak)] + "".join(sorted(set(key))) + ak[summ % len(ak) : len(ak)] 
 
         countMassive = summ % 14
@@ -180,9 +178,8 @@ class Enigma:
             for c in range(sizeAlphabet):
                 testTmp += trash[(summ + index )% len(trash)]
                 summ = summ * 9 + 2
-                trash = Enigma.__swapLettersInText(trash, summ % len(trash), index % len(trash))
                 index += 1
-            index -= sizeAlphabet - 1
+            index -= (sizeAlphabet + 1)
 
             if len(set(testTmp)) == len(testTmp) and sizeAlphabet == len(testTmp):
                 alphabets.append(testTmp)
@@ -192,7 +189,7 @@ class Enigma:
             
 
             if index > len(trash):
-                raise Exception("Your key is very bad")
+                raise Exception("Меняй ключ, по нему невозможно построить норм шифратор")
         
         rotors = []
         

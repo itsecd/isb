@@ -1,3 +1,9 @@
+import os
+import json
+
+from typing import List, Dict
+
+
 class D_ReplaceOneLetter:
     """
     Класс для взлома шифра замены одной буквы и его производных.
@@ -528,7 +534,6 @@ class D_ReplaceOneLetter:
         dictionary = D_ReplaceOneLetter.getTranslateDictSortFrequency_s(text, key)
         return D_ReplaceOneLetter.__translate(text, dictionary)
         
-
     def decryptionSortFrequency(self, key: str) -> str:
         """
         Расшифровывает весь текст атрибута _text по введённому ключу. 
@@ -795,14 +800,25 @@ class D_ReplaceOneLetter:
         
         return newText
         
-
-
-
-
         
+    def export_KeyJSON(self, 
+                       alphabetFrequency: str, 
+                       fileForExport: str="key_alphabet.json", 
+                       nameForHeaderKey:str = "key", 
+                       nameForHeaderAlphabet:str = "alphabet") -> None:
+        
+        if os.path.isfile(fileForExport):
+            raise Exception(f"{fileForExport} уже существует")
+            
+        info = self.getTranslateDictFrequency(alphabetFrequency)
 
+        info1 = {nameForHeaderKey: dict(zip(info.keys(), info.values()))}
 
+        info2 = {nameForHeaderAlphabet: dict(zip(info.values(), info.keys()))}
 
+        info = [info1, info2]
 
+        json_data = json.dumps(info, sort_keys=True, indent=2, ensure_ascii=False)
 
-    
+        with open(fileForExport, 'w') as f:
+            f.write(json_data)    
