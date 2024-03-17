@@ -102,7 +102,7 @@ class Enigma:
     def encryptOldRotors(self, text: str, step: int = 1) -> str:
         return self.encrypt(text, self._roters, step)
 
-    def encryptUpdateRotors(self, text: str, step: int = 1) -> str:
+    def encrypt_update_rotors(self, text: str, step: int = 1) -> str:
         self.putRotorsInStartPosition()
         return self.encrypt(text, self._roters, step)
 
@@ -121,7 +121,7 @@ class Enigma:
     def translateOldRotors(self, text: str, step: int = 1) -> str:
         return self.translate(text, self._roters, step)
 
-    def translateUpdateRotors(self, text: str, step: int = 1) -> str:
+    def translate_update_rotors(self, text: str, step: int = 1) -> str:
         self.putRotorsInStartPosition()
         return self.translate(text, self._roters, step)
 
@@ -145,7 +145,7 @@ class Enigma:
         return new_text
 
     @staticmethod
-    def createEnigmaIntoKey(key: str, seed: str="x(ГkшЪ+4sЩJpШ)0,хRCЕD`ьQEрP2уйXыj.HЙGгЖж*фЭzhfgч№VFтцСtмнХ ЗТ}KЛ%»-Y1ПУ{кMНв3!oZепД;ЦS7:iu#яcЮmO]dОАзъ@8бБqлР/о'«9ЧvAщynЬbЁ[UаI~LewюКэaМд56B&TWФиЯЫё^ВNсrlИ=") -> "Enigma":
+    def create_enigma_into_key(key: str, seed: str="x(ГkшЪ+4sЩJpШ)0,хRCЕD`ьQEрP2уйXыj.HЙGгЖж*фЭzhfgч№VFтцСtмнХ ЗТ}KЛ%»-Y1ПУ{кMНв3!oZепД;ЦS7:iu#яcЮmO]dОАзъ@8бБqлР/о'«9ЧvAщynЬbЁ[UаI~LewюКэaМд56B&TWФиЯЫё^ВNсrlИ=") -> "Enigma":
 
         if len(set(key)) < 3:
             raise Exception("Бессмысленно строить ключи меньше трёх")

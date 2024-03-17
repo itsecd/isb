@@ -28,12 +28,12 @@ def main():
         with open(args.pathKey, 'r') as f:
             key = f.read()
     
-    en = En.Enigma.createEnigmaIntoKey(key=key)
+    en = En.Enigma.create_enigma_into_key(key=key)
 
     if args.translate:
-        cihep = en.translateUpdateRotors(text)
+        cihep = en.translate_update_rotors(text)
     else:
-        cihep = en.encryptUpdateRotors(text)
+        cihep = en.encrypt_update_rotors(text)
 
     if args.exportKeyTxt:
         with open(args.exportKeyTxt, 'w') as file:
