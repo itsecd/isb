@@ -8,14 +8,15 @@ def encrypt_w_caesar_cipher(text: list[str], shift=5) -> list[str]:
     """
     new_letters = []
     for char in text.replace('ё', 'е').replace('Ё', 'Е'):
-        if (char >= 'а' and char <= 'я'):
-            new_letters.append(
-                chr((ord(char) + shift - ord('а')) % 32 + ord('а')))
-        elif (char >= 'А' and char <= 'Я'):
-            new_letters.append(
-                chr((ord(char) + shift - ord('А')) % 32 + ord('А')))
-        else:
-            new_letters.append(char)
+        match char:
+            case char.islower():
+                new_letters.append(
+                    chr((ord(char) + shift - ord('а')) % 32 + ord('а')))
+            case char.isupper():
+                new_letters.append(
+                    chr((ord(char) + shift - ord('А')) % 32 + ord('А')))
+            case _:
+                new_letters.append(char)
     return new_letters
 
 

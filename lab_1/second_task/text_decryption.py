@@ -1,7 +1,7 @@
-from work_w_files import read_file, json_to_dict, write_file
 import argparse
 import sys
 sys.path.insert(1, '../first_task')
+from work_w_files import read_file, json_to_dict, write_file
 
 
 def get_statistics(text: str) -> list[str]:
@@ -20,13 +20,20 @@ def get_statistics(text: str) -> list[str]:
             reverse=True)]
 
 
-def get_new_text(text: str, key: dict) -> str:
+def get_new_text(text: str, key: dict) -> list[str]:
     """
     replaces letters in the source text according to the key
     """
-    for old, new in key.items():
-        text = text.replace(old, new)
-    return text
+    new_text=[] 
+    for char in text.lower():
+        if char.isalpha(): 
+            new_text.append(char.replace(key[char], char).upper())
+        else:
+            new_text.append(char)
+    for i in range(len(text)):
+        if text[i].islower():
+            new_text[i] = new_text[i].lower()
+    return new_text
 
 
 if __name__ == '__main__':
