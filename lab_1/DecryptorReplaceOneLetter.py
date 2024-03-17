@@ -7,7 +7,7 @@ CONST_LETTERS_MAX_IN_ENCODE = 20
 def main():
     
     
-    parser = argparse.ArgumentParser(description='Программма для шифрации Энигмой по ключу')
+    parser = argparse.ArgumentParser(description='Программма для дешифрации простой замены по ключу')
     
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('-a', '--alphabet', type=str, help='Алфавит для дешифрации')
@@ -35,12 +35,12 @@ def main():
     print("-------------------------------------------------------------------------------")
     print("\n\nЧастота:\n")
 
-    print(decryptor.analysisTextAndSortFrequency())
+    print(decryptor.analysis_text_and_sort_frequency())
     
     print("-------------------------------------------------------------------------------")
     print("\nЗамены:")
     print()
-    forWatch = decryptor.getTranslateDictFrequency(goodAlphabet)
+    forWatch = decryptor.get_translate_dict_frequency(goodAlphabet)
     print(list(forWatch.keys()))
     print(list(forWatch.values()))
     print()
@@ -49,7 +49,7 @@ def main():
     print("-------------------------------------------------------------------------------")
     print("\n\nРасшифровка:\n")
     print(text)
-    translate = decryptor.decryptionSortFrequency(goodAlphabet)
+    translate = decryptor.decryption_sort_frequency(goodAlphabet)
     print()
     print(translate)
     
@@ -57,15 +57,15 @@ def main():
         print("-------------------------------------------------------------------------------")
         print("\nАнализ: (кол-во символов, кол-во слов, частота всех слов)")
         for i in range(1, CONST_LETTERS_MAX_IN_ENCODE):
-            lenth = decryptor.countWordSizeInText([args.characterDelimetrInCihep], i)
+            lenth = decryptor.count_word_size_in_text([args.characterDelimetrInCihep], i)
             if lenth != 0:
-                average = decryptor.wordSizeInTextFrequency([args.characterDelimetrInCihep], i)
+                average = decryptor.word_size_in_text_frequency([args.characterDelimetrInCihep], i)
                 print(f"\n{i}, {lenth}, {average}")
-                print(decryptor.splitTextBySize([args.characterDelimetrInCihep], i))
-                print(DCrypt.splitTextBySize_s(translate, [forWatch[args.characterDelimetrInCihep]], i))
+                print(decryptor.split_text_by_size([args.characterDelimetrInCihep], i))
+                print(DCrypt.split_text_by_size_s(translate, [forWatch[args.characterDelimetrInCihep]], i))
     
     if args.exportKeyJson:
-        decryptor.export_KeyJSON(goodAlphabet, args.exportKeyJson)
+        decryptor.export_key_json(goodAlphabet, args.exportKeyJson)
     
     with open(args.fileForExport, 'w') as file:
         file.write(translate)

@@ -18,42 +18,42 @@ class D_ReplaceOneLetter:
         Изменить текст для работы.
     
     @staticmethod 
-    analysisText_s(text: str) -> dict:
+    analysis_text_s(text: str) -> dict:
         Возвращает словарь частот для данного текста. Будет отсортирован по символам
 
-    analysisText(self) -> dict:
+    analysis_text(self) -> dict:
         Возвращает словарь частот для данного текста. Будет отсортирован по символам. Работает с атрибутом _text
 
     @staticmethod
-    sortDictValues_s(dictionary: dict) -> dict:
+    sort_dict_values_s(dictionary: dict) -> dict:
         Сортировка словаря по значениям частот, где первая буква - максимальная частота в тексте
     
     @staticmethod
-    analysisTextAndSortFrequency_s(text: str) -> dict:
+    analysis_text_and_sort_frequency_s(text: str) -> dict:
         Вернёт уже отсортированный словарь букв - частот, где первая буква - максимальная частота в тексте.
 
-    analysisTextAndSortFrequency(self) -> dict:
+    analysis_text_and_sort_frequency(self) -> dict:
         Вернёт уже отсортированный словарь букв - частот, где первая буква - максимальная частота в тексте. Работает с атрибутом _text.
 
     @staticmethod
-    sizeAlphabet_s(text: str) -> int:
+    size_alphabet_s(text: str) -> int:
         Вернёт размер алфавита по тексту.
 
-    sizeAlphabet(self) -> int:
+    size_alphabet(self) -> int:
         Вернёт размер алфавита по тексту. Работает с атрибутом _text.
 
     @staticmethod
-    getTranslateDictSortFrequency_s(text: str, testAlphabet: str) -> dict:
+    get_translate_dict_sort_frequency_s(text: str, testAlphabet: str) -> dict:
         Объединяет словарь частот и вводимый алфавит. Самая частая буква должа быть первой в testAlphabet.
     
-    getTranslateDictFrequency(self, testAlphabet: str) -> dict:
+    get_translate_dict_frequency(self, testAlphabet: str) -> dict:
         Объединяет словарь частот и вводимый алфавит. Самая частая буква должа быть первой в testAlphabet. Работает с атрибутом _test.
 
     @staticmethod
-    getTranslateDictSortAlphabet_s(text: str, testAlphabet: str) -> dict:
+    get_translate_dict_sort_alphabet_s(text: str, testAlphabet: str) -> dict:
         Объединяет алфавит text, полученный функцией sorted и вводимый алфавит. Самая первая буква алфавита должа быть первой в testAlphabet. 
 
-    getTranslateDictSortAlphabet(text: str, testAlphabet: str) -> dict:
+    get_translate_dict_sort_alphabet(text: str, testAlphabet: str) -> dict:
         Объединяет алфавит text, полученный функцией sorted и вводимый алфавит. Самая первая буква алфавита должа быть первой в testAlphabet. Работает с атрибутом _text  
 
     @staticmethod
@@ -61,51 +61,51 @@ class D_ReplaceOneLetter:
         Переводит текст по словарю.
 
     @staticmethod
-    decryptionSortAlphabet_s(text: str, key: str) -> str:
-        Функция для расшифровки текста по тестовому словарю - key. Все буквы поставятся в соответствии алфавиту текста(сам создаст алфавит на основании sorted()). Для примера словаря смотри функцию getTranslateDictAlphabet(...)
+    decryption_sort_alphabet_s(text: str, key: str) -> str:
+        Функция для расшифровки текста по тестовому словарю - key. Все буквы поставятся в соответствии алфавиту текста(сам создаст алфавит на основании sorted()). Для примера словаря смотри функцию get_translate_dict_alphabet(...)
 
-    decryptionSortAlphabet(self, key: str) -> str:
-        Функция для расшифровки текста по тестовому словарю - key. Все буквы поставятся в соответствии алфавиту текста(сам создаст алфавит на основании sorted()). Для примера словаря смотри функцию getTranslateDictAlphabet(...). Работает с атрибутом _text  
+    decryption_sort_alphabet(self, key: str) -> str:
+        Функция для расшифровки текста по тестовому словарю - key. Все буквы поставятся в соответствии алфавиту текста(сам создаст алфавит на основании sorted()). Для примера словаря смотри функцию get_translate_dict_alphabet(...). Работает с атрибутом _text  
     
     @staticmethod
-    decryptionSortFrequency_s(text: str, key: str) -> str:
-        Функция для расшифровки текста по тестовому словарю - key. Все буквы поставятся в соответствии частоте буквам текста(сам создаст алфавит на основании частот). Для примера словаря смотри функцию getTranslateDictFrequency(...). 
+    decryption_sort_frequency_s(text: str, key: str) -> str:
+        Функция для расшифровки текста по тестовому словарю - key. Все буквы поставятся в соответствии частоте буквам текста(сам создаст алфавит на основании частот). Для примера словаря смотри функцию get_translate_dict_frequency(...). 
     
     decryptionFrequency(text: str, key: str) -> str:
-        Функция для расшифровки текста по тестовому словарю - key. Все буквы поставятся в соответствии частоте буквам текста(сам создаст алфавит на основании частот). Для примера словаря смотри функцию getTranslateDictFrequency(...). Работает с атрибутом _text  
+        Функция для расшифровки текста по тестовому словарю - key. Все буквы поставятся в соответствии частоте буквам текста(сам создаст алфавит на основании частот). Для примера словаря смотри функцию get_translate_dict_frequency(...). Работает с атрибутом _text  
         
     @staticmethod
-    splitText(text: str, delimiters: list) -> list:
+    split_text(text: str, delimiters: list) -> list:
         Разделяет текст на слова, где разделители удаляются.
 
     @staticmethod
-    splitTextBySize_s(text: str, delimiters: list, size: int) -> list:
+    split_text_by_size_s(text: str, delimiters: list, size: int) -> list:
         Разделяет текст на слова, где разделители удаляются. Остаются только слова размером size
 
-    splitTextBySize(self, delimiters: list, size: int) -> list:
+    split_text_by_size(self, delimiters: list, size: int) -> list:
         Разделяет текст на слова, где разделители удаляются. Остаются только слова размером size. Работает с атрибутом _text.
 
     @staticmethod
-    swapLettersInTestAlphabet(testAlphabet: str, letter_1: str, letter_2: set) -> str:
+    swap_letters_in_test_alphabet(testAlphabet: str, letter_1: str, letter_2: set) -> str:
         Меняет местами символы алфавита. Нужно чтобы алфавит соотвествовал некоторым критериям.
     
     @staticmethod
-    countWordSizeInText_s(text: str, delimiters: list, size: int) -> int:
+    count_word_size_in_text_s(text: str, delimiters: list, size: int) -> int:
         Находит количество слов размером size.
     
-    countWordSizeInText(self, delimiters: list, size: int) -> int:
+    count_word_size_in_text(self, delimiters: list, size: int) -> int:
         Находит количество слов размером size. Работает с атрибутом _text
 
     @staticmethod
-    wordSizeInTextFrequency_s(text: str, delimiters: list, size: int) -> float:
+    word_size_in_text_frequency_s(text: str, delimiters: list, size: int) -> float:
         Возвращает частотность слов размером size. 
 
-    wordSizeInTextFrequency_s(self, delimiters: list, size: int) -> float:
+    word_size_in_text_frequency_s(self, delimiters: list, size: int) -> float:
         Возвращает частотность слов размером size. Работает с атрибутом _text.
 
     @staticmethod
-    swapSetCharacters(testAlphabet: str, set_1: str, set_2: str) -> str:
-        Меняет местами определнное количество символов в алфавите. По сути расширение для swapLettersInTestAlphabet(...).
+    swap_set_characters(testAlphabet: str, set_1: str, set_2: str) -> str:
+        Меняет местами определнное количество символов в алфавите. По сути расширение для swap_letters_in_test_alphabet(...).
     """
     
     def __init__(self, text: str):
@@ -149,7 +149,7 @@ class D_ReplaceOneLetter:
     
 
     @staticmethod
-    def analysisText_s(text: str) -> dict:
+    def analysis_text_s(text: str) -> dict:
         """
         Анализирует текст и возвращает словарь частот текста. Поиск словаря происходит по символу.
         
@@ -176,7 +176,7 @@ class D_ReplaceOneLetter:
             frequency[letter] = text.count(letter) / size
         return frequency
     
-    def analysisText(self) -> dict:
+    def analysis_text(self) -> dict:
         """
         Анализирует текст и возвращает словарь частот текста. Работает с атрибутом _text
         
@@ -192,13 +192,13 @@ class D_ReplaceOneLetter:
         ---------------------
         Неотсортированный словарь частот символов текста _text
         """
-        return D_ReplaceOneLetter.analysisText_s(self._text)
+        return D_ReplaceOneLetter.analysis_text_s(self._text)
     
 
     @staticmethod
-    def sortDictValues_s(dictionary: dict) -> dict:
+    def sort_dict_values_s(dictionary: dict) -> dict:
         """
-        Сортирует словарь по частотам из функций analysisText_s и analisysText. Нужно для остальных функций.
+        Сортирует словарь по частотам из функций analysis_text_s и analisysText. Нужно для остальных функций.
         
         Параметры
         ---------
@@ -219,7 +219,7 @@ class D_ReplaceOneLetter:
     
     
     @staticmethod
-    def analysisTextAndSortFrequency_s(text: str) -> dict:
+    def analysis_text_and_sort_frequency_s(text: str) -> dict:
         """
         Анализирует текст и возвращает отсортированный словарь частот текста
         
@@ -236,10 +236,10 @@ class D_ReplaceOneLetter:
         ---------------------
         Отсортированный словарь частот символов текста text
         """
-        return D_ReplaceOneLetter.sortDictValues_s(D_ReplaceOneLetter.analysisText_s(text))
+        return D_ReplaceOneLetter.sort_dict_values_s(D_ReplaceOneLetter.analysis_text_s(text))
     
 
-    def analysisTextAndSortFrequency(self) -> dict:
+    def analysis_text_and_sort_frequency(self) -> dict:
         """
         Анализирует текст и возвращает отсортированный словарь частот текста
         
@@ -255,15 +255,15 @@ class D_ReplaceOneLetter:
         ---------------------
         Отсортированный словарь частот символов текста text. Работает с атрибутом _text
         """
-        return D_ReplaceOneLetter.sortDictValues_s(D_ReplaceOneLetter.analysisText_s(self._text))
+        return D_ReplaceOneLetter.sort_dict_values_s(D_ReplaceOneLetter.analysis_text_s(self._text))
     
 
-    # def analysisText(self) -> dict:
+    # def analysis_text(self) -> dict:
         
-    #     return D_ReplaceOneLetter.analysisText_s(self._text)
+    #     return D_ReplaceOneLetter.analysis_text_s(self._text)
 
     @staticmethod
-    def sizeAlphabet_s(text: str) -> int:
+    def size_alphabet_s(text: str) -> int:
         """
         Возвращает размер алфавита текста
         
@@ -282,7 +282,7 @@ class D_ReplaceOneLetter:
         """
         return len(set(text))
     
-    def sizeAlphabetText(self) -> int:
+    def size_alphabet_text(self) -> int:
         """
         Возвращает размер алфавита текста. Работает с атрибутом _text
         
@@ -302,7 +302,7 @@ class D_ReplaceOneLetter:
 
     
     @staticmethod
-    def getTranslateDictSortFrequency_s(text: str, testAlphabet: str) -> dict:
+    def get_translate_dict_sort_frequency_s(text: str, testAlphabet: str) -> dict:
         """
         Функция создаёт алфавит текста и объединяет его с тестовым алфавитом. 
         Символы сопоставляются по частотности в текста. На первой букве
@@ -324,13 +324,13 @@ class D_ReplaceOneLetter:
         ---------------------
         Новый словарь отсортированный по частотам. **Используется для замены символов текста
         """
-        sizeAlphabet = D_ReplaceOneLetter.sizeAlphabet_s(text)
+        size_alphabet = D_ReplaceOneLetter.size_alphabet_s(text)
         sizeTestAlphabet = len(set(testAlphabet))
         
-        if sizeAlphabet != sizeTestAlphabet:
-            raise Exception(f"Your testAlphabet is very bad size Alphabet: {sizeAlphabet}, size test Alphabet: {sizeTestAlphabet}")
+        if size_alphabet != sizeTestAlphabet:
+            raise Exception(f"Your testAlphabet is very bad size Alphabet: {size_alphabet}, size test Alphabet: {sizeTestAlphabet}")
         
-        alphabet = list(D_ReplaceOneLetter.sortDictValues_s(D_ReplaceOneLetter.analysisText_s(text)).keys())
+        alphabet = list(D_ReplaceOneLetter.sort_dict_values_s(D_ReplaceOneLetter.analysis_text_s(text)).keys())
 
         translater = dict()
 
@@ -340,7 +340,7 @@ class D_ReplaceOneLetter:
         
         return  translater
     
-    def getTranslateDictFrequency(self, testAlphabet: str) -> dict:
+    def get_translate_dict_frequency(self, testAlphabet: str) -> dict:
         """
         Функция создаёт алфавит атрибута _text и объединяет его с тестовым алфавитом. 
         Символы сопоставляются по частотности в текста. На первой букве
@@ -360,11 +360,11 @@ class D_ReplaceOneLetter:
         ---------------------
         Новый словарь отсортированный по частотам. **Используется для замены символов текста
         """
-        return D_ReplaceOneLetter.getTranslateDictSortFrequency_s(self._text, testAlphabet)
+        return D_ReplaceOneLetter.get_translate_dict_sort_frequency_s(self._text, testAlphabet)
 
 
     @staticmethod
-    def getTranslateDictSortAlphabet_s(text: str, testAlphabet: str) -> dict:
+    def get_translate_dict_sort_alphabet_s(text: str, testAlphabet: str) -> dict:
         """
         Функция создаёт алфавит текста и объединяет его с тестовым алфавитом. 
         Символы сопоставляются по алфавиту в текста(с помощью функции sorted()). На первой букве
@@ -387,11 +387,11 @@ class D_ReplaceOneLetter:
         ---------------------
         Новый словарь отсортированный по алфавиту. **Используется для получения ключа.
         """
-        sizeAlphabet = D_ReplaceOneLetter.sizeAlphabet_s(text)
+        size_alphabet = D_ReplaceOneLetter.size_alphabet_s(text)
         sizeTestAlphabet = len(set(testAlphabet))
         
-        if sizeAlphabet != sizeTestAlphabet:
-            raise Exception(f"Your testAlphabet is very bad size Alphabet: {sizeAlphabet}, size test Alphabet: {sizeTestAlphabet}")
+        if size_alphabet != sizeTestAlphabet:
+            raise Exception(f"Your testAlphabet is very bad size Alphabet: {size_alphabet}, size test Alphabet: {sizeTestAlphabet}")
         
         alphabet = sorted(set(text))
 
@@ -403,7 +403,7 @@ class D_ReplaceOneLetter:
         
         return  translater
 
-    def getTranslateDictAlphabet(self, testAlphabet: str) -> dict:
+    def get_translate_dict_alphabet(self, testAlphabet: str) -> dict:
         """
         Функция создаёт алфавит атрибута _text и объединяет его с тестовым алфавитом. 
         Символы сопоставляются по алфавиту в текста(с помощью функции sorted()). На первой букве
@@ -425,7 +425,7 @@ class D_ReplaceOneLetter:
         ---------------------
         Новый словарь отсортированный по алфавиту. **Используется для получения ключа.
         """
-        return D_ReplaceOneLetter.getTranslateDictSortAlphabet_s(self._text, testAlphabet)
+        return D_ReplaceOneLetter.get_translate_dict_sort_alphabet_s(self._text, testAlphabet)
 
 
     @staticmethod
@@ -459,7 +459,7 @@ class D_ReplaceOneLetter:
 
 
     @staticmethod
-    def decryptionSortAlphabet_s(text: str, key: str) -> str:
+    def decryption_sort_alphabet_s(text: str, key: str) -> str:
         """
         Расшифровывает весь текст по введённому ключу. Ключом служит уже
         обработанный словарь. Символы в ключе должны быть в алфавитном для
@@ -475,16 +475,16 @@ class D_ReplaceOneLetter:
         
         Исключения
         ----------
-        1. getTranslateDictSortAlphabet_s(...).
+        1. get_translate_dict_sort_alphabet_s(...).
 
         Возвращаемое значение
         ---------------------
         Расшифрованный текст.
         """
-        dictionary = D_ReplaceOneLetter.getTranslateDictSortAlphabet_s(text, key)
+        dictionary = D_ReplaceOneLetter.get_translate_dict_sort_alphabet_s(text, key)
         return D_ReplaceOneLetter.__translate(text, dictionary)
 
-    def decryptionSortAlphabet(self, key: str) -> str:
+    def decryption_sort_alphabet(self, key: str) -> str:
         """
         Расшифровывает весь текст атрибута _text по введённому ключу. Ключом служит уже
         обработанный словарь. Символы в ключе должны быть в алфавитном для
@@ -498,17 +498,17 @@ class D_ReplaceOneLetter:
         
         Исключения
         ----------
-        1. getTranslateDictSortAlphabet_s(...).
+        1. get_translate_dict_sort_alphabet_s(...).
 
         Возвращаемое значение
         ---------------------
         Расшифрованный текст атрибута _text.
         """
-        return D_ReplaceOneLetter.decryptionSortAlphabet_s(self._text, key)
+        return D_ReplaceOneLetter.decryption_sort_alphabet_s(self._text, key)
 
 
     @staticmethod
-    def decryptionSortFrequency_s(text: str, key: str) -> str:
+    def decryption_sort_frequency_s(text: str, key: str) -> str:
         """
         Расшифровывает весь текст по введённому ключу. Ключом служит уже
         обработанный вами словарь, чтобы потом поставить их в соотвествии с 
@@ -525,16 +525,16 @@ class D_ReplaceOneLetter:
         
         Исключения
         ----------
-        1. getTranslateDictSortFrequency_s(...).
+        1. get_translate_dict_sort_frequency_s(...).
 
         Возвращаемое значение
         ---------------------
         Расшифрованный текст.
         """
-        dictionary = D_ReplaceOneLetter.getTranslateDictSortFrequency_s(text, key)
+        dictionary = D_ReplaceOneLetter.get_translate_dict_sort_frequency_s(text, key)
         return D_ReplaceOneLetter.__translate(text, dictionary)
         
-    def decryptionSortFrequency(self, key: str) -> str:
+    def decryption_sort_frequency(self, key: str) -> str:
         """
         Расшифровывает весь текст атрибута _text по введённому ключу. 
         Ключом служит уже обработанный вами словарь, чтобы потом поставить 
@@ -551,16 +551,16 @@ class D_ReplaceOneLetter:
         
         Исключения
         ----------
-        1. getTranslateDictSortFrequency_s(...).
+        1. get_translate_dict_sort_frequency_s(...).
 
         Возвращаемое значение
         ---------------------
         Расшифрованный текст атрибута _text
         """
-        return D_ReplaceOneLetter.decryptionSortFrequency_s(self._text, key)
+        return D_ReplaceOneLetter.decryption_sort_frequency_s(self._text, key)
 
     @staticmethod
-    def splitText(text: str, delimiters: list) -> list:
+    def split_text(text: str, delimiters: list) -> list:
         """
         Делит текст на слова. Разделителями служит список значений
 
@@ -589,7 +589,7 @@ class D_ReplaceOneLetter:
         return words
     
     @staticmethod
-    def splitTextBySize_s(text: str, delimiters: list, size: int) -> list:
+    def split_text_by_size_s(text: str, delimiters: list, size: int) -> list:
         """
         Делит текст на слова и оставляет только слова размером size. Разделителями служит список значений. 
 
@@ -603,18 +603,18 @@ class D_ReplaceOneLetter:
             Размеры слов.        
         Исключения
         ----------
-        1. splitText(...)
+        1. split_text(...)
 
         Возвращаемое значение
         ---------------------
         Список слов размером size
         """
-        words = D_ReplaceOneLetter.splitText(text, delimiters)
+        words = D_ReplaceOneLetter.split_text(text, delimiters)
         filtered_words = [word for word in words if len(word) == size]
 
         return filtered_words
     
-    def splitTextBySize(self, delimiters: list, size: int) -> list:
+    def split_text_by_size(self, delimiters: list, size: int) -> list:
         """
         Делит текст на слова и оставляет только слова размером size. Разделителями служит список значений. Работает с атрибутом size.
 
@@ -626,16 +626,16 @@ class D_ReplaceOneLetter:
             Размеры слов.        
         Исключения
         ----------
-        1. splitText(...)
+        1. split_text(...)
 
         Возвращаемое значение
         ---------------------
         Список слов размером size
         """
-        return D_ReplaceOneLetter.splitTextBySize_s(self._text, delimiters, size) 
+        return D_ReplaceOneLetter.split_text_by_size_s(self._text, delimiters, size) 
         
     @staticmethod
-    def swapLettersInTestAlphabet(testAlphabet: str, letter_1: str, letter_2: set) -> str:
+    def swap_letters_in_test_alphabet(testAlphabet: str, letter_1: str, letter_2: set) -> str:
         """
         Меняет местами буквы в тестовом алфавите. 
         
@@ -677,7 +677,7 @@ class D_ReplaceOneLetter:
         return new_text
     
     @staticmethod
-    def countWordSizeInText_s(text: str, delimiters: list, size: int) -> int:
+    def count_word_size_in_text_s(text: str, delimiters: list, size: int) -> int:
         """
         Функция для вычисления количества слова размером size в тексте.
         
@@ -692,15 +692,15 @@ class D_ReplaceOneLetter:
                 
         Исключения
         ----------
-        1. splitText(...)
+        1. split_text(...)
 
         Возвращаемое значение
         ---------------------
         Количество слов размером size
         """
-        return len(D_ReplaceOneLetter.splitTextBySize_s(text, delimiters, size))
+        return len(D_ReplaceOneLetter.split_text_by_size_s(text, delimiters, size))
     
-    def countWordSizeInText(self, delimiters: list, size: int) -> int:
+    def count_word_size_in_text(self, delimiters: list, size: int) -> int:
         """
         Функция для вычисления количества слова размером size в тексте атрибута _text.
         
@@ -713,16 +713,16 @@ class D_ReplaceOneLetter:
                 
         Исключения
         ----------
-        1. splitText(...)
+        1. split_text(...)
 
         Возвращаемое значение
         ---------------------
         Количество слов размером size
         """
-        return len(D_ReplaceOneLetter.splitTextBySize_s(self._text, delimiters, size))
+        return len(D_ReplaceOneLetter.split_text_by_size_s(self._text, delimiters, size))
     
     @staticmethod
-    def wordSizeInTextFrequency_s(text: str, delimiters: list, size: int) -> float:
+    def word_size_in_text_frequency_s(text: str, delimiters: list, size: int) -> float:
         """
         Вычисляет частоту встречаемости слов размером size в тексте.
         
@@ -737,15 +737,15 @@ class D_ReplaceOneLetter:
                 
         Исключения
         ----------
-        1. splitText(...)
+        1. split_text(...)
 
         Возвращаемое значение
         ---------------------
         Частота встречаемости слов размером size
         """
-        return len(D_ReplaceOneLetter.splitTextBySize_s(text, delimiters, size)) / len(D_ReplaceOneLetter.splitText(text, delimiters))
+        return len(D_ReplaceOneLetter.split_text_by_size_s(text, delimiters, size)) / len(D_ReplaceOneLetter.split_text(text, delimiters))
     
-    def wordSizeInTextFrequency(self, delimiters: list, size: int) -> float:
+    def word_size_in_text_frequency(self, delimiters: list, size: int) -> float:
         """
         Вычисляет частоту встречаемости слов размером size в тексте атрибута _text. 
         
@@ -758,17 +758,17 @@ class D_ReplaceOneLetter:
                 
         Исключения
         ----------
-        1. splitText(...)
+        1. split_text(...)
 
         Возвращаемое значение
         ---------------------
         Частота встречаемости слов размером size
         """
-        return len(D_ReplaceOneLetter.splitTextBySize_s(self._text, delimiters, size)) / len(D_ReplaceOneLetter.splitText(self._text, delimiters))
+        return len(D_ReplaceOneLetter.split_text_by_size_s(self._text, delimiters, size)) / len(D_ReplaceOneLetter.split_text(self._text, delimiters))
 
 
     @staticmethod
-    def swapSetCharacters(testAlphabet: str, set_1: str, set_2: str) -> str:
+    def swap_set_characters(testAlphabet: str, set_1: str, set_2: str) -> str:
         """
         Меняет местами набор символов в тестовом алфавите. 
         
@@ -784,7 +784,7 @@ class D_ReplaceOneLetter:
         Исключения
         ----------
         1. Размеры наборов не совпадают. Также алфавиты этих наборов не совпадают.
-        2. swapLettersInTestAlphabet(...)
+        2. swap_letters_in_test_alphabet(...)
 
         Возвращаемое значение
         ---------------------
@@ -796,12 +796,12 @@ class D_ReplaceOneLetter:
 
         newText = testAlphabet
         for c in range(len(set_1)):
-            newText = D_ReplaceOneLetter.swapLettersInTestAlphabet(newText, set_1[c], set_2[c])
+            newText = D_ReplaceOneLetter.swap_letters_in_test_alphabet(newText, set_1[c], set_2[c])
         
         return newText
         
         
-    def export_KeyJSON(self, 
+    def export_key_json(self, 
                        alphabetFrequency: str, 
                        fileForExport: str="key_alphabet.json", 
                        nameForHeaderKey:str = "key", 
@@ -810,7 +810,7 @@ class D_ReplaceOneLetter:
         if os.path.isfile(fileForExport):
             raise Exception(f"{fileForExport} уже существует")
             
-        info = self.getTranslateDictFrequency(alphabetFrequency)
+        info = self.get_translate_dict_frequency(alphabetFrequency)
 
         info1 = {nameForHeaderKey: dict(zip(info.keys(), info.values()))}
 
