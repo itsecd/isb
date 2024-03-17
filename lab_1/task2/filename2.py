@@ -1,0 +1,74 @@
+import logging
+import os
+
+from collections import Counter
+from constants import PATHS, assumed_purity
+from supportive import json_reader, file_reader, file_writer
+
+logging.basicConfig(level=logging.INFO)
+
+
+def frequency(enc_text: str) -> list[list[str]]:
+    """
+    Calculates the frequency variations in the encrypted text.
+
+    Args:
+    enc_text (str): The encrypted text for frequency analysis.
+
+    Returns:
+    list[list[str]]: A list of variations in the frequencies of characters in the text.
+    Each inner list contains the characters with the same frequency.
+    """
+    counter = Counter(enc_text)
+    dict_pairs = counter.most_common()
+    freq_variations = []
+    
+    for i in range(1, len(dict_pairs)):
+        if dict_pairs[i - 1][1] == dict_pairs[i][1]:
+            freq_variations.append([tup[0] for tup in dict_pairs])
+            dict_pairs[i - 1], dict_pairs[i] = dict_pairs[i], dict_pairs[i - 1]
+            freq_variations.append([tup[0] for tup in dict_pairs])
+
+    return freq_variations
+
+
+def decrypt_text(text_for_decrypt: str, arr_decrypt_letters: list[str]) -> str:
+    """
+    Decrypt text using frequency analysis algorithm
+
+    :param text_for_decrypt:
+    :param arr_decrypt_letters:
+    :return:
+    """
+    arr_encrypt_text = []
+
+    dictionary = dict(zip(arr_decrypt_letters, assumed_purity))
+    for symb in text_for_decrypt:
+        arr_encrypt_text.append(dictionary[symb])
+    text_for_decrypt = ''.join(arr_encrypt_text)
+    return text_for_decrypt
+
+
+def write_result(path_decrypt: str, path_key: str, path_input: str) -> None:
+    """
+    Write decrypted text and keys in file
+    :param path_input:
+    :param path_key:
+    :param path_decrypt:
+    :return:
+    """
+
+    file_writer(path_decrypt,f'{decrypt_text(file_reader(path_input), frequency(file_reader(path_input))[-1])}\n', 'w')
+    keys = dict(zip(list(frequency(file_reader(path_input))[-1]), assumed_purity))
+    file_writer(path_key, f"code: {' '.join(keys.keys())}\n", 'a')
+    file_writer(path_key, f" key: {' '.join(keys.values())}", 'a')
+
+
+if __name__ == "__main__":
+    paths = json_reader(PATHS)
+    try:
+        write_result(os.path.join(paths["folder"], paths["decrypt"]),
+                     os.path.join(paths["folder"], paths["key"]), os.path.join(paths["folder"], paths["input"]))
+        logging.info(f"Text successfully decrypted and saved to file")
+    except Exception as ex:
+        logging.error(f"Error in decryption or file can't be open or was not found: {ex}\n")
