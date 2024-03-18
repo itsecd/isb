@@ -1,6 +1,5 @@
 import argparse
-from work_w_files import write_file, read_file
-
+from work_w_files import read_file, write_file
 
 def encrypt_w_caesar_cipher(text: list[str], shift=5) -> list[str]:
     """
@@ -8,7 +7,7 @@ def encrypt_w_caesar_cipher(text: list[str], shift=5) -> list[str]:
     """
     new_letters = []
     for char in text.replace('ё', 'е').replace('Ё', 'Е'):
-        match char:
+        match char: 
             case char.islower():
                 new_letters.append(
                     chr((ord(char) + shift - ord('а')) % 32 + ord('а')))

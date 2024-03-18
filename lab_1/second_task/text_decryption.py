@@ -1,8 +1,7 @@
 import argparse
 import sys
 sys.path.insert(1, '../first_task')
-from work_w_files import read_file, json_to_dict, write_file
-
+from work_w_files import read_file, write_file, json_to_dict
 
 def get_statistics(text: str) -> list[str]:
     """
@@ -13,11 +12,13 @@ def get_statistics(text: str) -> list[str]:
     for char in text:
         if char != '\n':
             freq[char] = freq[char] + 1 if char in freq else 1
-    return [
-        elem[0] for elem in sorted(
+    res = [
+        elem[-1] for elem in sorted(
             freq.items(),
-            key=lambda item: item[1],
+            key=lambda item: item[0],
             reverse=True)]
+
+    return res
 
 
 def get_new_text(text: str, key: dict) -> list[str]:
