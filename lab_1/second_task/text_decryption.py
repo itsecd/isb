@@ -3,6 +3,7 @@ import sys
 sys.path.insert(1, '../first_task')
 from work_w_files import read_file, write_file, json_to_dict
 
+
 def get_statistics(text: str) -> list[str]:
     """
     counts the number of letters in the text

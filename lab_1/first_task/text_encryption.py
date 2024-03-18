@@ -1,6 +1,7 @@
 import argparse
 from work_w_files import read_file, write_file
 
+
 def encrypt_w_caesar_cipher(text: list[str], shift=5) -> list[str]:
     """
     Each character shifts by 'shift' value
