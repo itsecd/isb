@@ -8,6 +8,14 @@ PI = {0: 0.2148, 1: 0.3672, 2: 0.2305, 3: 0.1875}
 
 
 def frequency_test(path: str, path_write: str, key: str) -> None:
+    """
+    Performs a frequency test on a binary sequence and writes the result to a file.
+
+    Parameters
+        path: the path to the JSON file containing the binary sequence.
+        path_write: the path to write the result of the test.
+        key: the key in the dictionary to the binary sequence.
+    """
     b_sequence = read_json(path)
     try:
         sequence = [-1 if bit == "0" else 1 for bit in b_sequence.get(key)]
@@ -19,6 +27,14 @@ def frequency_test(path: str, path_write: str, key: str) -> None:
 
 
 def same_bits_test(path: str, path_write: str, key: str) -> None:
+    """
+    Performs a test for the same consecutive bits and writes the result to a file.
+
+    Parameters
+        path: the path to the JSON file containing the binary sequence.
+        path_write: the path to write the result of the test.
+        key: the key in the dictionary to the binary sequence.
+    """
     sequence = read_json(path)
     try:
         n = len(sequence.get(key))
@@ -40,6 +56,14 @@ def same_bits_test(path: str, path_write: str, key: str) -> None:
 
 
 def longest_run_ones_test(path: str, path_write: str, key: str) -> None:
+    """
+    Performs a test for the longest sequence of units in the block and writes the result to a file.
+
+    Parameters
+        path: the path to the JSON file containing the binary sequence.
+        path_write: the path to write the result of the test.
+        key: the key in the dictionary to the binary sequence.
+    """
     sequence = read_json(path)
     try:
         len_sequence = len(sequence.get(key))
@@ -57,9 +81,7 @@ def longest_run_ones_test(path: str, path_write: str, key: str) -> None:
                     count = 0
             max_count = max(max_count, count)
             match max_count:
-                case 0:
-                    v[1] += 1
-                case 1:
+                case 0 | 1:
                     v[1] += 1
                 case 2:
                     v[2] += 1
