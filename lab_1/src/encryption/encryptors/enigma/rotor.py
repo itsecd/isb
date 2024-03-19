@@ -55,7 +55,7 @@ class Rotor:
         self._step = (step + self._step) % len(self._originalAlphabet)
         return tmpStep
     
-    def putStartPosition(self) -> None:
+    def put_start_position(self) -> None:
         """
         Reset the rotor to its initial start position.
         """
@@ -84,7 +84,7 @@ class Rotor:
         return self._originalAlphabet
     
     @property
-    def startPositionRoter(self) -> str:
+    def start_position_rotor(self) -> str:
         """
         Get the current start position of the rotor.
 
@@ -94,7 +94,7 @@ class Rotor:
         return self._startPositionRotor
 
     @property
-    def roter(self) -> str:
+    def rotor(self) -> str:
         """
         Get the rotor mapping based on the current step position.
 
@@ -108,7 +108,7 @@ class Rotor:
         
         return newStr
     
-    def encryptWithoutStep(self, character: str) -> str:
+    def encrypt_without_step(self, character: str) -> str:
         """
         Encrypt a character using the rotor without changing the step position.
 
@@ -139,7 +139,7 @@ class Rotor:
         return self._startPositionRotor[(self.__shift(step) + self._originalAlphabet.index(character)) % len(self._originalAlphabet)]
     
 
-    def reverseRoterSafeStep(self) -> "Rotor":
+    def reverse_rotor_safe_step(self) -> "Rotor":
         """
         Create a new Rotor object with the same settings as the current rotor, preserving the step position.
 
@@ -148,7 +148,7 @@ class Rotor:
         """
         return Rotor(self._startPositionRotor, self._originalAlphabet, self._step)
     
-    def reverseRoterNotSafeStep(self, step : int = 0) -> "Rotor":
+    def reverse_rotor_not_safe_step(self, step : int = 0) -> "Rotor":
         """
         Create a new Rotor object with the same settings as the current rotor, allowing for a different step setting.
 

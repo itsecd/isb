@@ -51,7 +51,6 @@ def getArgs(parser: argparse.ArgumentParser) -> dict:
 
 def main():
 
-
     parser = argparse.ArgumentParser(description='Program for encrypting with Enigma using a key')
 
     generateCommand(parser)
@@ -59,12 +58,12 @@ def main():
 
     args = getArgs(parser)
     
-    en = eni.Enigma.createEnigmaIntoKey(key=args["key"], seed=args["seed"])
+    en = eni.Enigma.create_enigma_into_key(key=args["key"], seed=args["seed"])
 
     if args["translate"]:
-        cihep = en.translateUpdateRotors(args["text"])
+        cihep = en.translate_update_roters(args["text"])
     else:
-        cihep = en.encryptUpdateRotors(args["text"])
+        cihep = en.encrypt_update_roters(args["text"])
     
     if args["export"]:
         with open(args["export"], 'w') as file:
@@ -75,9 +74,9 @@ def main():
 
 
 if __name__ == "__main__":
+    
     try:
         main()
     except Exception as e:
-        print("Ошибка: ", e)
-        
+        print("Error:", e)
 

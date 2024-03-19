@@ -4,7 +4,7 @@ from src.encryption.decryptors.decryptor_replace_one_letter import DecryptorRepl
 
 CONST_LETTERS_MAX_IN_ENCODE = 20
 
-def generateCommand(parser: argparse.ArgumentParser) -> None:
+def generate_command(parser: argparse.ArgumentParser) -> None:
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('-a', '--alphabet', type=str, help='Alphabet for decryption')
     group.add_argument('-fta', '--fileForTxtAlphabet', type=str, help='Path to the file with alphabet for decryption .txt')
@@ -16,10 +16,11 @@ def generateCommand(parser: argparse.ArgumentParser) -> None:
 
     return
 
-def outBasicInfo(decryptor: DCrypt, text: str, alphabet: str, forWatch: dict, translate: str) -> None:
+def out_basic_info(decryptor: DCrypt, text: str, forWatch: dict, translate: str) -> None:
+    
     print("\n-------------------------------------------------------------------------------")
     print("Frequency:\n")
-    print(decryptor.analysisTextAndSortFrequency())
+    print(decryptor.analysis_text_and_sort_frequency())
 
     print("-------------------------------------------------------------------------------")
     print("\n\nReplacements:")
@@ -38,26 +39,27 @@ def outBasicInfo(decryptor: DCrypt, text: str, alphabet: str, forWatch: dict, tr
 
     return
 
-def outPlusInfo(decryptor: DCrypt, translate: str, forWatch: dict, sumbole: str):
+def out_plus_info(decryptor: DCrypt, translate: str, forWatch: dict, sumbole: str):
 
     print("-------------------------------------------------------------------------------")
     print("\nAnalysis: (number of characters, number of words, frequency of all words)")
     
     for i in range(1, CONST_LETTERS_MAX_IN_ENCODE):
         
-        length = decryptor.countWordSizeInText([sumbole], i)
+        length = decryptor.count_word_size_in_text([sumbole], i)
         
         if length != 0:
             
-            average = decryptor.wordSizeInTextFrequency([sumbole], i)
+            average = decryptor.word_size_in_text_frequency([sumbole], i)
             print(f"\n{i}, {length}, {average}")
-            print(decryptor.splitTextBySize([sumbole], i))
-            print(DCrypt.splitTextBySize_s(translate, [forWatch[sumbole]], i))
+            print(decryptor.split_text_by_size([sumbole], i))
+            print(DCrypt.split_text_by_size_s(translate, [forWatch[sumbole]], i))
 
 def main():
+    
     parser = argparse.ArgumentParser(description='Program for decrypting with Enigma using a key')
 
-    generateCommand(parser)
+    generate_command(parser)
 
     args = parser.parse_args()
 
@@ -73,21 +75,22 @@ def main():
 
     decryptor = DCrypt(text)
 
-    forWatch = decryptor.getTranslateDictFrequency(goodAlphabet)
-    translate = decryptor.decryptionSortFrequency(goodAlphabet)
+    forWatch = decryptor.get_translate_dict_frequency(goodAlphabet)
+    translate = decryptor.decryption_sort_frequency(goodAlphabet)
 
-    outBasicInfo(decryptor, text, goodAlphabet, forWatch, translate)
+    out_basic_info(decryptor, text, forWatch, translate)
 
     if args.characterDelimetrInCihep and len(args.characterDelimetrInCihep) == 1:
-        outPlusInfo(decryptor, translate, forWatch, args.characterDelimetrInCihep)
+        out_plus_info(decryptor, translate, forWatch, args.characterDelimetrInCihep)
 
     if args.exportKeyJson:
-        decryptor.export_KeyJSON(goodAlphabet, args.exportKeyJson)
+        decryptor.export_key_json(goodAlphabet, args.exportKeyJson)
 
     with open(args.fileForExport, 'w') as file:
         file.write(translate)
 
 if __name__ == "__main__":
+    
     try:
         main()
     except Exception as e:

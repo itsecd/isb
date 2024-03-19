@@ -15,7 +15,7 @@ class Enigma:
 
     Attributes:
     _roters (List[Roter]): Container of roters for working with enigma (must
-    follow the rotorsAreTuned function standards).
+    follow the rotors_are_tuned function standards).
 
     Methods:
     ...
@@ -31,14 +31,14 @@ class Enigma:
         Returns:
         - None
         """
-        Enigma.rotorsAreTuned(roters)
+        Enigma.rotors_are_tuned(roters)
                    
         self._roters = roters
 
         return
 
     @staticmethod
-    def rotorsAreTuned(roters: List[Rotor]) -> None:
+    def rotors_are_tuned(roters: List[Rotor]) -> None:
         """
         Check if the rotors are correctly tuned for the Enigma machine.
 
@@ -61,27 +61,27 @@ class Enigma:
 
         listRaise = []
 
-        for roter in roters:
+        for rotor in roters:
 
-            if roter.step != 0:
+            if rotor.step != 0:
                 raise Exception("Rotors should be in the initial position!")
 
-            listRaise = len(roter.alphabet)
-            if len(roter.alphabet) != standartAlphabetSize:
+            listRaise = len(rotor.alphabet)
+            if len(rotor.alphabet) != standartAlphabetSize:
                 raise Exception(f"Adjust the rotors correctly, currently sizes are inconsistent: {listRaise}")
             
         for indexRoter in range(len(roters) - 1):
 
-            if roters[indexRoter].startPositionRoter != roters[indexRoter + 1].alphabet:
+            if roters[indexRoter].start_position_rotor != roters[indexRoter + 1].alphabet:
                 raise Exception(f"The end path of rotor {indexRoter + 1} does not match with the arrival of rotor {indexRoter + 2}. Please change the start position of the first rotor or the alphabet of the second rotor.")
 
 
-    def putRotorsInStartPosition(self) -> None:
+    def put_roters_in_start_position(self) -> None:
         """
         Put all rotors in their initial start positions.
         """
         for rotor in self._roters:
-            rotor.putStartPosition()
+            rotor.put_start_position()
 
     @staticmethod
     def encrypt(text: str, roters: List[Rotor], step: int = 1) -> str:
@@ -99,7 +99,7 @@ class Enigma:
         Returns:
         - str: The encrypted text.
         """
-        Enigma.rotorsAreTuned(roters)
+        Enigma.rotors_are_tuned(roters)
 
         if not set(text).issubset(set(roters[0].alphabet)):
             raise Exception("Text characters are not in the router. Give me another text")
@@ -123,13 +123,13 @@ class Enigma:
 
                     tmpCharacter = roters[indexRotor].encrypt(tmpCharacter, step)
                 else:
-                    tmpCharacter = roters[indexRotor].encryptWithoutStep(tmpCharacter)
+                    tmpCharacter = roters[indexRotor].encrypt_without_step(tmpCharacter)
             
             cihep += tmpCharacter
         
         return cihep
 
-    def encryptOldRotors(self, text: str, step: int = 1) -> str:
+    def encrypt_old_roters(self, text: str, step: int = 1) -> str:
         """
         Encrypt the given text using the current set of rotors.
 
@@ -142,7 +142,7 @@ class Enigma:
         """
         return self.encrypt(text, self._roters, step)
 
-    def encryptUpdateRotors(self, text: str, step: int = 1) -> str:
+    def encrypt_update_roters(self, text: str, step: int = 1) -> str:
         """
         Reset the rotors to their initial positions, then encrypt the input text.
 
@@ -153,7 +153,7 @@ class Enigma:
         Returns:
         - str: The encrypted text.
         """
-        self.putRotorsInStartPosition()
+        self.put_roters_in_start_position()
         return self.encrypt(text, self._roters, step)
 
     @staticmethod
@@ -170,16 +170,16 @@ class Enigma:
         - str: The translated text.
         """
         
-        Enigma.rotorsAreTuned(rotersEncryptAndStartPosition)
+        Enigma.rotors_are_tuned(rotersEncryptAndStartPosition)
 
         reversedRotors = []
 
         for rotor in rotersEncryptAndStartPosition[::-1]:
-            reversedRotors.append(rotor.reverseRoterSafeStep())
+            reversedRotors.append(rotor.reverse_rotor_safe_step())
 
         return Enigma.encrypt(text, reversedRotors, -stepForEncryptAndStartPosition)
     
-    def translateOldRotors(self, text: str, step: int = 1) -> str:
+    def translate_old_roters(self, text: str, step: int = 1) -> str:
         """
         Translate the input text using the current set of rotors with reversed settings.
 
@@ -192,7 +192,7 @@ class Enigma:
         """
         return self.translate(text, self._roters, step)
 
-    def translateUpdateRotors(self, text: str, step: int = 1) -> str:
+    def translate_update_roters(self, text: str, step: int = 1) -> str:
         """
         Reset the rotors to their initial positions, then translate the input text.
         
@@ -203,44 +203,11 @@ class Enigma:
         Returns:
         - str: The translated text.
          """
-        self.putRotorsInStartPosition()
+        self.put_roters_in_start_position()
         return self.translate(text, self._roters, step)
 
-
     @staticmethod
-    def __swapLettersInText(text: str, letter_1: str, letter_2: set) -> str:
-        """
-        Swap two letters in the provided text at positions 'letter_1' and 'letter_2'.
-
-        Parameters:
-        - text (str): The input text.
-        - letter_1 (str): Index of the first letter to swap.
-        - letter_2 (set): Index of the second letter to swap.
-
-        Raises:
-        - Exception: If the indexes are out of range or not valid.
-
-        Returns:
-        - str: The text with the swapped letters.
-        """
-
-        if letter_1 >= len(text) or letter_1 < 0 or letter_2 >= len(text) or letter_2 < 0:
-            
-            raise Exception("Letters are not parts of text, or they are not letters")
-        
-        new_text = ""
-        for char in range(len(text)):
-            if char == letter_1:
-                new_text += text[letter_2]
-            elif char == letter_2:
-                new_text += text[letter_1]
-            else:
-                new_text += text[char]
-        
-        return new_text
-
-    @staticmethod
-    def createEnigmaIntoKey(key: str, seed: str = BASIC_SEED):
+    def create_enigma_into_key(key: str, seed: str = BASIC_SEED):
         """
         Create an Enigma machine based on the provided key and seed.
 
@@ -304,7 +271,7 @@ class Enigma:
 
         return Enigma(rotors)
 
-    def getStartRoters(self) -> str:
+    def get_start_roters(self) -> str:
         """
         Get the starting positions of all rotors in the Enigma machine.
 
@@ -314,6 +281,6 @@ class Enigma:
         index = 1
         newStr = ""
         for i in self._roters:
-            newStr += f"\nRoter№{index}:\n|{i.alphabet}|->|{i.startPositionRoter}|\n"
+            newStr += f"\nRoter№{index}:\n|{i.alphabet}|->|{i.start_position_rotor()}|\n"
             index += 1
         return newStr

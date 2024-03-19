@@ -20,7 +20,7 @@ class ReplaceOneLetter:
             Exception: If the length of the alphabet does not match the length of the cipher or if there are duplicates.
         """
         
-        if len(alphabet) != len(cihep) or ReplaceOneLetter.checkDuplicatesInString(alphabet) or ReplaceOneLetter.checkDuplicatesInString(cihep):
+        if len(alphabet) != len(cihep) or ReplaceOneLetter.check_duplicatesIn_string(alphabet) or ReplaceOneLetter.check_duplicatesIn_string(cihep):
             raise Exception("Length alphabet != cihep or (alphabet or cihep have duplicates)")
 
         self._encryptor = dict(zip(alphabet, cihep))
@@ -40,7 +40,7 @@ class ReplaceOneLetter:
             Exception: If the text contains characters that are not in the dictionary.
         """
         
-        if not self.haveAllCharactersInText(textForEncrypt, self._encryptor.keys()):
+        if not self.have_all_charactersIn_text(textForEncrypt, self._encryptor.keys()):
             raise Exception("The text contains characters that are not in the dictionary")
         
         encryptik = ""
@@ -64,7 +64,7 @@ class ReplaceOneLetter:
             Exception: If the text contains characters that are not in the dictionary.
         """
         
-        if not self.haveAllCharactersInText(textForTranslate, self._translator.keys()):
+        if not self.have_all_charactersIn_text(textForTranslate, self._translator.keys()):
             raise Exception("The text contains characters that are not in the dictionary")
         
         encryptik = ""
@@ -75,7 +75,7 @@ class ReplaceOneLetter:
         return encryptik
 
     @staticmethod
-    def checkDuplicatesInString(string: str) -> bool:
+    def check_duplicatesIn_string(string: str) -> bool:
         """
         Check if a given string contains duplicates.
         
@@ -88,7 +88,7 @@ class ReplaceOneLetter:
         return len(set(string)) != len(string)
     
     @staticmethod
-    def haveAllCharactersInText(text: str, characters: set) -> bool:
+    def have_all_charactersIn_text(text: str, characters: set) -> bool:
         """
         Check if all characters in a text are present in a given set of characters.
         
