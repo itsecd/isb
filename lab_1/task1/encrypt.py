@@ -3,10 +3,8 @@ import sys
 
 sys.path.append(r'C:\Users\koten\OneDrive\Рабочий стол\oib\isb\lab_1\task2')  
 from supportive import file_reader, file_writer, json_reader
-from constants import PATHS
+from constants import PATHS, alphabet
 
-# from task2.supportive import file_reader, file_writer, json_reader
-# from task2.constants import PATHS ..!!!!.в этом "языке" хоть как-то можно импортировать файлы без костылей?
 
 def encrypt(key: str) -> str:
     """
@@ -18,7 +16,7 @@ def encrypt(key: str) -> str:
     Returns:
     str: The encrypted text.
     """
-    alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
+
     encrypted_text = ''
      
     text = file_reader(os.path.join(paths["folder"], paths["input"]))
@@ -33,8 +31,8 @@ def encrypt(key: str) -> str:
     
     return encrypted_text
 
-
-paths = json_reader(PATHS)
-key = 'вгдежзийклмнопрстуфхцчшщъыьэюяаб'
-encrypted_text = encrypt(key)
-file_writer(os.path.join(paths["folder"], paths["encrypted"]), encrypted_text, 'w')
+if __name__ == "__main__":
+    paths = json_reader(PATHS)
+    key = 'вгдежзийклмнопрстуфхцчшщъыьэюяаб'
+    encrypted_text = encrypt(key)
+    file_writer(os.path.join(paths["folder"], paths["encrypted"]), encrypted_text, 'w')

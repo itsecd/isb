@@ -1,6 +1,5 @@
 {
     "folder" : "files",
     "input" : "input.txt",
-    "key" : "key.txt",
     "encrypted" : "encrypted.txt"
 }
