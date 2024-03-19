@@ -13,15 +13,17 @@ class Vigenere:
 
         Parameters:
         - alphabet (str): The alphabet used for the Enigma machine.
-        - key (str): The key representing the initial settings of the Enigma machine.
+        - key (str): The key representing the initial settings of the Enigma 
+        machine.
 
         Raises:
-        - Exception: If the key contains characters not present in the alphabet,
-                    or if the key length is greater than the alphabet length,
-                    or if the alphabet contains duplicate characters.
+        - Exception: If the key contains characters not present in the 
+        alphabet, or if the key length is greater than the alphabet length, 
+        or if the alphabet contains duplicate characters.
         """
         if not all( elem in alphabet for elem in key ) or len(set(key)) > len(alphabet) or len(set(alphabet)) != len(alphabet):
-            raise Exception("Your key not contants in alphabet or this is not alphabet or key")
+            raise Exception("Your key not contants in alphabet or this is not\
+                             alphabet or key")
         
 
         self._alphabet = alphabet
@@ -41,19 +43,22 @@ class Vigenere:
         - str: The encrypted text.
         """
         
-        if not all( elem in alphabet for elem in key ) or len(set(alphabet)) != len(alphabet)\
-           or len(set(text)) > len(alphabet) or len(alphabet) == 0 or len(key) == 0 or len(text) == 0:
-            raise Exception("Your key not contants in alphabet or bad alphabet")
+        if not all( elem in alphabet for elem in key ) \
+           or len(set(alphabet)) != len(alphabet) \
+           or len(set(text)) > len(alphabet) or len(alphabet) == 0 \
+           or len(key) == 0 or len(text) == 0:
+            raise Exception("Your key not contants in alphabet or bad \
+                             alphabet")
         
         cihep = ""
 
-        indexForKey = 0
+        index_for_key = 0
 
         for c in text:
                 
-            indexLetterInOriginalAlphabet = (alphabet.index(key[indexForKey % len(key)]) + alphabet.index(c)) % len(alphabet)
-            cihep += alphabet[indexLetterInOriginalAlphabet]
-            indexForKey += 1
+            index_letter_in_original_alphabet = (alphabet.index(key[index_for_key % len(key)]) + alphabet.index(c)) % len(alphabet)
+            cihep += alphabet[index_letter_in_original_alphabet]
+            index_for_key += 1
         
         return cihep
 
@@ -70,18 +75,21 @@ class Vigenere:
         Returns:
         - str: The decrypted text.
         """
-        if not all( elem in alphabet for elem in key ) or len(set(alphabet)) != len(alphabet)\
-           or len(set(text)) > len(alphabet) or len(alphabet) == 0 or len(key) == 0 or len(text) == 0:
-            raise Exception("Your key not contants in alphabet or bad alphabet")
+        if not all( elem in alphabet for elem in key ) \
+           or len(set(alphabet)) != len(alphabet) \
+           or len(set(text)) > len(alphabet) or len(alphabet) == 0 \
+           or len(key) == 0 or len(text) == 0:
+            raise Exception("Your key not contants in alphabet or bad \
+                            alphabet")
 
         cihep = ""
 
-        indexForKey = 0
+        index_for_key = 0
 
         for c in text:
                 
-            indexLetterInOriginalAlphabet = (alphabet.index(c) - alphabet.index(key[indexForKey % len(key)])) % len(alphabet)
-            cihep += alphabet[indexLetterInOriginalAlphabet]
-            indexForKey += 1
+            index_letter_in_original_alphabet = (alphabet.index(c) - alphabet.index(key[index_for_key % len(key)])) % len(alphabet)
+            cihep += alphabet[index_letter_in_original_alphabet]
+            index_for_key += 1
         
         return cihep
