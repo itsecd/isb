@@ -9,7 +9,7 @@ PI = {0: 0.2148, 1: 0.3672, 2: 0.2305, 3: 0.1875}
 
 def frequency_test(path: str, path_write: str, key: str) -> None:
     """
-    Performs a frequency test on a binary sequence and writes the result to a file.
+    Performs a frequency test on a binary sequence and write the result to a file.
 
     Parameters
         path: the path to the JSON file containing the binary sequence.
