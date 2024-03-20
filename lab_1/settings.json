@@ -1,0 +1,11 @@
+{
+    "directory": "lab_1",
+    "folder_1": "purpose_1",
+    "folder_2": "purpose_2", 
+    "initial_text": "source_text.txt",
+    "my_encrypted": "encrypted_text.txt",
+    "cipher_key": "encryption_key.json",
+    "code_text": "code3.txt",
+    "text_analysis": "text_analysis.json", 
+    "decrypted": "decrypted_message.txt"
+}
