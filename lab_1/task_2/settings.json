@@ -1,0 +1,7 @@
+{
+    "frequency_text_path": "frequency_text.json",
+    "standard_frequency_path": "standard_frequency.json",
+    "decryption_key_path": "decryption_key.json",
+    "input_file_path": "cod2.txt",
+    "output_file_path": "decrypted_text.txt"
+}

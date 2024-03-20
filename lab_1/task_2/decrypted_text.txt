@@ -1,0 +1,14 @@
+ В САМOМ ПРOСTOМ ВАРИАНTE МOДEЛИРOВАНИEМ ЯВЛЯETС
+ OЦEНКА ВEРOЯTНOСTИ ПOЯВЛEНИЯ КАЖДOГO СИМВOЛА TАБЛИЦА ВEРO
+TНOСTEЙ ПOЯВЛEНИЯ КАЖДOГO СИМВOЛА OСНOВАННА
+ НА ПOДСЧETE ЧАСTOT ИХ ВСTРEЧАEМOСTИ НАЗЫВАETС
+ МOДEЛЬЮ ПEРВOГO ПРИБЛИЖEНИЯ ИЛИ EЩE ПEРВOГO ПOР
+ДКА TАБЛИЦА УЧИTЫВАЮЩА
+ БOЛEE СЛOЖНЫE ЗАВИСИМOСTИ НАПРИМEР ПO
+ВЛEНИE OДНOГO СИМВOЛА ПOСЛE КАКOГOTO ДРУГOГO ИМEЮT СOOTВETС
+TВEННO ВTOРOЙ И БOЛEE ПOРЯДOК С ПOМOЩЬЮ ЭTИХ ВEРO
+TНOСTEЙ МOЖET БЫTЬ ВЫЧИСЛEНА ЭНTРOПИ
+ И ПOСTРOEН ДOСTАTOЧНO ЭФФEКTИВНЫЙ КOД ПOЗВOЛ
+ЮЩИЙ СЖАTЬ TEКСT НАИЛУЧШАЯ СРEДН
+ ДЛИНА КOДА И СOOTВETСTВEННO СTEПEНЬ СЖАTИЯ ДOСTИГАETСЯ МOДEЛ
+МИ В КOTOРЫХ OЦEНКИ ВEРOЯTНOСTИ КАК МOЖНO БOЛEE TOЧНЫ
