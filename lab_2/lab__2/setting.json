@@ -1,0 +1,4 @@
+{
+  "from": "sequence.json",
+  "to": "result.txt"
+}
