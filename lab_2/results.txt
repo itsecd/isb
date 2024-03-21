@@ -1,0 +1,9 @@
+NIST TEST RESULTS:
+C++:
+1) Frequency bit test: P = 0.37675911781158206
+2) Identical bits test: P = 0.9136904363844296
+3) Sequence of units test: P = 0.4462188631421427
+Java:
+1) Frequency bit test: P = 0.4795001221869535
+2) Identical bits test: P = 0.8941123552527624
+3) Sequence of units test: P = 0.26745460619217515

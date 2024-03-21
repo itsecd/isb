@@ -1,0 +1,5 @@
+argparse==1.0.7
+json==2.0.0
+math==2.7.1
+re==0.1.2
+scipy==0.9.4
