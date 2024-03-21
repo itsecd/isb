@@ -1,0 +1,9 @@
+test_frequency_bitwise:
+	c++: 0.8596837951986662
+	java: 0.2888443663464849
+test_same_consecutive_bits:
+	c++: 0.4811110870815766
+	java: 0.9378077084168511
+test_longest_sequence_of_units:
+	c++: 0.34623032383358
+	java: 0.405421205661484
