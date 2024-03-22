@@ -57,7 +57,6 @@ def write_result(path_decrypt: str, path_key: str, path_input: str) -> None:
     :param path_decrypt:
     :return:
     """
-
     file_writer(path_decrypt,f'{decrypt_text(file_reader(path_input), frequency(file_reader(path_input))[-1])}\n', 'w')
     keys = dict(zip(list(frequency(file_reader(path_input))[-1]), assumed_purity))
     file_writer(path_key, f"code: {' '.join(keys.keys())}\n", 'a')

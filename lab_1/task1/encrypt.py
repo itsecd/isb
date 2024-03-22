@@ -1,7 +1,6 @@
 import os
 import sys
-
-sys.path.append(r'C:\Users\koten\OneDrive\Рабочий стол\oib\isb\lab_1\task2')  
+ 
 from supportive import file_reader, file_writer, json_reader
 from constants import PATHS, alphabet
 
@@ -16,7 +15,6 @@ def encrypt(key: str) -> str:
     Returns:
     str: The encrypted text.
     """
-
     encrypted_text = ''
      
     text = file_reader(os.path.join(paths["folder"], paths["input"]))
@@ -33,6 +31,6 @@ def encrypt(key: str) -> str:
 
 if __name__ == "__main__":
     paths = json_reader(PATHS)
-    key = 'вгдежзийклмнопрстуфхцчшщъыьэюяаб'
-    encrypted_text = encrypt(key)
+    
+    encrypted_text = encrypt(os.path.join(paths["key"]))
     file_writer(os.path.join(paths["folder"], paths["encrypted"]), encrypted_text, 'w')
