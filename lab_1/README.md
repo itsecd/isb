@@ -1,15 +1,15 @@
 # для Энигмы:
 ## Перевод:
-        python3 enigma_program.py -pk Solution1/key -x Solution1/cihep.txt -o translate.txt --translate True -s Solution1/seed
+        python3 enigma_program.py -pk Solution1/key -x Solution1/cihep.txt -o Solution1/translate.txt --translate True -s Solution1/seed
 ## Шифрация:
         python3 enigma_program.py -pk Solution1/key -x Solution1/text.txt -o Solution1/cihep.txt -s Solution1/seed
 
 # для дешифратора:
 ## Для ананлиза слов:
-        python3 decryptor_replace_one_letter.py -fta Solution2/alphabet_for_program -x Solution2/encode.txt -o Solution2/tranlsate.txt -dc ">" -e key
+        python3 decryptor_replace_one_letter.py -fta Solution2/alphabet_for_program -x Solution2/encode.txt -o Solution2/tranlsate.txt -dc ">" -e Solution2/key
 ## Без анализа слов:
-        python3 decryptor_replace_one_letter.py -fta Solution2/alphabet_for_program -x Solution2/encode.txt -o Solution2/tranlsate.txt -e key
-## бЕЗ ЭКСПОРТА КЛЮЧА:
+        python3 decryptor_replace_one_letter.py -fta Solution2/alphabet_for_program -x Solution2/encode.txt -o Solution2/tranlsate.txt -e Solution2/key
+## Без эспорта ключа:
         python3 decryptor_replace_one_letter.py -fta Solution2/alphabet_for_program -x Solution2/encode.txt -o Solution2/tranlsate.txt
 
 
