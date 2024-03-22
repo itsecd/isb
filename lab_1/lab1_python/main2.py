@@ -1,0 +1,103 @@
+def get_frequency(string: str) -> list[str, float]:
+    """
+        str - строка с шифром
+        list - список частотности
+        Данная функция создает список с частотой каждого символа
+        """
+    len_s = len(s)
+    res = dict()
+    for symbol in string:
+        if symbol not in res:
+            res[symbol] = 1
+        else:
+            res[symbol] += 1
+    for item in res:
+        res[item] /= len_s
+    res = [[item, res[item]] for item in res]
+    res.sort(key=lambda x: x[1])
+    return reversed(res)
+
+
+def write_file(pathname: str, string: str) -> None:
+    """
+    pathname - путь к файлу, в которую идёт запись
+    string - записываемая строка
+    Данная функция осуществляет запись строки string в файл по пути pathname
+    """
+    with open(pathname, 'w', encoding='utf-8') as file_write:
+        file_write.write(string)
+        file_write.close()
+
+
+def replace_symbols(s, f_symbol, s_symbol):
+    """
+        s - рабочая строка
+        f_symbol - первый символ замены
+        s_symbol - второй символ замены
+        Данная функция меняет два символа местами
+        """
+    new_s = ''
+    for symbol in s:
+        if symbol == f_symbol:
+            new_s += s_symbol
+        elif symbol == s_symbol:
+            new_s += f_symbol
+        else:
+            new_s += symbol
+    return new_s
+
+
+s = '''И7У24>2 >МР4ДД >М2ЕПЧЙМД48 О4ЙАИЛМrЕt48ДЕ2ЧММИЙtЕХ4МШ4Ф1МЙ>ХИЙМУ1УМРОЕУ<Д >МР4ДД >МУ1УМЕЪУШtЕО4ДД 
+ФМИ-УПД41МИМЙЕ<ХУМ8t>ДУЛМЙ>ЕtУУМrt>РrЕ14П4>ЙИЛМ<ЙЕМР4ДД 
+>МrtЕУ8ОЕРЛЙИЛМУИЙЕ<ДУХЕ2МУМrt>РЕИЙ4О1ЛКЙИЛМХЕ2rt>ИИЕtЧМОМОУР>МИУ2ОЕ14МД4РМД>ХЕЙЕt 
+2М41Ш4ОУЙЕ2Мt4ДАЫ>МО>ИАМrtЕЪ>ИИМИ74ЙУЛМД48 О41УМХЕРУtЕО4ДУ>2МУИЙЕ<ДУХ4МrЕИХЕ1АХЧМЕДЕМrtУ8О4ДЕМЧР41УЙАМУ85 
+ЙЕ<ДЕИЙАМОМР4ДД ЩМД4МЕИДЕО>МУЩМrt>РИХ48Ч>2ЕИЙУМrЧЙ>2МУДЕПЕМrt>РИЙ4О1>ДУЛМР4ДД 
+ЩММЙЕМ>ИЙАМУЩМХЕРУtЕО4ДУЛМ84МРО4МrЕИ1>РДУЩМР>ИЛЙУ1>ЙУЛМХ4tЙУД4МД>ИХЕ1АХЕМУ82>ДУ14ИАМr>tОЕФМ14ИЙЕ<ХЕФМИЙ414МУР>ЛМt48
+Р>1УЙАМrtЕЪ>ИИМИ74ЙУЛМД4МРО4МО84У2ЕИОЛ84ДД ЩМrtЕЪ>ИИ4МХЕРУtЕО4ДУ>МД>rЕИt>РИЙО>ДДЕМОЕИrtЕУ8ОЕРЛЬ>>МИ74Й 
+ФМrЕЙЕХ-МИУ2ОЕ1ЕОМУМ2ЕР>1УtЕО4ДУ>Мrt>РЕИЙ4О1ЛКЬ>>МОИКМД>Е5ЩЕРУ2ЧКМР1ЛМХЕРУtЕО4ДУЛМУДШЕt24ЪУК'''
+
+res = get_frequency(s)
+for a in res:
+    print(a)
+print()
+
+s_it1 = replace_symbols(s, 'Й', 'Т')
+s_it2 = replace_symbols(s_it1, 'Ф', 'Й')
+s_it3 = replace_symbols(s_it2, 'Ш', 'Ф')
+s_it4 = replace_symbols(s_it3, 'Ы', 'Ш')
+s_it5 = replace_symbols(s_it4, ' ', 'Ы')
+s_it6 = replace_symbols(s_it5, 'М', ' ')
+s_it7 = replace_symbols(s_it6, '2', 'М')
+s_it8 = replace_symbols(s_it7, 'О', 'В')
+s_it9 = replace_symbols(s_it8, 'Е', 'О')
+s_it10 = replace_symbols(s_it9, '>', 'Е')
+s_it11 = replace_symbols(s_it10, 'Д', 'Н')
+s_it12 = replace_symbols(s_it11, 'Р', 'Д')
+s_it13 = replace_symbols(s_it12, 'И', 'С')
+s_it14 = replace_symbols(s_it13, 'У', 'И')
+s_it15 = replace_symbols(s_it14, 'Ч', 'У')
+s_it16 = replace_symbols(s_it15, 'К', 'Ю')
+s_it17 = replace_symbols(s_it16, 'Х', 'К')
+s_it18 = replace_symbols(s_it17, 'Щ', 'Х')
+s_it19 = replace_symbols(s_it18, 'Ь', 'Щ')
+s_it20 = replace_symbols(s_it19, '5', 'Б')
+s_it21 = replace_symbols(s_it20, 'Л', 'Я')
+s_it22 = replace_symbols(s_it21, '1', 'Л')
+s_it23 = replace_symbols(s_it22, 'Ъ', 'Ц')
+s_it24 = replace_symbols(s_it23, 'А', 'Ь')
+s_it25 = replace_symbols(s_it24, '4', 'А')
+s_it26 = replace_symbols(s_it25, 'П', 'Г')
+s_it27 = replace_symbols(s_it26, 'r', 'П')
+s_it28 = replace_symbols(s_it27, 't', 'Р')
+s_it29 = replace_symbols(s_it28, '7', 'Ж')
+s_it30 = replace_symbols(s_it29, '<', 'Ч')
+s_it31 = replace_symbols(s_it30, '8', 'З')
+
+res = get_frequency(s_it31)
+for a in res:
+    print(a)
+print(s_it31)
+
+
+write_file('encrypted_text2.txt', s)
+write_file('decrypted_text2.txt', s_it31)
