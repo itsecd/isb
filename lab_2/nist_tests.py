@@ -1,10 +1,21 @@
 from math import erfc, pow, sqrt
 from mpmath import gammainc
-SIZE = 128
+from work_w_files import json_to_dict
+
+SETTINGS_JSON_FILE = 'settings.json'
 PI_I = {1: 0.2148, 2: 0.3672, 3: 0.2372, 4: 0.1875}
 
 
 def max_consecutive_ones(string: str) -> int:
+    """
+    finds the maximal sequence of '1'
+
+    Args:
+        string (str): binary sequence part
+
+    Returns:
+        int: max count of consecutive ones
+    """
     max_c = 0
     cur_c = 0
     for char in string:
@@ -17,22 +28,41 @@ def max_consecutive_ones(string: str) -> int:
 
 
 def perform_frequency_bit_test(binary_sequence: str) -> float:
-    return erfc((binary_sequence.count('1') - binary_sequence.count('0'))/sqrt(SIZE)/sqrt(2))    
+    """
+    frequency bitwise test.
+
+    Returns:
+        float: p-value
+    """
+    return erfc((binary_sequence.count('1') - binary_sequence.count('0'))/sqrt(len(binary_sequence))/sqrt(2))    
 
 
 def perform_identical_consecutive_bits_test(binary_sequence: str) -> float:
-    xie = binary_sequence.count('1')/SIZE
-    if not (abs(xie-0.5) < (2 / sqrt(SIZE))):
+    """
+    test for identical consecutive bits
+
+    Returns:
+        float: p-value
+    """
+    size_seq = len(binary_sequence)
+    xie = binary_sequence.count('1')/size_seq
+    if not (abs(xie-0.5) < (2 / sqrt(size_seq))):
         return 0.0
     v_n = 0
-    for i in range(SIZE-1):
+    for i in range(size_seq-1):
         if (binary_sequence[i] != binary_sequence[i+1]):
             v_n += 1
-    return erfc(abs(v_n - 2*SIZE*xie*(1-xie))/(2*sqrt(2*SIZE)*xie*(1-xie)))
+    return erfc(abs(v_n - 2*size_seq*xie*(1-xie))/(2*sqrt(2*size_seq)*xie*(1-xie)))
 
 
-def perform_longest_sequence_of_ones(binary_sequence: str, len_of_block = 8) -> list[str]:
-    blocks = [binary_sequence[i:i+len_of_block] for i in range(0, SIZE, len_of_block)]
+def perform_longest_sequence_of_ones(binary_sequence: str, len_of_block: int) -> list[str]:
+    """
+    test for the longest sequence of units in a block.
+
+    Returns:
+        float: p-value
+    """
+    blocks = [binary_sequence[i:i+len_of_block] for i in range(0, len(binary_sequence) , len_of_block)]
     v_i = {1: 0, 2: 0, 3: 0, 4: 0}
     for block in blocks:
         count_ones = max_consecutive_ones(block)
@@ -50,4 +80,21 @@ def perform_longest_sequence_of_ones(binary_sequence: str, len_of_block = 8) -> 
         x_2 += pow(v_i[i] - 16 * PI_I[i], 2) / (16 * PI_I[i])
     return gammainc(3/2, x_2/2)
 
-print(perform_longest_sequence_of_ones('11000111111010000000111101010011101110011010001010101011111101110001011100101001000000011111101011111011001110101000011000110110'))
+
+if __name__ == '__main__':
+    args = json_to_dict(SETTINGS_JSON_FILE)
+    cpp_bs = json_to_dict(args['json'])['cpp']
+    java_bs = json_to_dict(args['json'])['java']
+    len_of_block = args['block']
+    print('\n'.join([
+        f'cpp binary sequence: {cpp_bs}',
+        f'1st test: {perform_frequency_bit_test(cpp_bs)}',
+        f'2nd test: {perform_identical_consecutive_bits_test(cpp_bs)}',
+        f'3rd test: {perform_longest_sequence_of_ones(cpp_bs,len_of_block)}'
+   ]))
+    print('\n'.join([
+        f'java binary sequence: {java_bs}',
+        f'1st test: {perform_frequency_bit_test(java_bs)}',
+        f'2nd test: {perform_identical_consecutive_bits_test(java_bs)}',
+        f'3rd test: {perform_longest_sequence_of_ones(java_bs,len_of_block)}'
+   ]))
