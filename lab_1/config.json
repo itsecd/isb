@@ -1,0 +1,16 @@
+
+  {
+    "text_path_task1": "first_task/text_path.txt",
+    "key_path_task1": "first_task/key.json",
+    "encryption_path_task1": "first_task/encryption.txt",
+    "decryption_path_task1": "first_task/decryption.txt",
+    "keys_task1": "43521",
+
+    "text_path_task2": "second_task/cod8.txt",
+    "data_path_task2": "second_task/data.json",
+    "key_freq_path_task2": "second_task/freq.json",
+    "key_path_task2": "second_task/key.json",
+    "text_key_path_task2": "second_task/text_key.json",
+    "decryption_path_task2": "second_task/decryption.txt",
+    "text_decryption_path_task2": "second_task/text_decryption.txt"
+}
