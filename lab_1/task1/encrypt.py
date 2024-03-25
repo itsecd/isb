@@ -31,6 +31,5 @@ def encrypt(key: str) -> str:
 
 if __name__ == "__main__":
     paths = json_reader(PATHS)
-    
     encrypted_text = encrypt(os.path.join(paths["key"]))
     file_writer(os.path.join(paths["folder"], paths["encrypted"]), encrypted_text, 'w')

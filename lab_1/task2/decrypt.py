@@ -34,11 +34,14 @@ def frequency(enc_text: str) -> list[list[str]]:
 
 def decrypt_text(text_for_decrypt: str, arr_decrypt_letters: list[str]) -> str:
     """
-    Decrypt text using frequency analysis algorithm
+    Decrypts a given text using a dictionary mapping of decryption letters.
 
-    :param text_for_decrypt:
-    :param arr_decrypt_letters:
-    :return:
+    Parameters:
+    - text_for_decrypt (str): The text to be decrypted.
+    - arr_decrypt_letters (list[str]): A list of decryption letters.
+
+    Returns:
+    - str: The decrypted text.
     """
     arr_encrypt_text = []
 
@@ -51,11 +54,15 @@ def decrypt_text(text_for_decrypt: str, arr_decrypt_letters: list[str]) -> str:
 
 def write_result(path_decrypt: str, path_key: str, path_input: str) -> None:
     """
-    Write decrypted text and keys in file
-    :param path_input:
-    :param path_key:
-    :param path_decrypt:
-    :return:
+    Writes the result of decrypting a text, the decryption key, and the key values to files.
+
+    Parameters:
+    - path_decrypt (str): The file path to write the decrypted text.
+    - path_key (str): The file path to write the decryption key.
+    - path_input (str): The file path of the input text to decrypt.
+
+    Returns:
+    - None
     """
     file_writer(path_decrypt,f'{decrypt_text(file_reader(path_input), frequency(file_reader(path_input))[-1])}\n', 'w')
     keys = dict(zip(list(frequency(file_reader(path_input))[-1]), assumed_purity))
