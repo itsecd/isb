@@ -1,0 +1,6 @@
+INFO:root:frequency bitwise test result for C++: 0.4795001221869535
+INFO:root:consecutive bits test result for C++: 0.26734947307149204
+INFO:root:longest sequence in block test result for C++: 0.0542141779250928
+INFO:root:frequency bitwise test result for Java: 0.5958830905651779
+INFO:root:consecutive bits test result for Java: 0.7045052566807751
+INFO:root:longest sequence in block test result for Java: 0.108666808263532
