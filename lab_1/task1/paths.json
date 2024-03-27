@@ -1,0 +1,6 @@
+{
+    "folder" : "files",
+    "input" : "text.txt",
+    "output" : "text_encrypted.txt",
+    "key" : "key.txt"
+}

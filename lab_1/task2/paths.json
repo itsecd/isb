@@ -1,0 +1,7 @@
+{
+    "folder" : "files",
+    "input" : "cod1.txt",
+    "output" : "text_decrypted.txt",
+    "frequency" : "frequency.txt", 
+    "key" : "key.txt"
+}
