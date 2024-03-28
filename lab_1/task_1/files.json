@@ -1,0 +1,5 @@
+{
+    "text_start": "./texts/text start.txt",
+    "text_end": "./texts/text end.txt",
+    "key": "./texts/key.txt"
+}

@@ -1,0 +1,7 @@
+{
+    "encrypt_text": "./texts and frequencies/cod7.txt",
+    "frequency_ru": "./texts and frequencies/frequency rus.csv",
+    "frequency_for_encrypt_text": "./texts and frequencies/frequency for encrypt text.csv",
+    "ready_frequency": "./texts and frequencies/frequency ready.csv",
+    "ready_text": "./texts and frequencies/ready text.txt"
+}
