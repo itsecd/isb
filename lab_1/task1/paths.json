@@ -1,0 +1,5 @@
+{
+    "folder" : "task1/texts",
+    "path_from" : "texts/task1_text_for_encryption.txt",
+    "path_to" : "texts/task1_encryption_text.txt"
+}
