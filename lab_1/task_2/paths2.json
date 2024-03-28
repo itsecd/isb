@@ -1,0 +1,5 @@
+{
+    "folder" : "task_2/text_files2",
+    "input" : "text_to_decrypt.txt",
+    "output" : "decrypted_text.txt"
+}
