@@ -2,7 +2,7 @@ import os
 import sys
  
 from supportive import file_reader, file_writer, json_reader
-from constants import PATHS, alphabet
+from constants import PATHS, ALPHABET
 
 
 def encrypt(key: str) -> str:
@@ -19,7 +19,7 @@ def encrypt(key: str) -> str:
      
     text = file_reader(os.path.join(paths["folder"], paths["input"]))
 
-    cipher_dict = dict(zip(alphabet, key))
+    cipher_dict = dict(zip(ALPHABET, key))
     
     for char in text:
         if char.lower() in cipher_dict:
@@ -28,6 +28,7 @@ def encrypt(key: str) -> str:
             encrypted_text += char
     
     return encrypted_text
+
 
 if __name__ == "__main__":
     paths = json_reader(PATHS)

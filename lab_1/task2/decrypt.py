@@ -2,8 +2,8 @@ import logging
 import os
 
 from collections import Counter
-from constants import PATHS, assumed_purity
-from supportive import json_reader, file_reader, file_writer
+from constants import PATHS, ASSUMED_PURITY
+from supportive import json_reader, file_reader, json_writer, file_writer
 
 logging.basicConfig(level=logging.INFO)
 
@@ -45,7 +45,7 @@ def decrypt_text(text_for_decrypt: str, arr_decrypt_letters: list[str]) -> str:
     """
     arr_encrypt_text = []
 
-    dictionary = dict(zip(arr_decrypt_letters, assumed_purity))
+    dictionary = dict(zip(arr_decrypt_letters, ASSUMED_PURITY))
     for symb in text_for_decrypt:
         arr_encrypt_text.append(dictionary[symb])
     text_for_decrypt = ''.join(arr_encrypt_text)
@@ -65,9 +65,12 @@ def write_result(path_decrypt: str, path_key: str, path_input: str) -> None:
     - None
     """
     file_writer(path_decrypt,f'{decrypt_text(file_reader(path_input), frequency(file_reader(path_input))[-1])}\n', 'w')
-    keys = dict(zip(list(frequency(file_reader(path_input))[-1]), assumed_purity))
-    file_writer(path_key, f"code: {' '.join(keys.keys())}\n", 'a')
-    file_writer(path_key, f" key: {' '.join(keys.values())}", 'a')
+
+    keys = dict(zip(list(frequency(file_reader(path_input))[-1]), ASSUMED_PURITY))
+
+    dict_result = {"code": ','.join(keys.keys()), "key": ','.join(keys.values())}
+    
+    json_writer(path_key, dict_result)
 
 
 if __name__ == "__main__":

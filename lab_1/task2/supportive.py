@@ -3,6 +3,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
+
 def json_reader(path: str) -> dict:
     """
     Reads a JSON file with paths and returns a dictionary.
@@ -20,6 +21,25 @@ def json_reader(path: str) -> dict:
         return paths
     except Exception as ex:
         logging.error(f"Incorrect path - {ex}")
+
+
+def json_writer(path: str, result: dict) -> None:
+    """
+    write a JSON file with paths and returns a dictionary.
+
+    Args:
+        path (str): The path to the JSON file.
+        result (str): The result to write JSON file.
+
+    Returns:
+        None
+
+    """
+    try:
+        with open(path, 'w', encoding="utf-8") as f:
+            json.dump(result, f, indent=4, ensure_ascii=False)
+    except Exception as ex:
+        logging.error(f"Failed to write JSON file: {ex}")
 
 
 def file_reader(path_input: str) -> str:
