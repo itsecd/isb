@@ -1,12 +1,10 @@
 import argparse
 
+import consts
+
 from typing import Dict
 
 import src.encryption.encryptors.enigma as eni
-
-STANDART_SEED="x(ГkшЪ+4sЩJpШ)0,хRCЕD`ьQEрP2уйXыj.HЙGгЖж*фЭzhfgч№VFтцСtмнХ ЗТ}\
-               KЛ%»-Y1ПУ{кMНв3!oZепД;ЦS7:iu#яcЮmO]dОАзъ@8бБqлР/о'«9ЧvAщynЬbЁ[\
-               UаI~LewюКэaМд56B&TWФиЯЫё^ВNсrlИ="
 
 def generate_command(parser: argparse.ArgumentParser):
     """
@@ -59,7 +57,7 @@ def generate_command(parser: argparse.ArgumentParser):
                               help="Seed for key generation in a file")
 
 def get_args(parser: argparse.ArgumentParser, 
-             file_to_fail_export: str = "cihep.out") -> dict:
+             file_to_fail_export: str = consts.STANDART_OUT_NAME_CIHEP) -> dict:
     """
     Parse the command line arguments using the provided parser and return a 
     dictionary with the parsed arguments.
@@ -91,7 +89,7 @@ def get_args(parser: argparse.ArgumentParser,
         with open(args.seed_file_txt, 'r') as f:
             seed = f.read()
     else:
-        seed = STANDART_SEED
+        seed = consts.STANDART_SEED
 
     if args.key:
         key = args.key

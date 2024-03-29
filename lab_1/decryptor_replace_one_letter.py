@@ -4,7 +4,7 @@ import consts
 
 from src.encryption.decryptors.decryptor_replace_one_letter import DecryptorReplaceOneLetter as DCrypt
 
-def main(standart_out_in_file = "translate.out"):
+def main(standart_out_in_file = consts.STANDART_OUT_NAME_TRANSLATE):
     """
     Main function for decrypting text encrypted with a simple replacement 
     using the alphabet.
