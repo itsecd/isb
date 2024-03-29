@@ -161,7 +161,6 @@ def main(standart_out_in_file = "translate.out"):
     if args.export_key_json:
         decryptor.export_key_json(good_alphabet, args.export_key_json)
 
-
     if args.file_for_export:
         with open(args.file_for_export, 'w') as file:
             file.write(translate)
