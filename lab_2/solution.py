@@ -9,7 +9,18 @@ from consts import HEADERS_GENERATE, NAME_INPUT_FILE, HEADER_FOLDER_RESOURCE, HE
 
 def main():
 
-    """Main function of the program."""
+    """Main function of the program.
+
+    This function reads a JSON file containing the paths to the input files and the output file.
+    It then iterates over the input files, reads the contents of each file, and performs three statistical tests on the contents of the file.
+    The results of the tests are stored in a dictionary, which is then written to the output file.
+
+    Args:
+        None
+
+    Returns:
+        None"""
+        
     output = {}
 
     try:
