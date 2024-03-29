@@ -1,5 +1,4 @@
 import math
-
 import mpmath
 
 from .consts import THEORETICAL_PROBABILITIES, MAX_LENGTH_BLOCK, COUNT_BITS, hash
@@ -71,6 +70,7 @@ def identical_consecutive_bits_test(array_bits: str) -> float:
                      (2 * math.sqrt(2 * len(array_bits)) * fraction_ones * (1 - fraction_ones)))
 
 def longest_sequence_ones_block_eight_test(array_bits: str) -> float:
+    
     """Calculates the longest sequence of ones block eight test.
 
     The longest sequence of ones block eight test is a statistical test used to determine whether a sequence of bits is random.
