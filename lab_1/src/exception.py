@@ -23,7 +23,6 @@ error_type_to_string = {
     ErrorType.CHARACTERS_ALPHABET_NOT_CONTAINS_IN_TEXT: "Alphabet characters are not contained in the text",
 }
 
-
 def error_types(alphabet: str, key: str, text: str) -> List[ErrorType]:
     
     """Checks the given alphabet and key for errors.
