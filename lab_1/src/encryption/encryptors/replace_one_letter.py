@@ -51,8 +51,7 @@ class ReplaceOneLetter:
         
         if not self.have_all_charactersIn_text(text_for_encrypt, 
                                                self._encryptor.keys()):
-            raise Exception("The text contains characters that are not in the\
-                             dictionary")
+            raise Exception("The text contains characters that are not in the dictionary")
         
         encryptik = ""
 
@@ -79,8 +78,7 @@ class ReplaceOneLetter:
         
         if not self.have_all_charactersIn_text(textForTranslate, 
                                                self._translator.keys()):
-            raise Exception("The text contains characters that are not in the\
-                             dictionary")
+            raise Exception("The text contains characters that are not in the dictionary")
         
         encryptik = ""
 

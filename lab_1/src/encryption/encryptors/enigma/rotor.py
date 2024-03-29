@@ -147,8 +147,7 @@ class Rotor:
         - str: The encrypted character.
         """
         if len(character) != 1 or not(character in self._original_alphabet):
-            raise Exception("Это ротор, а не шифр замены. Проверь свой символ\
-                             с помощью getAlphabet()")
+            raise Exception("Это ротор, а не шифр замены. Проверь свой символ с помощью getAlphabet()")
         
         return self._start_position_rotor[(self.__shift(step) + self._original_alphabet.index(character)) % len(self._original_alphabet)]
     
@@ -161,8 +160,10 @@ class Rotor:
         Returns:
         - Rotor: A new Rotor object with the same settings and step position.
         """
-        return Rotor(self._start_position_rotor, self._original_alphabet, 
-                     self._step)
+        return Rotor(self._start_position_rotor, 
+                     self._original_alphabet, 
+                     self._step
+                     )
     
     def reverse_rotor_not_safe_step(self, step : int = 0) -> "Rotor":
         """
@@ -178,4 +179,5 @@ class Rotor:
         """
         return Rotor(self._start_position_rotor, 
                      self._original_alphabet, 
-                     step)
+                     step
+                    )

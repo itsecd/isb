@@ -45,10 +45,12 @@ class Vigenere:
         
         if not all( elem in alphabet for elem in key ) \
            or len(set(alphabet)) != len(alphabet) \
-           or len(set(text)) > len(alphabet) or len(alphabet) == 0 \
-           or len(key) == 0 or len(text) == 0:
-            raise Exception("Your key not contants in alphabet or bad \
-                             alphabet")
+           or len(set(text)) > len(alphabet) \
+           or len(alphabet) == 0 \
+           or len(key) == 0 \
+           or len(text) == 0:
+            
+            raise Exception("Your key not contants in alphabet or bad alphabet")
         
         cihep = ""
 
@@ -79,8 +81,7 @@ class Vigenere:
            or len(set(alphabet)) != len(alphabet) \
            or len(set(text)) > len(alphabet) or len(alphabet) == 0 \
            or len(key) == 0 or len(text) == 0:
-            raise Exception("Your key not contants in alphabet or bad \
-                            alphabet")
+            raise Exception("Your key not contants in alphabet or bad alphabet")
 
         cihep = ""
 
