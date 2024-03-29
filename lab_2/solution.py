@@ -24,13 +24,10 @@ def main():
 
     try:
         for type_generate in HEADERS_GENERATE:
-
             path = os.path.join(NAME_INPUT_FILE)
-
             data = json_reader.read_json(path)
 
             path_generate = os.path.join(data[HEADER_FOLDER_RESOURCE], data[type_generate])
-
             with open(path_generate, 'r') as f:
                 generate = f.read()
 
