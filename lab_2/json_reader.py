@@ -4,7 +4,6 @@ from typing import Dict
 
 from consts import HEADERS_INPUT
 
-
 def read_json(path_input: str) -> Dict[str, str]:
     
     """Reads a JSON file and checks for required headers.
