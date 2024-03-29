@@ -3,6 +3,7 @@ from typing import List
 from . import exception as error
 
 def encrypt(alphabet: str, key: str, text: str) -> str:
+    
     """Encrypts the given text using the Caesar cipher.
 
     The Caesar cipher is a simple substitution cipher in which each letter in the
