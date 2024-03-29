@@ -1,0 +1,12 @@
+{
+    "random_cpp": {
+        "frequency_bit_test": 0.021556266760016356,
+        "identical_consecutive_bits_test": 0.42151218512656063,
+        "longest_sequence_ones_block_eight_test": 0.5013682772806681
+    },
+    "random_java": {
+        "frequency_bit_test": 0.7236736098317631,
+        "identical_consecutive_bits_test": 0.48596636836204155,
+        "longest_sequence_ones_block_eight_test": 0.6928945182759317
+    }
+}
