@@ -1,0 +1,6 @@
+{
+    "pathFolderResource" : "resource",
+    "fileCppGenerate" : "random_cpp",
+    "fileJavaGenerate" : "random_java",
+    "pathOutputFile" : "Solution/output.json"
+}
