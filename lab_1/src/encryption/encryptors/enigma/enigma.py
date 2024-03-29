@@ -1,10 +1,7 @@
 from typing import List
 from .rotor import Rotor
 
-BASIC_SEED = "x(ГkшЪ+4sЩJpШ)0,хRCЕD`ьQEрP2уйXыj.HЙGгЖж*фЭzhfgч№VFтцСtмнХ ЗТ\
-              }KЛ%»-Y1ПУ{кMНв3!oZепД;ЦS7:iu#яcЮmO]dОАзъ@8бБqлР/о'«9ЧvAщynЬb\
-              Ё[UаI~LewюКэaМд56B&TWФиЯЫё^ВNсrlИ="
-
+import consts
 
 class Enigma:
     """
@@ -61,8 +58,7 @@ class Enigma:
         standart_alphabet_size = len(roters[0].alphabet)
         
         if standart_alphabet_size < 2:
-            raise Exception("These are not alphabets, mate. Change the \
-                alphabet size for the rotors as their size is less than 2.")
+            raise Exception("These are not alphabets, mate. Change the alphabet size for the rotors as their size is less than 2.")
 
         list_raise = []
 
@@ -218,7 +214,7 @@ class Enigma:
         return self.translate(text, self._roters, step)
 
     @staticmethod
-    def create_enigma_into_key(key: str, seed: str = BASIC_SEED):
+    def create_enigma_into_key(key: str, seed: str = consts.BASIC_SEED):
         """
         Create an Enigma machine based on the provided key and seed.
 
