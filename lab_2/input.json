@@ -1,7 +1,0 @@
-{
-    "resourcePath" : "resource",
-    "dataFileNameInResource" : "dataSolution.json",
-    "nameHeaderCppInData" : "cpp",
-    "nameHeaderJavaInData" : "java",
-    "fileNameOutput" : "output.json"
-}
