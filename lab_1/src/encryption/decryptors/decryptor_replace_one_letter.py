@@ -89,8 +89,7 @@ class DecryptorReplaceOneLetter:
         Returns:
         - dict: A dictionary of letters sorted by frequency.
         """
-        return DecryptorReplaceOneLetter.sort_dict_values_s(
-                                            DecryptorReplaceOneLetter.analysis_text_s(text))
+        return DecryptorReplaceOneLetter.sort_dict_values_s(DecryptorReplaceOneLetter.analysis_text_s(text))
     
 
     def analysis_text_and_sort_frequency(self) -> dict:

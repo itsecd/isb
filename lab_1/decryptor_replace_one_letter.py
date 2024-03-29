@@ -127,7 +127,8 @@ def out_plus_info(decryptor: DCrypt, translate: str,
 
 def main(standart_out_in_file = "translate.out"):
     """
-    Main function for decrypting text encrypted with a simple replacement using the alphabet.
+    Main function for decrypting text encrypted with a simple replacement 
+    using the alphabet.
     """
     parser = argparse.ArgumentParser(description='Program for decrypting with Enigma using a key')
 
@@ -154,7 +155,8 @@ def main(standart_out_in_file = "translate.out"):
 
     if args.character_delimetr_in_cihep \
        and len(args.character_delimetr_in_cihep) == 1:
-       out_plus_info(decryptor, translate, for_watch, args.character_delimetr_in_cihep)
+        out_plus_info(decryptor, translate, 
+                      for_watch, args.character_delimetr_in_cihep)
 
     if args.export_key_json:
         decryptor.export_key_json(good_alphabet, args.export_key_json)

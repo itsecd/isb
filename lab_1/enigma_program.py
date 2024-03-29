@@ -39,9 +39,9 @@ def generate_command(parser: argparse.ArgumentParser):
     
     group_first = parser.add_mutually_exclusive_group(required=True)
     group_first.add_argument('-k', '--key', type=str, 
-                       help='Key for text (random set of characters)')
+                             help='Key for text (random set of characters)')
     group_first.add_argument('-pk', '--pathKey', type=str, 
-                       help='Path to the file for text')
+                             help='Path to the file for text')
 
     parser.add_argument('-x', '--file_to_text', type=str, 
                         help='Path to the text file')
@@ -54,11 +54,12 @@ def generate_command(parser: argparse.ArgumentParser):
 
     group_second = parser.add_mutually_exclusive_group(required=True)
     group_second.add_argument('-s', '--seed', type=str, 
-                        help="Seed for key generation")
+                              help="Seed for key generation")
     group_second.add_argument('-sft', '--seed_file_txt', type=str, 
-                        help="Seed for key generation in a file")
+                              help="Seed for key generation in a file")
 
-def get_args(parser: argparse.ArgumentParser, file_to_fail_export: str = "cihep.out") -> dict:
+def get_args(parser: argparse.ArgumentParser, 
+             file_to_fail_export: str = "cihep.out") -> dict:
     """
     Parse the command line arguments using the provided parser and return a 
     dictionary with the parsed arguments.
