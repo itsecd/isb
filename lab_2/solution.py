@@ -2,10 +2,9 @@ import os
 import sys
 
 import json_reader
-
 import src.tests as nist
-from consts import HEADERS_GENERATE, NAME_INPUT_FILE, HEADER_FOLDER_RESOURCE, HEADER_OUTPUT_FILE
 
+from consts import HEADERS_GENERATE, NAME_INPUT_FILE, HEADER_FOLDER_RESOURCE, HEADER_OUTPUT_FILE
 
 def main():
 
