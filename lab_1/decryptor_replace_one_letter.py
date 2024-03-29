@@ -1,8 +1,51 @@
 import argparse
 
+import consts
+
 from src.encryption.decryptors.decryptor_replace_one_letter import DecryptorReplaceOneLetter as DCrypt
 
-CONST_LETTERS_MAX_IN_ENCODE = 20
+def main(standart_out_in_file = "translate.out"):
+    """
+    Main function for decrypting text encrypted with a simple replacement 
+    using the alphabet.
+    """
+    parser = argparse.ArgumentParser(description='Program for decrypting with Enigma using a key')
+
+    generate_command(parser)
+
+    args = parser.parse_args()
+
+    if args.alphabet:
+        good_alphabet = args.alphabet
+    elif args.file_for_txt_alphabet:
+        with open(args.file_for_txt_alphabet, "r") as f:
+            good_alphabet = f.read()
+
+    with open(args.encodeFile, 'r') as file:
+        text = file.read()
+    text = text.replace("\n", "")
+
+    decryptor = DCrypt(text)
+
+    for_watch = decryptor.get_translate_dict_frequency(good_alphabet)
+    translate = decryptor.decryption_sort_frequency(good_alphabet)
+
+    out_basic_info(decryptor, text, for_watch, translate)
+
+    if args.character_delimetr_in_cihep \
+       and len(args.character_delimetr_in_cihep) == 1:
+        out_plus_info(decryptor, translate, 
+                      for_watch, args.character_delimetr_in_cihep)
+
+    if args.export_key_json:
+        decryptor.export_key_json(good_alphabet, args.export_key_json)
+
+    if args.file_for_export:
+        with open(args.file_for_export, 'w') as file:
+            file.write(translate)
+    else:
+        with open(standart_out_in_file, 'w') as file:
+            file.write(translate)
 
 def generate_command(parser: argparse.ArgumentParser) -> None:
     """
@@ -113,7 +156,7 @@ def out_plus_info(decryptor: DCrypt, translate: str,
     print("---------------------------------------------------------------")
     print("\nAnalysis: (number of characters, number of words, frequency of all words)")
 
-    for i in range(1, CONST_LETTERS_MAX_IN_ENCODE):
+    for i in range(1, consts.CONST_LETTERS_MAX_IN_ENCODE):
 
         length = decryptor.count_word_size_in_text([symbol], i)
 
@@ -124,49 +167,6 @@ def out_plus_info(decryptor: DCrypt, translate: str,
             print(decryptor.split_text_by_size([symbol], i))
             print(DCrypt.split_text_by_size_s(translate, [for_watch[symbol]], i))
 
-
-def main(standart_out_in_file = "translate.out"):
-    """
-    Main function for decrypting text encrypted with a simple replacement 
-    using the alphabet.
-    """
-    parser = argparse.ArgumentParser(description='Program for decrypting with Enigma using a key')
-
-    generate_command(parser)
-
-    args = parser.parse_args()
-
-    if args.alphabet:
-        good_alphabet = args.alphabet
-    elif args.file_for_txt_alphabet:
-        with open(args.file_for_txt_alphabet, "r") as f:
-            good_alphabet = f.read()
-
-    with open(args.encodeFile, 'r') as file:
-        text = file.read()
-    text = text.replace("\n", "")
-
-    decryptor = DCrypt(text)
-
-    for_watch = decryptor.get_translate_dict_frequency(good_alphabet)
-    translate = decryptor.decryption_sort_frequency(good_alphabet)
-
-    out_basic_info(decryptor, text, for_watch, translate)
-
-    if args.character_delimetr_in_cihep \
-       and len(args.character_delimetr_in_cihep) == 1:
-        out_plus_info(decryptor, translate, 
-                      for_watch, args.character_delimetr_in_cihep)
-
-    if args.export_key_json:
-        decryptor.export_key_json(good_alphabet, args.export_key_json)
-
-    if args.file_for_export:
-        with open(args.file_for_export, 'w') as file:
-            file.write(translate)
-    else:
-        with open(standart_out_in_file, 'w') as file:
-            file.write(translate)
 
 if __name__ == "__main__":
     
