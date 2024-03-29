@@ -36,5 +36,6 @@ def write_json(dict_output: dict , path_output: str) -> None:
         - dict_output (dict): The dictionary to be written to the JSON file.
         - path_output (str): The path to the output JSON file.
     """
+    
     with open(path_output, 'w') as f:
         json.dump(dict_output, f, indent=4, ensure_ascii=False)
