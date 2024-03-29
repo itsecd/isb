@@ -1,0 +1,6 @@
+{
+    "nameFileAlphabet" : "alphabet", 
+    "nameFileKey" : "key",
+    "nameFileText" : "text",
+    "nameFileOutput" : "cipher.json"
+}

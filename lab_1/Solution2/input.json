@@ -1,0 +1,6 @@
+{
+    "nameFileAlphabet" : "encrypted_letters", 
+    "nameFileKey" : "decrypted_letters",
+    "nameFileText" : "cipher",
+    "nameFileOutput" : "translate.json"
+}
