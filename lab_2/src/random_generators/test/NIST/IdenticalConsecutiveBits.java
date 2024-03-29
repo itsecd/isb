@@ -42,7 +42,7 @@ public class IdenticalConsecutiveBits implements Test {
 
         // Compute the erf of the test statistic.
         return Test.erfc((Math.abs(signVariables - 2 * unitFraction * bits.length * (1 - unitFraction))) /
-                (2 * Math.sqrt(2 * bits.length) * unitFraction * (1 - unitFraction)));
+                         (2 * Math.sqrt(2 * bits.length) * unitFraction * (1 - unitFraction)));
     }
 
     @Override
