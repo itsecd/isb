@@ -3,7 +3,7 @@ from mpmath import gammainc
 from work_w_files import json_to_dict
 
 SETTINGS_JSON_FILE = 'settings.json'
-PI_I = {1: 0.2148, 2: 0.3672, 3: 0.2372, 4: 0.1875}
+PI_I = {1: 0.2148, 2: 0.3672, 3: 0.2305, 4: 0.1875}
 
 
 def max_consecutive_ones(string: str) -> int:
