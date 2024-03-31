@@ -3,9 +3,10 @@ import logging
 import tabulate
 import argparse
 
-import src.hybrid_tripleDES as hybrid
 
 import src.serialization as ser
+import src.hybrid_tripleDES as hybrid
+
 from src.encryption_algorithms.TypeArgument import TypeArgument
 
 from src.consts import DEFAULT_KEY_SIZE_ASYMMETRIC
@@ -32,7 +33,7 @@ def main():
                 filemode='w',
                 level=logging.INFO,
                 format='%(asctime)s - %(levelname)s - %(name)s:%(lineno)d - %(message)s')
-            logger = logging.getLogger("main")
+            logger = logging.getLogger(__name__)
         
         if args.generate_keys:
             
