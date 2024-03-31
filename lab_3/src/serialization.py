@@ -15,10 +15,10 @@ def read_symmetricTripleDES(path_file: str) -> SymmetricTripleDES:
     Reads a serialized SymmetricTripleDES object from a file.
 
     Args:
-        path_file (str): The path to the file containing the serialized SymmetricTripleDES object.
+        - path_file (str): The path to the file containing the serialized SymmetricTripleDES object.
 
     Returns:
-        SymmetricTripleDES: The deserialized SymmetricTripleDES object.
+        - SymmetricTripleDES: The deserialized SymmetricTripleDES object.
     """
     try:
         with open(path_file, 'rb') as f:
@@ -36,8 +36,8 @@ def safe_symmetricTripleDES(path_file: str, symmetricTripleDES: SymmetricTripleD
     Safely serializes a SymmetricTripleDES object to a file.
 
     Args:
-        path_file (str): The path to the file to which the SymmetricTripleDES object should be serialized.
-        symmetricTripleDES (SymmetricTripleDES): The SymmetricTripleDES object to serialize.
+        - path_file (str): The path to the file to which the SymmetricTripleDES object should be serialized.
+        - symmetricTripleDES (SymmetricTripleDES): The SymmetricTripleDES object to serialize.
     """
     try:
         with open(path_file, 'wb') as f:
