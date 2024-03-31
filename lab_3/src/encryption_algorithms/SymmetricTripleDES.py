@@ -25,7 +25,8 @@ class SymmetricTripleDES:
     """
     
     @staticmethod
-    def generate_key(len_key: int = DEFAULT_KEY_BYTES_FOR_TRIPLEDES, type_len: TypeArgument = TypeArgument.BYTE) -> bytes:
+    def generate_key(len_key: int = DEFAULT_KEY_BYTES_FOR_TRIPLEDES, 
+                     type_len: TypeArgument = TypeArgument.BYTE) -> bytes:
         
         """
         Generates a random encryption key for TripleDES.
@@ -86,7 +87,11 @@ class SymmetricTripleDES:
     def init_vector(self) -> bytes:
        return self.__init_vector
 
-    def encrypt(self, text: bytes, symmetrical_key: bytes, len_block_padding: int = DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES, type_len_block_padding: TypeArgument = TypeArgument.BYTE) -> bytes:
+    def encrypt(self, 
+                text: bytes, 
+                symmetrical_key: bytes, 
+                len_block_padding: int = DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES, 
+                type_len_block_padding: TypeArgument = TypeArgument.BYTE) -> bytes:
 
         """
         Encrypts the plaintext using TripleDES in CBC mode.
@@ -110,14 +115,19 @@ class SymmetricTripleDES:
 
             padder = padding.ANSIX923(int(len_block_padding * type_len_block_padding.bits)).padder()
             padded_text = padder.update(text) + padder.finalize()
-            encryptor = Cipher(TripleDES(symmetrical_key), CBC(self.init_vector)).encryptor()
+            encryptor = Cipher(TripleDES(symmetrical_key), 
+                               CBC(self.init_vector)).encryptor()
 
             return encryptor.update(padded_text) + encryptor.finalize()
 
         except Exception as e:
             raise ValueError(f"Encrypt text symmetrical method error: {e}")
     
-    def decrypt(self, cipher: bytes, symmetrical_key: bytes, len_block_padding: int = DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES, type_len_block_padding: TypeArgument = TypeArgument.BYTE) -> bytes:
+    def decrypt(self, 
+                cipher: bytes, 
+                symmetrical_key: bytes, 
+                len_block_padding: int = DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES, 
+                type_len_block_padding: TypeArgument = TypeArgument.BYTE) -> bytes:
 
         """
         Decrypts the ciphertext using TripleDES in CBC mode.
@@ -139,7 +149,8 @@ class SymmetricTripleDES:
                 raise ValueError(f"Block length is not suitable for this type of encryption, your {len_block_padding * type_len_block_padding.bits} bits, need to {BLOCK_LEN_BITS_PADDING_FOR_TRIPLEDES}")
 
             unpadder = padding.ANSIX923(int(len_block_padding * type_len_block_padding.bits)).unpadder()
-            decryptor = Cipher(TripleDES(symmetrical_key), CBC(self.init_vector)).decryptor()
+            decryptor = Cipher(TripleDES(symmetrical_key), 
+                               CBC(self.init_vector)).decryptor()
             decrypt_text = decryptor.update(cipher) + decryptor.finalize()
 
             return unpadder.update(decrypt_text) + unpadder.finalize()
