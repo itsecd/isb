@@ -22,8 +22,11 @@ def generate_hybrid_tripleDes(len_rsa_private_key: int = DEFAULT_KEY_SIZE_ASYMME
     """
     Generate a hybrid encryption key pair using TripleDES and RSA.
 
-    The generated key pair consists of a TripleDES key encrypted with an RSA private key.
-    The RSA private key is used to decrypt the TripleDES key, which is then used to encrypt and decrypt data.
+    The generated key pair consists of a TripleDES key encrypted with an RSA 
+    private key.
+    
+    The RSA private key is used to decrypt the TripleDES key, which is then 
+    used to encrypt and decrypt data.
 
     Args:
         - len_rsa_private_key: The length of the RSA private key in bits.
@@ -35,12 +38,14 @@ def generate_hybrid_tripleDes(len_rsa_private_key: int = DEFAULT_KEY_SIZE_ASYMME
     """
     
     try:
-        key = SymmetricTripleDES.generate_key(len_key_symmetrical, type_len_symmetrical)
+        key = SymmetricTripleDES.generate_key(len_key_symmetrical, 
+                                              type_len_symmetrical)
         private_key = asymmetric.generate_private_key(key_size=len_rsa_private_key)
         encrypt_key = asymmetric.encrypt(key, private_key.public_key())
 
         logger.info("Generate hybrid tripleDes successful")
-        return (SymmetricTripleDES(stored_key=encrypt_key, init_vector=SymmetricTripleDES.generate_init_vector()), private_key)
+        return (SymmetricTripleDES(stored_key=encrypt_key, init_vector=SymmetricTripleDES.generate_init_vector()), 
+                                   private_key)
     
     except Exception as e:
         logger.error(f"Generate hybrid tripleDes error: {e}")
@@ -55,7 +60,8 @@ def encrypt_text(text: bytes,
     """
     Encrypt a text using a hybrid encryption key pair.
 
-    The text is encrypted using the TripleDES key, which is decrypted using the RSA private key.
+    The text is encrypted using the TripleDES key, which is decrypted using
+    the RSA private key.
 
     Args:
         - text: The text to encrypt.
@@ -88,7 +94,8 @@ def decrypt_cipher(cipher: bytes,
     """
     Decrypt a cipher using a hybrid encryption key pair.
 
-    The cipher is decrypted using the TripleDES key, which is decrypted using the RSA private key.
+    The cipher is decrypted using the TripleDES key, which is decrypted using 
+    the RSA private key.
 
     Args:
         - cipher: The cipher to decrypt.
@@ -102,10 +109,14 @@ def decrypt_cipher(cipher: bytes,
     """
     
     try:
-        original_symmetric_key = asymmetric.decrypt(symmetric_encrypt_key.stored_key, asymetric_key)
+        original_symmetric_key = asymmetric.decrypt(symmetric_encrypt_key.stored_key, 
+                                                    asymetric_key)
     
         logger.info("Decrypt text into hybrid tripleDes successful")
-        return symmetric_encrypt_key.decrypt(cipher, original_symmetric_key, len_block_padding, type_len_block_padding)
+        return symmetric_encrypt_key.decrypt(cipher, 
+                                             original_symmetric_key, 
+                                             len_block_padding, 
+                                             type_len_block_padding)
     
     except Exception as e:
         logger.error(f"Decrypt text for hybridTripleDES error: {e}")

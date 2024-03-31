@@ -16,7 +16,9 @@ def main():
     """
     Main function.
 
-    This function is the entry point for the program. It handles the command line arguments and calls the appropriate functions to generate keys, encrypt, or decrypt data.
+    This function is the entry point for the program. It handles the command 
+    line arguments and calls the appropriate functions to generate keys, 
+    encrypt, or decrypt data.
     """
           
     try:
@@ -37,7 +39,11 @@ def main():
             """
             Generate hybrid encryption key pair.
 
-            This function generates a hybrid encryption key pair using TripleDES and RSA. The generated key pair consists of a TripleDES key encrypted with an RSA private key. The RSA private key is used to decrypt the TripleDES key, which is then used to encrypt and decrypt data.
+            This function generates a hybrid encryption key pair using TripleD
+            ES and RSA. The generated key pair consists of a TripleDES key 
+            encrypted with an RSA private key. The RSA private key is used 
+            to decrypt the TripleDES key, which is then used to encrypt 
+            and decrypt data.
             """
             
             symmetrical_encrypted, private_key = hybrid.generate_hybrid_tripleDes(args.len_rsa_key, 
@@ -53,7 +59,9 @@ def main():
             """
             Encrypt data using hybrid encryption key pair.
 
-            This function encrypts data using a hybrid encryption key pair. The data is encrypted using the TripleDES key, which is decrypted using the RSA private key.
+            This function encrypts data using a hybrid encryption key pair. 
+            The data is encrypted using the TripleDES key, which is decrypted
+            using the RSA private key.
             """
     
             private_key = ser.read_private_key(args.file_private_key)
@@ -68,7 +76,9 @@ def main():
             """
             Decrypt data using hybrid encryption key pair.
 
-            This function decrypts data using a hybrid encryption key pair. The data is decrypted using the TripleDES key, which is decrypted using the RSA private key.
+            This function decrypts data using a hybrid encryption key pair. 
+            The data is decrypted using the TripleDES key, which is decrypted
+            using the RSA private key.
             """
 
             private_key = ser.read_private_key(args.file_private_key)            
@@ -105,7 +115,9 @@ def generate_args() -> argparse.ArgumentParser:
     """
     Generate argument parser.
 
-    This function generates an argument parser for the program. The argument parser is used to parse the command line arguments and set the appropriate options.
+    This function generates an argument parser for the program. The argument
+    parser is used to parse the command line arguments and set the 
+    appropriate options.
     """
     
     parser = argparse.ArgumentParser(description="Single entry point for key generation, encryption, and decryption.")

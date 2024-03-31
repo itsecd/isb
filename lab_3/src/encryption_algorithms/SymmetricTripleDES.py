@@ -13,11 +13,13 @@ from .consts import KEY_COUNT_BITS_FOR_TRIPLEDES, INIT_VECTOR_COUNT_BYTE_FOR_TRI
 class SymmetricTripleDES:
     
     """
-    This class provides methods for symmetric encryption and decryption using the TripleDES algorithm in CBC mode with ANSIX923 padding.
+    This class provides methods for symmetric encryption and decryption 
+    using the TripleDES algorithm in CBC mode with ANSIX923 padding.
 
     Attributes:
         - padder: An object for padding the plaintext before encryption.
-        - unpadder: An object for removing the padding from the ciphertext after decryption.
+        - unpadder: An object for removing the padding from the ciphertext 
+        after decryption.
         - encryptor: An object for encrypting the padded plaintext.
         - decryptor: An object for decrypting the ciphertext.
     """
@@ -30,7 +32,8 @@ class SymmetricTripleDES:
 
         Args:
             - len_key(unsigned int): The length of the key in bits or bytes.
-            - type_len(TypeArgument): The type of unit for the length of the key (`BIT` or `BYTE`).
+            - type_len(TypeArgument): The type of unit for the length of the 
+            key (`BIT` or `BYTE`).
 
         Returns:
             - The encryption key as bytes.
@@ -91,8 +94,11 @@ class SymmetricTripleDES:
         Args:
             - text(bytes): The plaintext as bytes.
             - symmetrical_key(bytes): The encryption key as bytes.
-            - len_block_padding(unsigned int): The length of the padding block in bits or bytes (default: DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES).
-            - type_len_block_padding(TypeArgument): The type of unit for the length of the padding block (`BIT` or `BYTE`) (default: TypeArgument.BYTE).
+            - len_block_padding(unsigned int): The length of the padding block
+            in bits or bytes (default: DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES).
+            - type_len_block_padding(TypeArgument): The type of unit for the 
+            length of the padding block (`BIT` or `BYTE`) 
+            (default: TypeArgument.BYTE).
 
         Returns:
             - The ciphertext as bytes.
@@ -119,8 +125,10 @@ class SymmetricTripleDES:
         Args:
             - cipher(bytes): The ciphertext as bytes.
             - symmetrical_key(bytes): The encryption key as bytes.
-            - len_block_padding(unsigned int): The length of the padding block in bits or bytes (default: DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES).
-            - type_len_block_padding(TypeArgument): The type of unit for the length of the padding block (`BIT` or `BYTE`) (default: TypeArgument.BYTE).
+            - len_block_padding(unsigned int): The length of the padding 
+            block in bits or bytes (default: DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES).
+            - type_len_block_padding(TypeArgument): The type of unit for 
+            the length of the padding block (`BIT` or `BYTE`) (default: TypeArgument.BYTE).
 
         Returns:
             - The plaintext as bytes.

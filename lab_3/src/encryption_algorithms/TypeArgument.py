@@ -3,7 +3,8 @@ from enum import Enum
 class TypeArgument(Enum):
     
     """
-    This class represents the type of argument for the length of the padding block or key.
+    This class represents the type of argument for the length of the padding 
+    block or key.
 
     Attributes:
         - BIT: The type of argument is bits.

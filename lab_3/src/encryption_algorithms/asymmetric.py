@@ -11,7 +11,8 @@ def generate_private_key(public_exponent: int = 65537, key_size: int = 2048) -> 
     Generates a private key of RSA.
 
     Args:
-        - public_exponent(int): The public exponent for the RSA keys (default: 65537).
+        - public_exponent(int): The public exponent for the RSA 
+        keys (default: 65537).
         - key_size(int): The size of the RSA keys in bits (default: 2048).
 
     Returns:
@@ -30,7 +31,8 @@ def generate_pair_key(public_exponent: int = 65537, key_size: int = 2048) -> Tup
     Generates a pair of RSA public and private keys.
 
     Args:
-        - public_exponent(int): The public exponent for the RSA keys (default: 65537).
+        - public_exponent(int): The public exponent for the RSA
+        keys (default: 65537).
         - key_size(int): The size of the RSA keys in bits (default: 2048).
 
     Returns:
@@ -52,7 +54,8 @@ def encrypt(text: bytes, private_key: RSAPrivateKey) -> bytes:
 
     Args:
         - text(bytes): The plaintext string to encrypt.
-        - private_key(RSAPrivateKey): The RSA public key to use for encryption.
+        - private_key(RSAPrivateKey): The RSA public key to use for 
+        encryption.
 
     Returns:
         - The encrypted ciphertext as bytes.
@@ -88,7 +91,8 @@ def decrypt(ciphertext: bytes, private_key: RSAPrivateKey) -> bytes:
 
     Args:
         - ciphertext(bytes): The ciphertext string to decrypt.
-        - private_key(RSAPrivateKey): The RSA private key to use for decryption.
+        - private_key(RSAPrivateKey): The RSA private key to use for 
+        decryption.
 
     Returns:
         - The decrypted plaintext as bytes.
