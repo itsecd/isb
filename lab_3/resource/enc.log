@@ -1,13 +1,13 @@
 ╒═════════════════════════╤═════════╤═════════════════════════╤════════════════════════════════════════════════════════════════════╕
 │ Time                    │ Level   │ File                    │ Message                                                            │
 ╞═════════════════════════╪═════════╪═════════════════════════╪════════════════════════════════════════════════════════════════════╡
-│ 2024-04-01 18:23:02,834 │ INFO    │ src.serialization:177   │ Read[resource/private_key.pem] RSA private key successful          │
+│ 2024-04-01 19:06:41,766 │ INFO    │ src.serialization:177   │ Read[resource/private_key.pem] RSA private key successful          │
 ├─────────────────────────┼─────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-01 18:23:02,867 │ INFO    │ src.serialization:28    │ Read[resource/encrypt_symmetric.pkl] SymmetricTripleDES successful │
+│ 2024-04-01 19:06:41,797 │ INFO    │ src.serialization:28    │ Read[resource/encrypt_symmetric.pkl] SymmetricTripleDES successful │
 ├─────────────────────────┼─────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-01 18:23:02,867 │ INFO    │ src.serialization:71    │ Read[resource/text.txt] bytes successful                           │
+│ 2024-04-01 19:06:41,802 │ INFO    │ src.serialization:71    │ Read[resource/text.txt] bytes successful                           │
 ├─────────────────────────┼─────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-01 18:23:02,868 │ INFO    │ src.hybrid_tripleDES:79 │ Encrypt text into hybrid tripleDes successful                      │
+│ 2024-04-01 19:06:41,822 │ INFO    │ src.hybrid_tripleDES:85 │ Encrypt text into hybrid tripleDes successful                      │
 ├─────────────────────────┼─────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-01 18:23:02,889 │ INFO    │ src.serialization:91    │ Safe[resource/encrypt.txt] bytes successful                        │
+│ 2024-04-01 19:06:41,822 │ INFO    │ src.serialization:91    │ Save[resource/encrypt.txt] bytes successful                        │
 ╘═════════════════════════╧═════════╧═════════════════════════╧════════════════════════════════════════════════════════════════════╛

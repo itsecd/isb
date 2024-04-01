@@ -74,10 +74,16 @@ def encrypt_text(text: bytes,
     """
     
     try:
-        original_symmetric_key = asymmetric.decrypt(symmetric_encrypt_key.stored_key, asymetric_key)
-    
+        original_symmetric_key = asymmetric.decrypt(symmetric_encrypt_key.stored_key, 
+                                                    asymetric_key)
+        
+        encrypted_text = symmetric_encrypt_key.encrypt(text, 
+                                                       original_symmetric_key, 
+                                                       len_block_padding, 
+                                                       type_len_block_padding)
+        
         logger.info("Encrypt text into hybrid tripleDes successful")
-        return symmetric_encrypt_key.encrypt(text, original_symmetric_key, len_block_padding, type_len_block_padding)
+        return encrypted_text
     
     except Exception as e:
         logger.error(f"Encrypt text into hybridTripleDES error: {e}")
@@ -111,11 +117,13 @@ def decrypt_cipher(cipher: bytes,
         original_symmetric_key = asymmetric.decrypt(symmetric_encrypt_key.stored_key, 
                                                     asymetric_key)
     
+        decrypted_text = symmetric_encrypt_key.decrypt(cipher, 
+                                                       original_symmetric_key, 
+                                                       len_block_padding, 
+                                                       type_len_block_padding)
+        
         logger.info("Decrypt text into hybrid tripleDes successful")
-        return symmetric_encrypt_key.decrypt(cipher, 
-                                             original_symmetric_key, 
-                                             len_block_padding, 
-                                             type_len_block_padding)
+        return decrypted_text
     
     except Exception as e:
         logger.error(f"Decrypt text for hybridTripleDES error: {e}")

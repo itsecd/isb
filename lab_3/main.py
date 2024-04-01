@@ -26,9 +26,9 @@ def main():
         parser = generate_args()
         args = parser.parse_args()
         
-        if args.safe_logs:        
+        if args.save_logs:        
             logging.basicConfig(
-                filename=args.safe_logs,
+                filename=args.save_logs,
                 filemode='w',
                 level=logging.INFO,
                 format='%(asctime)s - %(levelname)s - %(name)s:%(lineno)d - %(message)s')
@@ -49,9 +49,9 @@ def main():
             symmetrical_encrypted, private_key = hybrid.generate_hybrid_tripleDes(args.len_rsa_key, 
                                                                                   args.len_symmetrical_key, 
                                                                                   args.type_len_symmetrical)
-            ser.safe_private_key(args.file_private_key, 
+            ser.save_private_key(args.file_private_key, 
                                  private_key)
-            ser.safe_symmetricTripleDES(args.file_encrypted_symmetric_key, 
+            ser.save_symmetricTripleDES(args.file_encrypted_symmetric_key, 
                                         symmetrical_encrypted)
 
         elif args.encrypt:
@@ -69,7 +69,7 @@ def main():
             text = ser.read_bytes(args.file_input)
             
             cipher = hybrid.encrypt_text(text, symmetrical_encrypted, private_key)
-            ser.safe_bytes(args.path_object_output, cipher)
+            ser.save_bytes(args.path_object_output, cipher)
             
         elif args.decryption:
 
@@ -86,7 +86,7 @@ def main():
             cipher = ser.read_bytes(args.file_input)
             
             transalte = hybrid.decrypt_cipher(cipher, symmetrical_encrypted, private_key)
-            ser.safe_bytes(args.path_object_output, transalte)        
+            ser.save_bytes(args.path_object_output, transalte)        
     
     except Exception as e:
         
@@ -97,8 +97,8 @@ def main():
         
     finally:
         
-        if args.safe_logs and args.logs_pretty:
-            with open(args.safe_logs, 'r') as f:
+        if args.save_logs and args.logs_pretty:
+            with open(args.save_logs, 'r') as f:
                 logs = f.readlines()
 
             table = tabulate.tabulate(
@@ -107,7 +107,7 @@ def main():
                 tablefmt='fancy_grid'
             )
 
-            with open(args.safe_logs, 'w') as f:
+            with open(args.save_logs, 'w') as f:
                 f.write(table)
 
 def generate_args() -> argparse.ArgumentParser:
@@ -156,7 +156,7 @@ def generate_args() -> argparse.ArgumentParser:
     parser.add_argument('-o', '--path_object_output',
                         type=str,
                         default=os.path.join("output.out"),
-                        help=f'Path to safe output hybrid default:({os.path.join("output.out")})')
+                        help=f'Path to save output hybrid default:({os.path.join("output.out")})')
     
     
     parser.add_argument('-lrsa', '--len_rsa_key',
@@ -175,15 +175,15 @@ def generate_args() -> argparse.ArgumentParser:
                         help=f'Size key symmetrical in byte for generate using:[{TypeArgument.BIT} = bit, {TypeArgument.BYTE} = byte] bits default:{TypeArgument.BYTE} byte.')
     
     
-    parser.add_argument('-l', '--safe_logs',
+    parser.add_argument('-l', '--save_logs',
                         type=str,
                         default=None,
-                        help=f'Path to the file safe logs default(None).')
+                        help=f'Path to the file save logs default(None).')
 
     parser.add_argument('-lp', '--logs_pretty',
                         type=bool,
                         default=False,
-                        help=f'Path to the file safe pretty logs default(False).')
+                        help=f'Path to the file save pretty logs default(False).')
     return parser
 
 if __name__ == "__main__":

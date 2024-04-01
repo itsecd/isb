@@ -31,10 +31,10 @@ def read_symmetricTripleDES(path_file: str) -> SymmetricTripleDES:
     except Exception as e:
         logger.error(f"Read[{path_file}] SymmetricTripleDES error: {e}")
         
-def safe_symmetricTripleDES(path_file: str, symmetricTripleDES: SymmetricTripleDES) -> None:
+def save_symmetricTripleDES(path_file: str, symmetricTripleDES: SymmetricTripleDES) -> None:
 
     """
-    Safely serializes a SymmetricTripleDES object to a file.
+    savely serializes a SymmetricTripleDES object to a file.
 
     Args:
         - path_file (str): The path to the file to which the 
@@ -46,10 +46,10 @@ def safe_symmetricTripleDES(path_file: str, symmetricTripleDES: SymmetricTripleD
         with open(path_file, 'wb') as f:
             f.write(pickle.dumps(symmetricTripleDES))
 
-        logger.info(f"Safe[{path_file}] SymmetricTripleDES successful")
+        logger.info(f"Save[{path_file}] SymmetricTripleDES successful")
     
     except Exception as e:
-        logger.error(f"Safe[{path_file}] SymmetricTripleDES error: {e}")
+        logger.error(f"Save[{path_file}] SymmetricTripleDES error: {e}")
 
 
 def read_bytes(path_file: str) -> bytes:
@@ -74,29 +74,29 @@ def read_bytes(path_file: str) -> bytes:
     except Exception as e:
         logger.error(f"Read[{path_file}] bytes error: {e}")
 
-def safe_bytes(path_file_safe: str, key: bytes) -> None:
+def save_bytes(path_file_save: str, key: bytes) -> None:
 
     """
-    Safely writes bytes to a file.
+    savely writes bytes to a file.
 
     Args:
-        - path_file_safe(str): The path to the file to write to.
+        - path_file_save(str): The path to the file to write to.
         - key(bytes): The bytes to write to the file.
     """
 
     try:
-        with open(path_file_safe, 'wb') as key_file:
+        with open(path_file_save, 'wb') as key_file:
             key_file.write(key)
         
-        logger.info(f"Safe[{path_file_safe}] bytes successful")
+        logger.info(f"Save[{path_file_save}] bytes successful")
         
     except Exception as e:
-        logger.error(f"Safe[{path_file_safe}] bytes error: {e}")
+        logger.error(f"Save[{path_file_save}] bytes error: {e}")
 
-def safe_public_key(path_to_file_key: str, public_key: RSAPublicKey) -> None:
+def save_public_key(path_to_file_key: str, public_key: RSAPublicKey) -> None:
 
     """
-    Safely writes a public key to a file.
+    savely writes a public key to a file.
 
     Args:
         - path_to_file_key(str): The path to the file to write to.
@@ -108,15 +108,15 @@ def safe_public_key(path_to_file_key: str, public_key: RSAPublicKey) -> None:
             public_out.write(public_key.public_bytes(encoding=serialization.Encoding.PEM,
                              format=serialization.PublicFormat.SubjectPublicKeyInfo))
         
-        logger.info(f"Safe[{path_to_file_key}] RSA public key successful")
+        logger.info(f"Save[{path_to_file_key}] RSA public key successful")
         
     except Exception as e:
-        logger.error(f"Safe[{path_to_file_key}] RSA public key error: {e}")
+        logger.error(f"Save[{path_to_file_key}] RSA public key error: {e}")
 
-def safe_private_key(path_to_file_key: str, private_key: RSAPrivateKey) -> None:
+def save_private_key(path_to_file_key: str, private_key: RSAPrivateKey) -> None:
 
     """
-    Safely writes a private key to a file.
+    savely writes a private key to a file.
 
     Args:
         - path_to_file_key(str): The path to the file to write to.
@@ -129,10 +129,10 @@ def safe_private_key(path_to_file_key: str, private_key: RSAPrivateKey) -> None:
                               format=serialization.PrivateFormat.TraditionalOpenSSL,
                               encryption_algorithm=serialization.NoEncryption()))
           
-        logger.info(f"Safe[{path_to_file_key}] RSA private key successful")    
+        logger.info(f"Save[{path_to_file_key}] RSA private key successful")    
             
     except Exception as e:
-        logger.error(f"Safe[{path_to_file_key}] RSA private key error: {e}")
+        logger.error(f"Save[{path_to_file_key}] RSA private key error: {e}")
 
 def read_public_key(path_to_file_key: str) -> RSAPublicKey:
 
