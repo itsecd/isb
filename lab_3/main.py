@@ -67,12 +67,12 @@ def main():
             """
 
             private_key = ser.read_private_key(args.file_private_key)
-            symmetrical_encrypted = ser.read_symmetricTripleDES(
-                args.file_encrypted_symmetric_key)
+            symmetrical_encrypted = ser.read_symmetricTripleDES(args.file_encrypted_symmetric_key)
             text = ser.read_bytes(args.file_input)
 
-            cipher = hybrid.encrypt_text(
-                text, symmetrical_encrypted, private_key)
+            cipher = hybrid.encrypt_text(text, 
+                                         symmetrical_encrypted, 
+                                         private_key)
             ser.save_bytes(args.path_object_output, cipher)
 
         elif args.decryption:
@@ -86,12 +86,12 @@ def main():
             """
 
             private_key = ser.read_private_key(args.file_private_key)
-            symmetrical_encrypted = ser.read_symmetricTripleDES(
-                args.file_encrypted_symmetric_key)
+            symmetrical_encrypted = ser.read_symmetricTripleDES(args.file_encrypted_symmetric_key)
             cipher = ser.read_bytes(args.file_input)
 
-            transalte = hybrid.decrypt_cipher(
-                cipher, symmetrical_encrypted, private_key)
+            transalte = hybrid.decrypt_cipher(cipher, 
+                                              symmetrical_encrypted,
+                                              private_key)
             ser.save_bytes(args.path_object_output, transalte)
 
     except Exception as e:
