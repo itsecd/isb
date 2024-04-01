@@ -1,6 +1,6 @@
 from typing import List, Dict
 
-from . import exception as error
+import exception as error
 
 def encrypt(alphabet: str, key: str, text: str) -> str:
     
@@ -50,7 +50,7 @@ def analysis_text(text: str) -> Dict[str, float]:
         """
         size = len(text)
         alphabet = set(text)
-        frequency = {}
+        frequency: Dict[str, float] = {}
 
         for letter in alphabet:
 
