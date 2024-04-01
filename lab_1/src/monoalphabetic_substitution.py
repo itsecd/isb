@@ -1,6 +1,6 @@
-from typing import List
+from typing import List, Dict
 
-from . import exception as error
+import exception as error
 
 def encrypt(alphabet: str, key: str, text: str) -> str:
     
@@ -36,3 +36,37 @@ def encrypt(alphabet: str, key: str, text: str) -> str:
         encrypted_text += key[alphabet.index(c)]
 
     return encrypted_text
+
+def analysis_text(text: str) -> Dict[str, float]:
+        """
+        Analyze the frequency of each letter in the text.
+
+        Parameters:
+        - text (str): The text to analyze.
+
+        Returns:
+        - dict: A dictionary containing the frequency of each letter in the 
+        text.
+        """
+        size = len(text)
+        alphabet = set(text)
+        frequency = {}
+
+        for letter in alphabet:
+
+            frequency[letter] = text.count(letter) / size
+        
+        return frequency
+
+def sort_dict_values(dictionary: Dict[str, float]) -> Dict[str, float]:
+        """
+        Sort a dictionary by its values in descending order.
+
+        Parameters:
+        - dictionary (dict): The dictionary to be sorted.
+
+        Returns:
+        - dict: The sorted dictionary based on values in descending order.
+        """
+        return  dict(reversed(sorted(dictionary.items(), 
+                                     key=lambda x: x[1])))
