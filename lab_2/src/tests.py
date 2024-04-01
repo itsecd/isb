@@ -1,9 +1,11 @@
 import math
 import mpmath
 
-from .consts import THEORETICAL_PROBABILITIES, MAX_LENGTH_BLOCK, COUNT_BITS, hash
+from .probies import get_proba
 
-def frequency_bit_test(array_bits: str) -> float:
+from .consts import THEORETICAL_PROBABILITIES, MAX_LENGTH_BLOCK, COUNT_BITS
+
+def frequency_bitwise_test(array_bits: str) -> float:
     
     """Calculates the frequency bit test.
 
@@ -34,9 +36,11 @@ def frequency_bit_test(array_bits: str) -> float:
         elif bit =='0':
             sum += -1
 
-    return math.erfc(abs(sum / math.sqrt(len(array_bits)) / math.sqrt(2)))
+    p_value = math.erfc(abs(sum / math.sqrt(len(array_bits)) / math.sqrt(2)))
 
-def identical_consecutive_bits_test(array_bits: str) -> float:
+    return p_value
+
+def consecutive_bits_test(array_bits: str) -> float:
     
     """Calculates the identical consecutive bits test.
 
@@ -66,12 +70,15 @@ def identical_consecutive_bits_test(array_bits: str) -> float:
 
     count_alternating_signs = sum(1 if array_bits[i] != array_bits[i + 1] else 0 for i in range(len(array_bits) - 1))
 
-    return math.erfc(abs(count_alternating_signs - 2 * len(array_bits) * fraction_ones * (1 - fraction_ones)) /
-                     (2 * math.sqrt(2 * len(array_bits)) * fraction_ones * (1 - fraction_ones)))
+    p_value = math.erfc(abs(count_alternating_signs - 2 * len(array_bits) * fraction_ones * (1 - fraction_ones)) / (
+            2 * math.sqrt(2 * len(array_bits)) * fraction_ones * (1 - fraction_ones)))
 
-def longest_sequence_ones_block_eight_test(array_bits: str) -> float:
+    return p_value
+
+def longest_sequence_block_test(array_bits: str) -> float:
     
-    """Calculates the longest sequence of ones block eight test.
+    """
+    Calculates the longest sequence of ones block eight test.
 
     The longest sequence of ones block eight test is a statistical test used to determine whether a sequence of bits is random.
     The test is based on the assumption that the probability of a 0 or 1 bit occurring is equal.
@@ -107,10 +114,12 @@ def longest_sequence_ones_block_eight_test(array_bits: str) -> float:
             length = length + 1 if bit == '1' else 0
             max_length = max(max_length, length)
 
-        blocks_info[hash(max_length)] += 1
+        blocks_info[get_proba(max_length)] += 1
 
     hi_square = 0
     for key in blocks_info.keys():
         hi_square += math.pow(blocks_info[key] - 16 * THEORETICAL_PROBABILITIES[key], 2) / (16 * THEORETICAL_PROBABILITIES[key])
 
-    return float(mpmath.gammainc(1.5, hi_square / 2))
+    p_value = float(mpmath.gammainc(3 / 2, hi_square / 2))
+
+    return p_value

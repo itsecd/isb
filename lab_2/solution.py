@@ -33,9 +33,9 @@ def main():
                 generate = f.read()
 
             output[data[type_generate].rsplit('.', 1)[0]] = {
-                "frequency_bit_test": nist.frequency_bit_test(generate),
-                "identical_consecutive_bits_test": nist.identical_consecutive_bits_test(generate),
-                "longest_sequence_ones_block_eight_test": nist.longest_sequence_ones_block_eight_test(generate)
+                "frequency_bit_test": nist.frequency_bitwise_test(generate),
+                "identical_consecutive_bits_test": nist.consecutive_bits_test(generate),
+                "longest_sequence_ones_block_eight_test": nist.longest_sequence_block_test(generate)
             }
 
         path_output = os.path.join(data[HEADER_OUTPUT_FILE])
