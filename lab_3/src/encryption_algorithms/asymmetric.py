@@ -64,7 +64,7 @@ def encrypt_with_private_key(text: bytes, private_key: RSAPrivateKey) -> bytes:
         return private_key.public_key().encrypt(text, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
                                                      algorithm=hashes.SHA256(), label=None))
     except Exception as e:
-        raise ValueError(f"Encrypt text to public key error: {e}")
+        raise ValueError(f"Encrypt text to private key error: {e}")
 
 def encrypt_with_public_key(text: bytes, public_key: RSAPublicKey) -> bytes:
     
@@ -102,4 +102,4 @@ def decrypt(ciphertext: bytes, private_key: RSAPrivateKey) -> bytes:
         return private_key.decrypt(ciphertext, padding.OAEP(mgf=padding.MGF1(algorithm=hashes.SHA256()),
                                                             algorithm=hashes.SHA256(), label=None))
     except Exception as e:
-        raise ValueError(f"Decrypt text to public key error: {e}")
+        raise ValueError(f"Decrypt text to private key error: {e}")
