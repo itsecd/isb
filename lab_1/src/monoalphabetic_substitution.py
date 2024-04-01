@@ -1,9 +1,9 @@
 from typing import List, Dict
 
-import exception as error
+from . import exception as error
+
 
 def encrypt(alphabet: str, key: str, text: str) -> str:
-    
     """Encrypts the given text using the Caesar cipher.
 
     The Caesar cipher is a simple substitution cipher in which each letter in the
@@ -37,36 +37,38 @@ def encrypt(alphabet: str, key: str, text: str) -> str:
 
     return encrypted_text
 
+
 def analysis_text(text: str) -> Dict[str, float]:
-        """
-        Analyze the frequency of each letter in the text.
+    """
+    Analyze the frequency of each letter in the text.
 
-        Parameters:
-        - text (str): The text to analyze.
+    Parameters:
+    - text (str): The text to analyze.
 
-        Returns:
-        - dict: A dictionary containing the frequency of each letter in the 
-        text.
-        """
-        size = len(text)
-        alphabet = set(text)
-        frequency: Dict[str, float] = {}
+    Returns:
+    - dict: A dictionary containing the frequency of each letter in the 
+    text.
+    """
+    size = len(text)
+    alphabet = set(text)
+    frequency: Dict[str, float] = {}
 
-        for letter in alphabet:
+    for letter in alphabet:
 
-            frequency[letter] = text.count(letter) / size
-        
-        return frequency
+        frequency[letter] = text.count(letter) / size
+
+    return frequency
+
 
 def sort_dict_values(dictionary: Dict[str, float]) -> Dict[str, float]:
-        """
-        Sort a dictionary by its values in descending order.
+    """
+    Sort a dictionary by its values in descending order.
 
-        Parameters:
-        - dictionary (dict): The dictionary to be sorted.
+    Parameters:
+    - dictionary (dict): The dictionary to be sorted.
 
-        Returns:
-        - dict: The sorted dictionary based on values in descending order.
-        """
-        return  dict(reversed(sorted(dictionary.items(), 
-                                     key=lambda x: x[1])))
+    Returns:
+    - dict: The sorted dictionary based on values in descending order.
+    """
+    return dict(reversed(sorted(dictionary.items(),
+                                key=lambda x: x[1])))

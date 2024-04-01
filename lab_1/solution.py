@@ -8,7 +8,6 @@ import src.monoalphabetic_substitution as crypt
 
 
 def main():
-
     """Main function of the program."""
 
     for folder in consts.FOLDERS_RESOURCE:
@@ -18,9 +17,11 @@ def main():
 
             data = json_reader.read_json(path)
 
-            path_alphabet = os.path.join(folder, data[consts.NAME_HEADER_FILE_ALPHABET])
+            path_alphabet = os.path.join(
+                folder, data[consts.NAME_HEADER_FILE_ALPHABET])
             path_key = os.path.join(folder, data[consts.NAME_HEADER_FILE_KEY])
-            path_text = os.path.join(folder, data[consts.NAME_HEADER_FILE_TEXT])
+            path_text = os.path.join(
+                folder, data[consts.NAME_HEADER_FILE_TEXT])
 
             with open(path_alphabet, 'r') as f:
                 alphabet = f.read()
@@ -33,7 +34,8 @@ def main():
 
             encrypt = crypt.encrypt(alphabet, key, text)
 
-            path_output = os.path.join(folder, data[consts.NAME_HEADER_FILE_OUTPUT])
+            path_output = os.path.join(
+                folder, data[consts.NAME_HEADER_FILE_OUTPUT])
 
             output = {
                 data[consts.NAME_HEADER_FILE_ALPHABET].rsplit('.', 1)[0]: alphabet,
@@ -47,8 +49,9 @@ def main():
         except Exception as e:
             raise Exception(f"{folder}: {e}")
 
+
 if __name__ == "__main__":
-    
+
     try:
         main()
     except Exception as e:

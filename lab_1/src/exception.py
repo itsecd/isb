@@ -2,6 +2,7 @@ import enum
 
 from typing import List
 
+
 @enum.unique
 class ErrorType(enum.Enum):
     """
@@ -16,6 +17,7 @@ class ErrorType(enum.Enum):
     def __str__(self) -> str:
         return error_type_to_string[self]
 
+
 error_type_to_string = {
     ErrorType.ALPHABET_VALUES_NOT_UNIQUE: "Alphabet values are not unique",
     ErrorType.KEY_VALUES_NOT_UNIQUE: "Key values are not unique",
@@ -23,8 +25,8 @@ error_type_to_string = {
     ErrorType.CHARACTERS_ALPHABET_NOT_CONTAINS_IN_TEXT: "Alphabet characters are not contained in the text",
 }
 
+
 def error_types(alphabet: str, key: str, text: str) -> List[ErrorType]:
-    
     """Checks the given alphabet and key for errors.
 
     Args:
@@ -50,14 +52,14 @@ def error_types(alphabet: str, key: str, text: str) -> List[ErrorType]:
 
     if len_alphabet != len_key:
         error_list.append(ErrorType.LEN_KEY_NOT_EQUAL_LEN_ALPHABET)
-    
+
     if not all(c in alphabet for c in set(text)):
         error_list.append(ErrorType.CHARACTERS_ALPHABET_NOT_CONTAINS_IN_TEXT)
 
     return error_list
 
+
 def generate_pretty_errors(error_list: List[ErrorType]) -> str:
-    
     """Generates a pretty string of errors.
 
     Args:
@@ -66,10 +68,10 @@ def generate_pretty_errors(error_list: List[ErrorType]) -> str:
     Returns:
         - str: A pretty string of errors.
     """
-    
+
     error_string: List[str] = []
-    
+
     for index, error in enumerate(error_list):
         error_string.append(f"{index + 1}. {str(error)}")
-    
+
     return ", ".join(error_string)
