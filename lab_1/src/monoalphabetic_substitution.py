@@ -1,6 +1,6 @@
 from typing import List, Dict
 
-import exception as error
+from . import exception as error
 
 def encrypt(alphabet: str, key: str, text: str) -> str:
     
