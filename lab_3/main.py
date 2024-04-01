@@ -9,8 +9,10 @@ import src.hybrid_tripleDES as hybrid
 from src.encryption_algorithms.TypeArgument import TypeArgument
 
 from src.consts import DEFAULT_KEY_SIZE_ASYMMETRIC
-from src.encryption_algorithms.consts import DEFAULT_KEY_BYTES_FOR_TRIPLEDES, KEY_COUNT_BITS_FOR_TRIPLEDES
-
+from src.encryption_algorithms.consts import (
+    DEFAULT_KEY_BYTES_FOR_TRIPLEDES, 
+    KEY_COUNT_BITS_FOR_TRIPLEDES
+)
 
 def main():
     """

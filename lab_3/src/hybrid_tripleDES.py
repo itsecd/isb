@@ -9,7 +9,10 @@ from .encryption_algorithms.TypeArgument import TypeArgument
 from .encryption_algorithms.SymmetricTripleDES import SymmetricTripleDES
 
 from .consts import DEFAULT_KEY_SIZE_ASYMMETRIC
-from .encryption_algorithms.consts import DEFAULT_KEY_BYTES_FOR_TRIPLEDES, DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES
+from .encryption_algorithms.consts import (
+    DEFAULT_KEY_BYTES_FOR_TRIPLEDES, 
+    DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES
+)
 
 logger = logging.getLogger(__name__)
 
