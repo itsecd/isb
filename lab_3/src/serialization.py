@@ -2,8 +2,14 @@ import pickle
 import logging
 
 from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey, RSAPublicKey
-from cryptography.hazmat.primitives.serialization import load_pem_public_key, load_pem_private_key
+from cryptography.hazmat.primitives.asymmetric.rsa import (
+    RSAPrivateKey, 
+    RSAPublicKey
+)
+from cryptography.hazmat.primitives.serialization import (
+    load_pem_public_key, 
+    load_pem_private_key
+)
 
 from .encryption_algorithms.SymmetricTripleDES import SymmetricTripleDES
 
@@ -32,7 +38,8 @@ def read_symmetricTripleDES(path_file: str) -> SymmetricTripleDES:
         logger.error(f"Read[{path_file}] SymmetricTripleDES error: {e}")
 
 
-def save_symmetricTripleDES(path_file: str, symmetricTripleDES: SymmetricTripleDES) -> None:
+def save_symmetricTripleDES(path_file: str, 
+                            symmetricTripleDES: SymmetricTripleDES) -> None:
     """
     savely serializes a SymmetricTripleDES object to a file.
 
@@ -93,7 +100,8 @@ def save_bytes(path_file_save: str, key: bytes) -> None:
         logger.error(f"Save[{path_file_save}] bytes error: {e}")
 
 
-def save_public_key(path_to_file_key: str, public_key: RSAPublicKey) -> None:
+def save_public_key(path_to_file_key: str, 
+                    public_key: RSAPublicKey) -> None:
     """
     savely writes a public key to a file.
 
@@ -104,8 +112,9 @@ def save_public_key(path_to_file_key: str, public_key: RSAPublicKey) -> None:
 
     try:
         with open(path_to_file_key, 'wb') as public_out:
-            public_out.write(public_key.public_bytes(encoding=serialization.Encoding.PEM,
-                             format=serialization.PublicFormat.SubjectPublicKeyInfo))
+            public_out.write(public_key.public_bytes(
+                encoding=serialization.Encoding.PEM,
+                format=serialization.PublicFormat.SubjectPublicKeyInfo))
 
         logger.info(f"Save[{path_to_file_key}] RSA public key successful")
 
@@ -113,7 +122,8 @@ def save_public_key(path_to_file_key: str, public_key: RSAPublicKey) -> None:
         logger.error(f"Save[{path_to_file_key}] RSA public key error: {e}")
 
 
-def save_private_key(path_to_file_key: str, private_key: RSAPrivateKey) -> None:
+def save_private_key(path_to_file_key: str, 
+                     private_key: RSAPrivateKey) -> None:
     """
     savely writes a private key to a file.
 
@@ -124,9 +134,10 @@ def save_private_key(path_to_file_key: str, private_key: RSAPrivateKey) -> None:
 
     try:
         with open(path_to_file_key, 'wb') as private_out:
-            private_out.write(private_key.private_bytes(encoding=serialization.Encoding.PEM,
-                              format=serialization.PrivateFormat.TraditionalOpenSSL,
-                              encryption_algorithm=serialization.NoEncryption()))
+            private_out.write(private_key.private_bytes(
+                encoding=serialization.Encoding.PEM,
+                format=serialization.PrivateFormat.TraditionalOpenSSL,
+                encryption_algorithm=serialization.NoEncryption()))
 
         logger.info(f"Save[{path_to_file_key}] RSA private key successful")
 
