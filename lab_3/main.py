@@ -155,8 +155,8 @@ def generate_args() -> argparse.ArgumentParser:
 
     parser.add_argument('-x', '--file_input',
                         type=str,
-                        default=os.path.join("input.int"),
-                        help=f'Path to read decode file.txt default:({os.path.join("input.int")})')
+                        default=None,
+                        help=f'Path to read decode file.txt no default.')
 
     parser.add_argument('-o', '--path_object_output',
                         type=str,

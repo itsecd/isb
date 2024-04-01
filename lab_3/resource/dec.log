@@ -1,13 +1,13 @@
 ╒═════════════════════════╤═════════╤══════════════════════════╤════════════════════════════════════════════════════════════════════╕
 │ Time                    │ Level   │ File                     │ Message                                                            │
 ╞═════════════════════════╪═════════╪══════════════════════════╪════════════════════════════════════════════════════════════════════╡
-│ 2024-04-01 23:07:01,933 │ INFO    │ src.serialization:174    │ Read[resource/private_key.pem] RSA private key successful          │
+│ 2024-04-02 01:54:57,295 │ INFO    │ src.serialization:174    │ Read[resource/private_key.pem] RSA private key successful          │
 ├─────────────────────────┼─────────┼──────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-01 23:07:01,980 │ INFO    │ src.serialization:28     │ Read[resource/encrypt_symmetric.pkl] SymmetricTripleDES successful │
+│ 2024-04-02 01:54:57,341 │ INFO    │ src.serialization:28     │ Read[resource/encrypt_symmetric.pkl] SymmetricTripleDES successful │
 ├─────────────────────────┼─────────┼──────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-01 23:07:01,980 │ INFO    │ src.serialization:70     │ Read[resource/encrypt.txt] bytes successful                        │
+│ 2024-04-02 01:54:57,342 │ INFO    │ src.serialization:70     │ Read[resource/encrypt.txt] bytes successful                        │
 ├─────────────────────────┼─────────┼──────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-01 23:07:02,012 │ INFO    │ src.hybrid_tripleDES:126 │ Decrypt text into hybrid tripleDes successful                      │
+│ 2024-04-02 01:54:57,371 │ INFO    │ src.hybrid_tripleDES:144 │ Decrypt text into hybrid tripleDes successful                      │
 ├─────────────────────────┼─────────┼──────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-01 23:07:02,012 │ INFO    │ src.serialization:90     │ Save[resource/translate.txt] bytes successful                      │
+│ 2024-04-02 01:54:57,371 │ INFO    │ src.serialization:90     │ Save[resource/translate.txt] bytes successful                      │
 ╘═════════════════════════╧═════════╧══════════════════════════╧════════════════════════════════════════════════════════════════════╛
