@@ -14,10 +14,10 @@ logger = logging.getLogger(__name__)
 
 
 def generate_hybrid_tripleDes(
-    len_rsa_private_key: int = DEFAULT_KEY_SIZE_ASYMMETRIC,
-    len_key_symmetrical: int = None,
-    type_len_symmetrical: TypeArgument = TypeArgument.BYTE
-    ) -> Tuple[SymmetricTripleDES, RSAPrivateKey]:
+        len_rsa_private_key: int = DEFAULT_KEY_SIZE_ASYMMETRIC,
+        len_key_symmetrical: int = None,
+        type_len_symmetrical: TypeArgument = TypeArgument.BYTE
+        ) -> Tuple[SymmetricTripleDES, RSAPrivateKey]:
     """
     Generate a hybrid encryption key pair using TripleDES and RSA.
 
@@ -146,12 +146,14 @@ def decrypt_cipher(cipher: bytes,
 
         if len_block_padding:
             decrypted_text = symmetric_encrypt_key.decrypt(
-                cipher, original_symmetric_key, len_block_padding)
+                                cipher, 
+                                original_symmetric_key, 
+                                len_block_padding)
         else:
             decrypted_text = symmetric_encrypt_key.decrypt(
-                cipher, 
-                original_symmetric_key, 
-                type_len_block_padding=type_len_block_padding)
+                                cipher, 
+                                original_symmetric_key, 
+                                type_len_block_padding=type_len_block_padding)
 
         logger.info("Decrypt text into hybrid tripleDes successful")
         return decrypted_text
