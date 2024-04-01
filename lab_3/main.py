@@ -3,7 +3,6 @@ import logging
 import tabulate
 import argparse
 
-
 import src.serialization as ser
 import src.hybrid_tripleDES as hybrid
 
@@ -188,6 +187,7 @@ def generate_args() -> argparse.ArgumentParser:
     return parser
 
 if __name__ == "__main__":
+    
     try:
        
         main()

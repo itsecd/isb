@@ -47,7 +47,7 @@ def generate_pair_key(public_exponent: int = 65537, key_size: int = 2048) -> Tup
         raise ValueError(f"Generate pair key error: {e}")
     
 
-def encrypt(text: bytes, private_key: RSAPrivateKey) -> bytes:
+def encrypt_with_private_key(text: bytes, private_key: RSAPrivateKey) -> bytes:
     
     """
     Encrypts a plaintext string using RSA encryption with OAEP padding.
@@ -66,7 +66,7 @@ def encrypt(text: bytes, private_key: RSAPrivateKey) -> bytes:
     except Exception as e:
         raise ValueError(f"Encrypt text to public key error: {e}")
 
-def encrypt(text: bytes, public_key: RSAPublicKey) -> bytes:
+def encrypt_with_public_key(text: bytes, public_key: RSAPublicKey) -> bytes:
     
     """
     Encrypts a plaintext string using RSA encryption with OAEP padding.

@@ -4,12 +4,11 @@ from typing import Tuple
 
 from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey
 
-from .consts import DEFAULT_KEY_SIZE_ASYMMETRIC
-
 from .encryption_algorithms import asymmetric
 from .encryption_algorithms.TypeArgument import TypeArgument
 from .encryption_algorithms.SymmetricTripleDES import SymmetricTripleDES
 
+from .consts import DEFAULT_KEY_SIZE_ASYMMETRIC
 from .encryption_algorithms.consts import DEFAULT_KEY_BYTES_FOR_TRIPLEDES, DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES
 
 logger = logging.getLogger(__name__)
@@ -41,7 +40,7 @@ def generate_hybrid_tripleDes(len_rsa_private_key: int = DEFAULT_KEY_SIZE_ASYMME
         key = SymmetricTripleDES.generate_key(len_key_symmetrical, 
                                               type_len_symmetrical)
         private_key = asymmetric.generate_private_key(key_size=len_rsa_private_key)
-        encrypt_key = asymmetric.encrypt(key, private_key.public_key())
+        encrypt_key = asymmetric.encrypt_with_public_key(key, private_key.public_key())
 
         logger.info("Generate hybrid tripleDes successful")
         return (SymmetricTripleDES(stored_key=encrypt_key, init_vector=SymmetricTripleDES.generate_init_vector()), 
