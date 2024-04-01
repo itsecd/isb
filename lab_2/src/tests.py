@@ -5,9 +5,10 @@ from .probies import get_proba
 
 from .consts import THEORETICAL_PROBABILITIES, MAX_LENGTH_BLOCK, COUNT_BITS
 
+
 def frequency_bitwise_test(array_bits: str) -> float:
-    
-    """Calculates the frequency bit test.
+    """
+    Calculates the frequency bit test.
 
     The frequency bit test is a statistical test used to determine whether a sequence of bits is random.
     The test is based on the assumption that the probability of a 0 or 1 bit occurring is equal.
@@ -24,7 +25,7 @@ def frequency_bitwise_test(array_bits: str) -> float:
     Raises:
         - ValueError: if the input string is not a valid bitstring.
     """
-    
+
     if not all(char in '01' for char in array_bits):
         raise ValueError("This is not a bitstring")
 
@@ -33,16 +34,17 @@ def frequency_bitwise_test(array_bits: str) -> float:
     for bit in array_bits:
         if bit == '1':
             sum += 1
-        elif bit =='0':
+        elif bit == '0':
             sum += -1
 
     p_value = math.erfc(abs(sum / math.sqrt(len(array_bits)) / math.sqrt(2)))
 
     return p_value
 
+
 def consecutive_bits_test(array_bits: str) -> float:
-    
-    """Calculates the identical consecutive bits test.
+    """
+    Calculates the identical consecutive bits test.
 
     The identical consecutive bits test is a statistical test used to determine whether a sequence of bits is random.
     The test is based on the assumption that the probability of a 0 or 1 bit occurring is equal.
@@ -59,7 +61,7 @@ def consecutive_bits_test(array_bits: str) -> float:
     Raises:
         - ValueError: if the input string is not a valid bitstring.
     """
-    
+
     if not all(char in '01' for char in array_bits):
         raise ValueError("This is not a bitstring")
 
@@ -68,15 +70,16 @@ def consecutive_bits_test(array_bits: str) -> float:
     if abs(fraction_ones - 0.5) >= (2 / math.sqrt(len(array_bits))):
         return 0
 
-    count_alternating_signs = sum(1 if array_bits[i] != array_bits[i + 1] else 0 for i in range(len(array_bits) - 1))
+    count_alternating_signs = sum(
+        1 if array_bits[i] != array_bits[i + 1] else 0 for i in range(len(array_bits) - 1))
 
     p_value = math.erfc(abs(count_alternating_signs - 2 * len(array_bits) * fraction_ones * (1 - fraction_ones)) / (
-            2 * math.sqrt(2 * len(array_bits)) * fraction_ones * (1 - fraction_ones)))
+        2 * math.sqrt(2 * len(array_bits)) * fraction_ones * (1 - fraction_ones)))
 
     return p_value
 
+
 def longest_sequence_block_test(array_bits: str) -> float:
-    
     """
     Calculates the longest sequence of ones block eight test.
 
@@ -95,7 +98,7 @@ def longest_sequence_block_test(array_bits: str) -> float:
     Raises:
         - ValueError: if the input string is not a valid bitstring.
     """
-    
+
     if not all(char in '01' for char in array_bits):
         raise ValueError("This is not a bitstring")
 
@@ -118,7 +121,8 @@ def longest_sequence_block_test(array_bits: str) -> float:
 
     hi_square = 0
     for key in blocks_info.keys():
-        hi_square += math.pow(blocks_info[key] - 16 * THEORETICAL_PROBABILITIES[key], 2) / (16 * THEORETICAL_PROBABILITIES[key])
+        hi_square += math.pow(blocks_info[key] - 16 * THEORETICAL_PROBABILITIES[key], 2) / (
+            16 * THEORETICAL_PROBABILITIES[key])
 
     p_value = float(mpmath.gammainc(3 / 2, hi_square / 2))
 

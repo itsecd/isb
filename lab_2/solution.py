@@ -6,8 +6,8 @@ import src.tests as nist
 
 from consts import HEADERS_GENERATE, NAME_INPUT_FILE, HEADER_FOLDER_RESOURCE, HEADER_OUTPUT_FILE
 
-def main():
 
+def main():
     """Main function of the program.
 
     This function reads a JSON file containing the paths to the input files and the output file.
@@ -19,16 +19,17 @@ def main():
 
     Returns:
         None"""
-        
+
     output = {}
 
     try:
         for type_generate in HEADERS_GENERATE:
-            
+
             path = os.path.join(NAME_INPUT_FILE)
             data = json_reader.read_json(path)
 
-            path_generate = os.path.join(data[HEADER_FOLDER_RESOURCE], data[type_generate])
+            path_generate = os.path.join(
+                data[HEADER_FOLDER_RESOURCE], data[type_generate])
             with open(path_generate, 'r') as f:
                 generate = f.read()
 
@@ -46,7 +47,7 @@ def main():
 
 
 if __name__ == "__main__":
-    
+
     try:
         main()
     except Exception as e:

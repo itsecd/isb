@@ -4,8 +4,8 @@ from typing import Dict
 
 from consts import HEADERS_INPUT
 
+
 def read_json(path_input: str) -> Dict[str, str]:
-    
     """Reads a JSON file and checks for required headers.
 
     Raises a `ValueError` if any of the required headers are missing.
@@ -24,12 +24,13 @@ def read_json(path_input: str) -> Dict[str, str]:
 
     for header in HEADERS_INPUT:
         if not header in data.keys():
-            raise ValueError(f"Header:  {header} not contains in {HEADERS_INPUT}")
+            raise ValueError(
+                f"Header:  {header} not contains in {HEADERS_INPUT}")
 
     return data
 
-def write_json(dict_output: dict , path_output: str) -> None:
-    
+
+def write_json(dict_output: dict, path_output: str) -> None:
     """Writes a dictionary to a JSON file with proper encoding for non-ASCII characters.
 
     Args:
