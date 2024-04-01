@@ -178,12 +178,12 @@ def generate_args() -> argparse.ArgumentParser:
     parser.add_argument('-l', '--safe_logs',
                         type=str,
                         default=None,
-                        help=f'Path to the file safe logs default({os.path.join(__name__ + ".log")}).')
+                        help=f'Path to the file safe logs default(None).')
 
     parser.add_argument('-lp', '--logs_pretty',
                         type=bool,
                         default=False,
-                        help=f'Path to the file safe pretty logs default({os.path.join(__name__ + ".log")}).')
+                        help=f'Path to the file safe pretty logs default(False).')
     return parser
 
 if __name__ == "__main__":
