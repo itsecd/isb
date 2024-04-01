@@ -41,7 +41,8 @@ def generate_hybrid_tripleDes(len_rsa_private_key: int = DEFAULT_KEY_SIZE_ASYMME
             raise Exception("For default len key symmetrical use type argument BYTE")
         
         if len_key_symmetrical:
-            key = SymmetricTripleDES.generate_key(len_key_symmetrical, type_len_symmetrical) 
+            key = SymmetricTripleDES.generate_key(len_key_symmetrical, 
+                                                  type_len_symmetrical) 
         else:
             key = SymmetricTripleDES.generate_key()
 
