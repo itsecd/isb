@@ -48,17 +48,13 @@ def generate_hybrid_tripleDes(
         else:
             key = SymmetricTripleDES.generate_key()
 
-        private_key = asymmetric.generate_private_key(
-                            key_size=len_rsa_private_key)
-        encrypt_key = asymmetric.encrypt_with_public_key(
-                            key, 
-                            private_key.public_key())
+        private_key = asymmetric.generate_private_key(key_size=len_rsa_private_key)
+        encrypt_key = asymmetric.encrypt_with_public_key(key, private_key.public_key())
 
         logger.info("Generate hybrid tripleDes successful")
-        return (SymmetricTripleDES(
-                    stored_key=encrypt_key, 
-                    init_vector=SymmetricTripleDES.generate_init_vector()),
-                    private_key)
+        return (SymmetricTripleDES(stored_key=encrypt_key, 
+                                   init_vector=SymmetricTripleDES.generate_init_vector()),
+                private_key)
 
     except Exception as e:
         logger.error(f"Generate hybrid tripleDes error: {e}")
@@ -95,21 +91,20 @@ def encrypt_text(text: bytes,
                             "argument BYTE")
         
         original_symmetric_key = asymmetric.decrypt(
-                                    symmetric_encrypt_key.stored_key,
-                                    asymetric_key)
+                               symmetric_encrypt_key.stored_key,
+                               asymetric_key)
 
         if len_block_padding:
             encrypted_text = symmetric_encrypt_key.encrypt(
-                                text, 
-                                original_symmetric_key, 
-                                len_block_padding
-            )
+                           text, 
+                           original_symmetric_key, 
+                           len_block_padding,
+                           type_len_block_padding)
         else:
             encrypted_text = symmetric_encrypt_key.encrypt(
-                                text, 
-                                original_symmetric_key, 
-                                type_len_block_padding=type_len_block_padding
-            )
+                           text, 
+                           original_symmetric_key, 
+                           type_len_block_padding=type_len_block_padding)
         logger.info("Encrypt text into hybrid tripleDes successful")
         return encrypted_text
 
@@ -149,14 +144,15 @@ def decrypt_cipher(cipher: bytes,
 
         if len_block_padding:
             decrypted_text = symmetric_encrypt_key.decrypt(
-                                cipher, 
-                                original_symmetric_key, 
-                                len_block_padding)
+                           cipher, 
+                           original_symmetric_key, 
+                           len_block_padding,
+                           type_len_block_padding)
         else:
             decrypted_text = symmetric_encrypt_key.decrypt(
-                                cipher, 
-                                original_symmetric_key, 
-                                type_len_block_padding=type_len_block_padding)
+                           cipher, 
+                           original_symmetric_key, 
+                           type_len_block_padding=type_len_block_padding)
 
         logger.info("Decrypt text into hybrid tripleDes successful")
         return decrypted_text
