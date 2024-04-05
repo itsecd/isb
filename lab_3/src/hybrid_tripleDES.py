@@ -13,11 +13,10 @@ from .consts import DEFAULT_KEY_SIZE_ASYMMETRIC
 logger = logging.getLogger(__name__)
 
 
-def generate_hybrid_tripleDes(
-        len_rsa_private_key: int = DEFAULT_KEY_SIZE_ASYMMETRIC,
-        len_key_symmetrical: int = None,
-        type_len_symmetrical: TypeArgument = TypeArgument.BYTE
-        ) -> Tuple[SymmetricTripleDES, RSAPrivateKey]:
+def generate_hybrid_tripleDes(len_rsa_private_key: int = DEFAULT_KEY_SIZE_ASYMMETRIC,
+                              len_key_symmetrical: int = None,
+                              type_len_symmetrical: TypeArgument = TypeArgument.BYTE
+                              ) -> Tuple[SymmetricTripleDES, RSAPrivateKey]:
     """
     Generate a hybrid encryption key pair using TripleDES and RSA.
 
@@ -52,9 +51,7 @@ def generate_hybrid_tripleDes(
         encrypt_key = asymmetric.encrypt_with_public_key(key, private_key.public_key())
 
         logger.info("Generate hybrid tripleDes successful")
-        return (SymmetricTripleDES(stored_key=encrypt_key, 
-                                   init_vector=SymmetricTripleDES.generate_init_vector()),
-                private_key)
+        return (SymmetricTripleDES(encrypted_key=encrypt_key, init_vector=SymmetricTripleDES.generate_init_vector()), private_key)
 
     except Exception as e:
         logger.error(f"Generate hybrid tripleDes error: {e}")
@@ -90,21 +87,19 @@ def encrypt_text(text: bytes,
             raise Exception("For default len block padding use type " \
                             "argument BYTE")
         
-        original_symmetric_key = asymmetric.decrypt(
-                               symmetric_encrypt_key.stored_key,
-                               asymetric_key)
+        original_symmetric_key = asymmetric.decrypt(symmetric_encrypt_key.encrypted_key,
+                                                    asymetric_key)
 
         if len_block_padding:
-            encrypted_text = symmetric_encrypt_key.encrypt(
-                           text, 
-                           original_symmetric_key, 
-                           len_block_padding,
-                           type_len_block_padding)
+            encrypted_text = symmetric_encrypt_key.encrypt(text, 
+                                                           original_symmetric_key, 
+                                                           len_block_padding,
+                                                           type_len_block_padding)
         else:
-            encrypted_text = symmetric_encrypt_key.encrypt(
-                           text, 
-                           original_symmetric_key, 
-                           type_len_block_padding=type_len_block_padding)
+            encrypted_text = symmetric_encrypt_key.encrypt(text, 
+                                                           original_symmetric_key, 
+                                                           type_len_block_padding=type_len_block_padding)
+            
         logger.info("Encrypt text into hybrid tripleDes successful")
         return encrypted_text
 
@@ -139,7 +134,7 @@ def decrypt_cipher(cipher: bytes,
         if not len_block_padding and type_len_block_padding == TypeArgument.BIT:
             raise Exception("For default len block padding use type argument BYTE")
         
-        original_symmetric_key = asymmetric.decrypt(symmetric_encrypt_key.stored_key,
+        original_symmetric_key = asymmetric.decrypt(symmetric_encrypt_key.encrypted_key,
                                                     asymetric_key)
 
         if len_block_padding:

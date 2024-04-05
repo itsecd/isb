@@ -1,9 +1,9 @@
 ╒═════════════════════════╤═════════╤═════════════════════════╤════════════════════════════════════════════════════════════════════╕
 │ Time                    │ Level   │ File                    │ Message                                                            │
 ╞═════════════════════════╪═════════╪═════════════════════════╪════════════════════════════════════════════════════════════════════╡
-│ 2024-04-02 03:09:37,231 │ INFO    │ src.hybrid_tripleDES:56 │ Generate hybrid tripleDes successful                               │
+│ 2024-04-05 12:36:24,750 │ INFO    │ src.hybrid_tripleDES:53 │ Generate hybrid tripleDes successful                               │
 ├─────────────────────────┼─────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-02 03:09:37,231 │ INFO    │ src.serialization:142   │ Save[resource/private_key.pem] RSA private key successful          │
+│ 2024-04-05 12:36:24,750 │ INFO    │ src.serialization:142   │ Save[resource/private_key.pem] RSA private key successful          │
 ├─────────────────────────┼─────────┼─────────────────────────┼────────────────────────────────────────────────────────────────────┤
-│ 2024-04-02 03:09:37,232 │ INFO    │ src.serialization:56    │ Save[resource/encrypt_symmetric.pkl] SymmetricTripleDES successful │
+│ 2024-04-05 12:36:24,750 │ INFO    │ src.serialization:56    │ Save[resource/encrypt_symmetric.pkl] SymmetricTripleDES successful │
 ╘═════════════════════════╧═════════╧═════════════════════════╧════════════════════════════════════════════════════════════════════╛
