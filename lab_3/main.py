@@ -14,6 +14,7 @@ from src.encryption_algorithms.consts import (
     KEY_COUNT_BITS_FOR_TRIPLEDES
 )
 
+
 def generate_args() -> argparse.ArgumentParser:
     """
     Generate argument parser.
@@ -198,11 +199,11 @@ def main():
             table = tabulate.tabulate(
                 [log.split(' - ') for log in logs],
                 headers=['Time', 'Level', 'File', 'Message'],
-                tablefmt='fancy_grid'
-            )
+                tablefmt='fancy_grid')
 
             with open(args.save_logs, 'w') as f:
                 f.write(table)
+
 
 if __name__ == "__main__":
 

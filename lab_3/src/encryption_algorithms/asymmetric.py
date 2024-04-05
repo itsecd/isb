@@ -3,10 +3,8 @@ from typing import Tuple
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives.asymmetric import padding
-from cryptography.hazmat.primitives.asymmetric.rsa import (
-    RSAPrivateKey, 
-    RSAPublicKey
-)
+from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey, RSAPublicKey
+
 
 def generate_private_key(public_exponent: int = 65537,
                          key_size: int = 2048) -> RSAPrivateKey:
