@@ -5,9 +5,11 @@ from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives.asymmetric import padding
 from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey, RSAPublicKey
 
+from .consts import DEFAULT_PUBLIC_EXPONENT_ASYMETRIC, DEFAULT_KEY_SIZE_ASYMETRIC
 
-def generate_private_key(public_exponent: int = 65537,
-                         key_size: int = 2048) -> RSAPrivateKey:
+
+def generate_private_key(public_exponent: int = DEFAULT_PUBLIC_EXPONENT_ASYMETRIC,
+                         key_size: int = DEFAULT_KEY_SIZE_ASYMETRIC) -> RSAPrivateKey:
     """
     Generates a private key of RSA.
 
@@ -28,8 +30,8 @@ def generate_private_key(public_exponent: int = 65537,
         raise ValueError(f"Generate private key error: {e}")
 
 
-def generate_pair_key(public_exponent: int = 65537,
-                      key_size: int = 2048
+def generate_pair_key(public_exponent: int = DEFAULT_PUBLIC_EXPONENT_ASYMETRIC,
+                      key_size: int = DEFAULT_KEY_SIZE_ASYMETRIC
                       ) -> Tuple[RSAPrivateKey, RSAPublicKey]:
     """
     Generates a pair of RSA public and private keys.
