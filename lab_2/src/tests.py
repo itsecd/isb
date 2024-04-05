@@ -1,8 +1,6 @@
 import math
 import mpmath
 
-from .probies import get_proba
-
 from .consts import THEORETICAL_PROBABILITIES, MAX_LENGTH_BLOCK, COUNT_BITS
 
 
@@ -79,6 +77,25 @@ def consecutive_bits_test(array_bits: str) -> float:
     return p_value
 
 
+def get_number_proba(key: int) -> int:
+    """
+    Hashes the key to a value between 1 and 4, inclusive.
+
+    Args:
+        key (int)p_value: float = mpmath.gammainc(1.5, hi_square / 2)
+    : The key to hash.
+
+    Returns:
+        int: The hashed value.
+    """
+
+    if key >= 4:
+        return 4
+    if key <= 1:
+        return 1
+    return key
+
+
 def longest_sequence_block_test(array_bits: str) -> float:
     """
     Calculates the longest sequence of ones block eight test.
@@ -117,7 +134,7 @@ def longest_sequence_block_test(array_bits: str) -> float:
             length = length + 1 if bit == '1' else 0
             max_length = max(max_length, length)
 
-        blocks_info[get_proba(max_length)] += 1
+        blocks_info[get_number_proba(max_length)] += 1
 
     hi_square = 0
     for key in blocks_info.keys():
