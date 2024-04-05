@@ -1,6 +1,6 @@
 import argparse
 
-letters_arr = [a for a in 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ ']
+letters_arr = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ '
 
 
 def get_parse():
@@ -41,14 +41,24 @@ def write_file(pathname: str, string: str) -> None:
     string - записываемая строка
     Данная функция осуществляет запись строки string в файл по пути pathname
     """
-    with open(pathname, 'w', encoding='utf-8') as file_write:
-        file_write.write(string)
+    try:
+        with open(pathname, 'w', encoding='utf-8') as file_write:
+            file_write.write(string)
+    except FileNotFoundError:
+        print('Создан файл с названием: ', pathname)
 
 
 def read_file(pathname: str) -> str:
+    """
+        pathname - путь к файлу, который нужно прочитать
+        Данная функция считывает содержимое файла по пути pathname
+    """
     s = ''
-    with open(pathname, 'r', encoding='utf-8') as file_read:
-        s = file_read.read()
+    try:
+        with open(pathname, 'r', encoding='utf-8') as file_read:
+            s = file_read.read()
+    except FileNotFoundError:
+        print("Файл не найден.")
     return s
 
 
@@ -81,18 +91,42 @@ def replace_symbols(s, f_symbol, s_symbol):
         """
     new_s = ''
     for symbol in s:
-        if symbol == f_symbol:
-            new_s += s_symbol
-        elif symbol == s_symbol:
-            new_s += f_symbol
-        else:
-            new_s += symbol
+        match symbol:
+            case str(f_symbol):
+                new_s += s_symbol
+            case str(s_symbol):
+                new_s += f_symbol
+            case _:
+                new_s += symbol
     return new_s
 
 
-def get_correct_text(s):
-    first_sym = 'ЙФШЫ М2ОЕ>ДРИУЧКХЩЬ5Л1ЪА4Пrt7<8'
-    second_sym = 'ТЙФШЫ МВОЕНДСИУЮКХЩБЯЛЦЬАГПРЖЧЗ'
+def get_correct_text(s, first_sym, second_sym):
+    """
+        s - входная строка
+        f_symbol - первый символ замены
+        s_symbol - второй символ замены
+        Данная функция заменяет символы в строке на основе сопоставлений
+    """
     for i in range(len(first_sym)):
         s = replace_symbols(s, first_sym[i], second_sym[i])
     return s
+
+
+def get_dict_from_md(pathname):
+    """
+        pathname - путь к файлу
+        Данная функция преобразовывает содержимое файла Markdown в словарь
+    """
+    temp_arr = []
+    with open(pathname, 'r', encoding='utf-8') as file_read:
+        temp_arr = file_read.readlines()
+    for i in range(len(temp_arr)):
+        temp_arr[i] = temp_arr[i].rstrip('\n')
+        temp_arr[i] = temp_arr[i].split(': ')
+    res = {a[0]: a[1] for a in temp_arr}
+    return res
+
+
+if __name__ == '__main__':
+    get_dict_from_md('paths2.md')
