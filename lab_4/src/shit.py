@@ -1,1 +1,0 @@
-def correct_card_number(card_number: str, type_bank: TypeBank.) -> bool:
