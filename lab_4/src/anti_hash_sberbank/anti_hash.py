@@ -1,10 +1,15 @@
 import re
+import logging
 import multiprocessing
 
 from typing import Set
 from hashlib import blake2s
 
 from consts import DEFAULT_COUNT_DIGITS_INTO_CARD, DEFAULT_PREFIX_TEMPLATES_FOUR_DIGIT_SBERBANK_MASTERCARD_CREDIT
+
+
+
+logger = logging.getLogger(__name__)
 
 
 def get_cards_according_template(bins: Set[str], last_digits: str, hash_value: str) -> Set[str]:

@@ -1,6 +1,12 @@
+import logging
+
 from typing import Set
 
 from .consts import DEFAULT_SEPARATORS
+
+
+logger = logging.getLogger(__name__)
+
 
 def correct_card_moon(number_card: str, separators=DEFAULT_SEPARATORS) -> bool:    
     
