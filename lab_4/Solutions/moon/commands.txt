@@ -1,0 +1,10 @@
+флаги -sl и -lp для логов
+
+@ Для просмотра луны:
+python3 main.py -cor -i "5067 0891 8443 4837"
+Вывод: True
+
+@ Для просмотра файла с помощью луны:
+python3 main.py -cor -x ./Solutions/moon/cards.txt -o ./Solutions/moon/output_correct.json -sl ./Solutions/moon/correct.log -lp True
+View cards file:[./resource/card.txt]: 100%|█████████████████████████████████████████████████████████████████████| 5/5 [00:00<00:00, 19617.89it/s]
+Вывод: файл ./Solutions/moon/output_correct.json
