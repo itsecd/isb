@@ -77,8 +77,8 @@ def perform_longest_sequence_of_ones(
                 v_i[3] += 1
             case 4 | 5 | 6 | 7 | 8:
                 v_i[4] += 1
-    x_2 = sum([pow(v_i[i] - 16 * PI_I[i], 2) / (16 * PI_I[i])
-              for i in range(1, len(PI_I))])
+    x_2 = sum([pow((v_i[i] - 16 * PI_I[i]), 2) / (16 * PI_I[i])
+              for i in range(1, len(PI_I)+1)])
     return gammainc(3 / 2, x_2 / 2)
 
 
