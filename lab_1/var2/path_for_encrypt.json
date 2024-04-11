@@ -1,5 +1,5 @@
 {
-    "folder" : "files",
+    "folder" : "files_for_encrypt",
     "input" : "input.txt",
     "encrypted" : "encrypted.txt",
     "key" : "вгдежзийклмнопрстуфхцчшщъыьэюяаб"

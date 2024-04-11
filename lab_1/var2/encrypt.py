@@ -1,8 +1,8 @@
 import os
 import sys
  
-from supportive import file_reader, file_writer, json_reader
-from constants import PATHS, ALPHABET
+from supportive import json_reader, file_writer, file_reader
+from constants_for_encrypt import PATHS, ALPHABET
 
 
 def encrypt(key: str) -> str:

@@ -2,7 +2,7 @@ import logging
 import os
 
 from collections import Counter
-from constants import PATHS, ASSUMED_PURITY
+from constants_for_decrypt import PATHS, ASSUMED_PURITY
 from supportive import json_reader, file_reader, json_writer, file_writer
 
 logging.basicConfig(level=logging.INFO)

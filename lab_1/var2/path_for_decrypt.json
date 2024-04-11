@@ -1,5 +1,5 @@
 {
-    "folder" : "files",
+    "folder" : "files_for_decrypt",
     "input" : "input.txt",
     "key" : "key.json",
     "decrypt" : "decrypt.txt"
