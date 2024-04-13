@@ -1,0 +1,8 @@
+{
+    'serialize_sym_key':'serialize_encrypted_symmetric_key.txt',
+    'serialize_public':'serialize_public_key.txt',
+    'decrypted_file':'serialize_private_key.txt',
+    'symmetric_key':'symmetric_key.txt',
+    'public_key':'public_key.pem',
+    'secret_key':'secret_key.pem',
+}
