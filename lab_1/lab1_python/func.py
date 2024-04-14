@@ -1,4 +1,6 @@
 import argparse
+import json
+import file_operations
 
 letters_arr = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ '
 
@@ -22,7 +24,7 @@ def encrypt(text: str, permutation_arr: list[str]) -> str:
     text: str - текст, который будет зашифровываться
     permutation: list[str] - перестановка букв
     new_s: str - зашифрованный текст
-    Данная функция осуществляет шифроку текста text с помощью перестановки permutation
+    Данная функция осуществляет шифровку текста text с помощью перестановки permutation
     """
     new_s = ""
     for i in range(len(text)):
@@ -33,33 +35,6 @@ def encrypt(text: str, permutation_arr: list[str]) -> str:
             new_symbol = permutation_arr[index]
             new_s += new_symbol
     return new_s
-
-
-def write_file(pathname: str, string: str) -> None:
-    """
-    pathname - путь к файлу, в которую идёт запись
-    string - записываемая строка
-    Данная функция осуществляет запись строки string в файл по пути pathname
-    """
-    try:
-        with open(pathname, 'w', encoding='utf-8') as file_write:
-            file_write.write(string)
-    except FileNotFoundError:
-        print('Создан файл с названием: ', pathname)
-
-
-def read_file(pathname: str) -> str:
-    """
-        pathname - путь к файлу, который нужно прочитать
-        Данная функция считывает содержимое файла по пути pathname
-    """
-    s = ''
-    try:
-        with open(pathname, 'r', encoding='utf-8') as file_read:
-            s = file_read.read()
-    except FileNotFoundError:
-        print("Файл не найден.")
-    return s
 
 
 def get_frequency(string: str) -> list[str, float]:
@@ -113,20 +88,5 @@ def get_correct_text(s, first_sym, second_sym):
     return s
 
 
-def get_dict_from_md(pathname):
-    """
-        pathname - путь к файлу
-        Данная функция преобразовывает содержимое файла Markdown в словарь
-    """
-    temp_arr = []
-    with open(pathname, 'r', encoding='utf-8') as file_read:
-        temp_arr = file_read.readlines()
-    for i in range(len(temp_arr)):
-        temp_arr[i] = temp_arr[i].rstrip('\n')
-        temp_arr[i] = temp_arr[i].split(': ')
-    res = {a[0]: a[1] for a in temp_arr}
-    return res
-
-
 if __name__ == '__main__':
-    get_dict_from_md('paths2.md')
+    file_operations.get_dict_from_json('settings.json')
