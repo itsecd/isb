@@ -34,27 +34,38 @@ def deserialize_sym_key(path: str) -> str:
         with open(path, 'rb') as file:
             return file.read()
     except BaseException as ex:
-        logging.error(f'error in deserialize_sym_key - {ex}')  
+        logging.error(f'error in deserialize_sym_key - {ex}')
 
 
-def serialize_private_and_public_keys(private: str, path_private: str, public: str, path_public: str) -> None:
+def serialize_private_and_public_keys(
+        private: str,
+        path_private: str,
+        public: str,
+        path_public: str) -> None:
     """
     serialize private and public keys
 
     params:
-        private: private key 
-        path_private: path to file for private key 
-        public: public key 
+        private: private key
+        path_private: path to file for private key
+        public: public key
         path_public: path to file with public key
     """
     try:
         with open(path_public, 'wb') as file:
-            file.write(public.public_bytes(encoding=serialization.Encoding.PEM, format=serialization.PublicFormat.SubjectPublicKeyInfo))
+            file.write(
+                public.public_bytes(
+                    encoding=serialization.Encoding.PEM,
+                    format=serialization.PublicFormat.SubjectPublicKeyInfo))
     except BaseException as ex:
         logging.error(f'error in serialize_public_key - {ex}')
     try:
         with open(path_private, 'wb') as file:
-            file.write(private.private_bytes(encoding=serialization.Encoding.PEM, format=serialization.PrivateFormat.TraditionalOpenSSL, encryption_algorithm=serialization.NoEncryption()))
+            file.write(
+                private.private_bytes(
+                    encoding=serialization.Encoding.PEM,
+                    format=serialization.PrivateFormat.TraditionalOpenSSL,
+                    encryption_algorithm=serialization.NoEncryption()))
     except BaseException as ex:
         logging.error(f'error in serialize_pivate_key - {ex}')
 
@@ -62,7 +73,7 @@ def serialize_private_and_public_keys(private: str, path_private: str, public: s
 def deserialize_private_key(path_private: str) -> str:
     try:
         with open(path_private, 'rb') as file:
-            return load_pem_private_key(file.read(),password=None,)
+            return load_pem_private_key(file.read(), password=None,)
     except BaseException as ex:
         logging.error(f'error in deserialize_pivate_key - {ex}')
 
