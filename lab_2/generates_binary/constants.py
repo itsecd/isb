@@ -1,0 +1,1 @@
+PATH = "lab_2/binary_sequence.json"
