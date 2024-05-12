@@ -13,7 +13,19 @@ def json_to_dict(path: str) -> dict:
         logging.error(f'error in json_to_dict - {ex}')
 
 
+def write_file(path: str, text: bytes) -> None:
+    """write binary file"""
+    try:
+        with open(path, 'wb') as file:
+            file.write(text)
+    except BaseException as ex:
+        logging.error(f'error in write_file - {ex}')
 
 
-
-
+def read_file(path: str) -> bytes:
+    """read binary file"""
+    try:
+        with open(path, 'rb') as file:
+            return file.read()
+    except BaseException as ex:
+        logging.error(f'error in read_file - {ex}')

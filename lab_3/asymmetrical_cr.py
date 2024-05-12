@@ -79,3 +79,19 @@ class AsymmetricalCryptograpy:
             )
         except Exception as e:
             logging.error(f"error in encrypting data with public key: {e}")
+
+    @staticmethod
+    def decrypt_with_private_key(private_key: RSAPrivateKey, encrypted_text: bytes) -> bytes:
+        """decrypt data using the private key."""
+        try:
+            return private_key.decrypt(
+                encrypted_text,
+                asymmetric.padding.OAEP(
+                    mgf=asymmetric.padding.MGF1(algorithm=hashes.SHA256()),
+                    algorithm=hashes.SHA256(),
+                    label=None
+                )
+            )
+        except Exception as e:
+            logging.error(f"error in decrypt with private key: {e}")
+

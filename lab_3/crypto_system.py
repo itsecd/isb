@@ -1,5 +1,6 @@
 from asymmetrical_cr import AsymmetricalCryptograpy
 from symmerical_cr import SymmetricCryptography
+from work_w_files import write_file, read_file
 
 
 class CriptoSystem:
@@ -17,3 +18,14 @@ class CriptoSystem:
                                                     self.public_key,
                                                     self.symmetric_key)
                                                 )
+
+    @staticmethod
+    def encrypt_text(path_text: str, path_private_key: str,
+                     path_symmetric_key: str, path_encrypted_text: str) -> None:
+        private_key = AsymmetricalCryptograpy.deserialize_private_key(path_private_key)
+        encrypted_symmetric_key = SymmetricCryptography.deserialize_sym_key(path_symmetric_key)
+        symmetric_key = AsymmetricalCryptograpy.decrypt_with_private_key(private_key, encrypted_symmetric_key)
+        encrypted_text = SymmetricCryptography.encrypt(SymmetricCryptography(),
+                                                       symmetric_key,
+                                                       read_file(path_text))
+        write_file(path_encrypted_text, encrypted_text)

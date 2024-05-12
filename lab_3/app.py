@@ -8,31 +8,29 @@ from work_w_files import json_to_dict
 if __name__ == '__main__':
     settings = json_to_dict('settings.json')
 
-    #3parser = argparse.ArgumentParser()
-    #group = parser.add_mutually_exclusive_group(required=True)
-    #group.add_argument('-gen', '--generation', help='start generation keys')
-    #group.add_argument('-enc', '--encryption', help='start encryption')
-    #group.add_argument('-dec', '--decryption', help='start decryption')
-
-    #args = parser.parse_args()
     parser = argparse.ArgumentParser()
-    #group = parser.add_mutually_exclusive_group(required=True)
-    parser.add_argument('-gen', '--generation', help='Запускает режим генерации ключей')
-    #group.add_argument('-enc', '--encryption', help='Запускает режим шифрования')
-    #group.add_argument('-dec', '--decryption', help='Запускает режим дешифрования')
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('-gen', '--generation', help='start generation process')
+    group.add_argument('-enc', '--encryption', help='start encryption process')
+    group.add_argument('-dec', '--decryption', help='start decryption process')
 
     args = parser.parse_args()
+
     if args.generation is not None:
         CriptoSystem.generate_keys(CriptoSystem(),
                                    settings['public_key'],
                                    settings['private_key'],
                                    settings['symmetric_key'])
     elif args.encryption is not None:
-        pass
+        CriptoSystem.encrypt_text(settings["text"],
+                                  settings['private_key'],
+                                  settings["symmetric_key"],
+                                  settings["encrypted_text"])
     else:
         pass
     # дешифруем
-    '''try:
+    '''
+    try:
         match args:
             case args.generation:
                 CriptoSystem.generate_keys(settings['public_key'],
@@ -47,4 +45,3 @@ if __name__ == '__main__':
 
     except Exception as e:
         logging.error(f"An error occurred: {e}")'''
-

@@ -3,6 +3,7 @@ import os
 
 from cryptography.hazmat.primitives import padding
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from work_w_files import write_file, read_file
 
 
 class SymmetricCryptography:
@@ -16,8 +17,7 @@ class SymmetricCryptography:
         serialize symmetric key
         """
         try:
-            with open(path, 'wb') as file:
-                file.write(key)
+            write_file(path, key)
         except BaseException as ex:
             logging.error(f'error in serialize_sym_key - {ex}')
 
@@ -27,23 +27,22 @@ class SymmetricCryptography:
         deserialize symmetric key
         """
         try:
-            with open(path, 'rb') as file:
-                return file.read()
+            return read_file(path)
         except BaseException as ex:
             logging.error(f'error in deserialize_sym_key - {ex}')
 
-    def encrypt(self, symmetric_key: bytes, text: bytes, size_of_key=16) -> tuple:
+    def encrypt(self, symmetric_key: bytes, text: bytes) -> bytes:
         """
         encrypt the text using symmetric key.
         returns a tuple containing the key and the ciphertext.
         """
         try:
-            key = self.generate_symmetric_key()
-            cipher = Cipher(algorithms.IDEA(symmetric_key), modes.CBC(key))
+            #key = self.generate_symmetric_key()
+            key = os.urandom(16)
+            cipher = Cipher(algorithms.AES(symmetric_key), modes.CBC(key))
             encryptor = cipher.encryptor()
-            padder = padding.PKCS7(size_of_key*8).padder()
+            padder = padding.PKCS7(128).padder()
             padded_text = padder.update(text) + padder.finalize()
-            ciphertext = encryptor.update(padded_text) + encryptor.finalize()
-            return key, ciphertext
+            return encryptor.update(padded_text) + encryptor.finalize()
         except Exception as e:
             logging.error(f"Error occurred while encrypting data: {e}")
