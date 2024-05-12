@@ -3,5 +3,6 @@
     "public_key":"keys/public_key.pem",
     "private_key":"keys/private_key.pem",
     "text": "work_w_text/text.txt",
-    "encrypted_text": "work_w_text/encrypted_text.txt"
+    "encrypted_text": "work_w_text/encrypted_text.txt",
+    "decrypted_text": "work_w_text/decrypted_text.txt"
 }

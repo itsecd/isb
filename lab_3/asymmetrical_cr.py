@@ -7,8 +7,10 @@ from cryptography.hazmat.primitives.serialization import load_pem_public_key, lo
 
 
 class AsymmetricalCryptograpy:
+    """class provides the ability to work with symmetric cryptography"""
     @staticmethod
     def generate_asymmetric_keys() -> tuple[rsa.RSAPrivateKey, rsa.RSAPublicKey]:
+        """generates asymmetric keys"""
         keys = rsa.generate_private_key(public_exponent=65537, key_size=2048)
         return keys, keys.public_key()
 

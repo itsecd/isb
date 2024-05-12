@@ -16,32 +16,25 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    if args.generation is not None:
-        CriptoSystem.generate_keys(CriptoSystem(),
-                                   settings['public_key'],
-                                   settings['private_key'],
-                                   settings['symmetric_key'])
-    elif args.encryption is not None:
-        CriptoSystem.encrypt_text(settings["text"],
-                                  settings['private_key'],
-                                  settings["symmetric_key"],
-                                  settings["encrypted_text"])
-    else:
-        pass
-    # дешифруем
-    '''
     try:
         match args:
-            case args.generation:
-                CriptoSystem.generate_keys(settings['public_key'],
+            case args if args.generation:
+                CriptoSystem.generate_keys(CriptoSystem(),
+                                           settings['public_key'],
                                            settings['private_key'],
                                            settings['symmetric_key'])
-            case args.encryption:
-                pass
-            case args.decryption:
-                pass
+            case args if args.encryption:
+                CriptoSystem.encrypt_text(settings['text'],
+                                          settings['private_key'],
+                                          settings['symmetric_key'],
+                                          settings['encrypted_text'])
+            case args if args.decryption:
+                CriptoSystem.decrypt_text(settings['encrypted_text'],
+                                          settings['symmetric_key'],
+                                          settings['private_key'],
+                                          settings['decrypted_text'])
             case _:
-                raise ValueError(f"Invalid mode")
+                raise ValueError(f"invalid mode")
 
     except Exception as e:
-        logging.error(f"An error occurred: {e}")'''
+        logging.error(f"error occurred: {e}")
