@@ -9,32 +9,27 @@ if __name__ == '__main__':
     settings = json_to_dict('settings.json')
 
     parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group(required=True)
-    group.add_argument('-gen', '--generation', help='start generation process')
-    group.add_argument('-enc', '--encryption', help='start encryption process')
-    group.add_argument('-dec', '--decryption', help='start decryption process')
+    parser.add_argument('-gen', '--generation', nargs=3,
+                        metavar=('path_public_key', 'path_private_key', 'path_symmetric_key'),
+                        help='start generation process')
+    parser.add_argument('-enc', '--encryption', nargs=4,
+                        metavar=('path_text', 'path_private_key', 'path_symmetric_key', 'path_encrypted_text'),
+                        help='start encryption process')
+    parser.add_argument('-dec', '--decryption', nargs=4,
+                        metavar=('encrypted_text', 'symmetric_key', 'private_key', 'decrypted_text'),
+                        help='start decryption process')
 
     args = parser.parse_args()
 
     try:
         match args:
             case args if args.generation:
-                CriptoSystem.generate_keys(CriptoSystem(),
-                                           settings['public_key'],
-                                           settings['private_key'],
-                                           settings['symmetric_key'])
+                CriptoSystem.generate_keys(CriptoSystem(), *args.generation)
             case args if args.encryption:
-                CriptoSystem.encrypt_text(settings['text'],
-                                          settings['private_key'],
-                                          settings['symmetric_key'],
-                                          settings['encrypted_text'])
+                CriptoSystem.encrypt_text(*args.encryption)
             case args if args.decryption:
-                CriptoSystem.decrypt_text(settings['encrypted_text'],
-                                          settings['symmetric_key'],
-                                          settings['private_key'],
-                                          settings['decrypted_text'])
+                CriptoSystem.decrypt_text(*args.decryption)
             case _:
-                raise ValueError(f"invalid mode")
-
+                raise ValueError("Invalid mode")
     except Exception as e:
-        logging.error(f"error occurred: {e}")
+        logging.error(f"Error occurred: {e}")
