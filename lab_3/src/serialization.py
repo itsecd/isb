@@ -1,4 +1,3 @@
-import pickle
 import logging
 
 from cryptography.hazmat.primitives import serialization
@@ -11,52 +10,7 @@ from cryptography.hazmat.primitives.serialization import (
     load_pem_private_key
 )
 
-from .encryption_algorithms.SymmetricTripleDES import SymmetricTripleDES
-
 logger = logging.getLogger(__name__)
-
-
-def read_symmetricTripleDES(path_file: str) -> SymmetricTripleDES:
-    """
-    Reads a serialized SymmetricTripleDES object from a file.
-
-    Args:
-        - path_file (str): The path to the file containing the serialized 
-        SymmetricTripleDES object.
-
-    Returns:
-        - SymmetricTripleDES: The deserialized SymmetricTripleDES object.
-    """
-    try:
-        with open(path_file, 'rb') as f:
-            symmetricTripleDES: SymmetricTripleDES = pickle.load(f)
-
-        logger.info(f"Read[{path_file}] SymmetricTripleDES successful")
-        return symmetricTripleDES
-
-    except Exception as e:
-        logger.error(f"Read[{path_file}] SymmetricTripleDES error: {e}")
-
-
-def save_symmetricTripleDES(path_file: str, 
-                            symmetricTripleDES: SymmetricTripleDES) -> None:
-    """
-    savely serializes a SymmetricTripleDES object to a file.
-
-    Args:
-        - path_file (str): The path to the file to which the 
-        SymmetricTripleDES object should be serialized.
-        - symmetricTripleDES (SymmetricTripleDES): The SymmetricTripleDES 
-        object to serialize.
-    """
-    try:
-        with open(path_file, 'wb') as f:
-            f.write(pickle.dumps(symmetricTripleDES))
-
-        logger.info(f"Save[{path_file}] SymmetricTripleDES successful")
-
-    except Exception as e:
-        logger.error(f"Save[{path_file}] SymmetricTripleDES error: {e}")
 
 
 def read_bytes(path_file: str) -> bytes:

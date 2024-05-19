@@ -4,11 +4,11 @@ from typing import Tuple
 
 from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey
 
-from encryption_algorithms import asymmetric
-from encryption_algorithms.TypeArgument import TypeArgument
-from encryption_algorithms.SymmetricTripleDES import SymmetricTripleDES
+from .encryption_algorithms import asymmetric
+from .encryption_algorithms.TypeArgument import TypeArgument
+from .encryption_algorithms.SymmetricTripleDES import SymmetricTripleDES
 
-from consts import DEFAULT_KEY_SIZE_ASYMMETRIC
+from .consts import DEFAULT_KEY_SIZE_ASYMMETRIC
 
 logger = logging.getLogger(__name__)
 
