@@ -73,22 +73,6 @@ class SymmetricTripleDES:
             raise ValueError(f"Generate init_vector error: {e}")
 
 
-    # def __init__(self, encrypted_key: bytes = None, init_vector: bytes = None):
-
-    #     try:
-
-    #         if not encrypted_key:
-    #             raise ValueError(f"The encrypted key must be present, using it you get a symmetric key,")
-            
-    #         if not init_vector:
-    #             init_vector = SymmetricTripleDES.generate_init_vector()
-
-    #         self.__encrypted_key = encrypted_key
-    #         self.__init_vector = init_vector
-
-    #     except Exception as e:
-    #         raise ValueError(f"Create object SymmetricTripleDES error: {e}")
-
     @staticmethod
     def encrypt(text: bytes,
                 symmetrical_key: bytes,
