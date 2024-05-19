@@ -6,9 +6,9 @@ from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers.modes import CBC
 from cryptography.hazmat.primitives.ciphers.algorithms import TripleDES
 
-from TypeArgument import TypeArgument
+from .TypeArgument import TypeArgument
 
-from consts import KEY_COUNT_BITS_FOR_TRIPLEDES, \
+from .consts import KEY_COUNT_BITS_FOR_TRIPLEDES, \
                     INIT_VECTOR_COUNT_BYTE_FOR_TRIPLEDES, \
                     BLOCK_LEN_BITS_PADDING_FOR_TRIPLEDES, \
                     DEFAULT_KEY_BYTES_FOR_TRIPLEDES, \
