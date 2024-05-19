@@ -139,7 +139,7 @@ def main():
                                                  args.type_len_symmetrical)
             ser.save_private_key(args.file_private_key,
                                  private_key)
-            ser.save_symmetricTripleDES(args.file_encrypted_symmetric_key,
+            ser.save_bytes(args.file_encrypted_symmetric_key,
                                         symmetrical_encrypted)
 
         elif args.encrypt:
@@ -153,7 +153,7 @@ def main():
             """
 
             private_key = ser.read_private_key(args.file_private_key)
-            symmetrical_encrypted = ser.read_symmetricTripleDES(args.file_encrypted_symmetric_key)
+            symmetrical_encrypted = ser.read_bytes(args.file_encrypted_symmetric_key)
             text = ser.read_bytes(args.file_input)
 
             cipher = hybrid.encrypt_text(text,
@@ -172,7 +172,7 @@ def main():
             """
 
             private_key = ser.read_private_key(args.file_private_key)
-            symmetrical_encrypted = ser.read_symmetricTripleDES(args.file_encrypted_symmetric_key)
+            symmetrical_encrypted = ser.read_bytes(args.file_encrypted_symmetric_key)
             cipher = ser.read_bytes(args.file_input)
 
             transalte = hybrid.decrypt_cipher(cipher,
