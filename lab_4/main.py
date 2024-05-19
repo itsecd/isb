@@ -174,74 +174,75 @@ def main():
             )
             logger = logging.getLogger(__name__)
 
-        if args.correct_card:
+        match args:
+            case args if args.correct_card:
 
-            if args.value_input:
+                if args.value_input:
 
-                print(correct_card_moon(args.value_input, args.separators))
+                    print(correct_card_moon(args.value_input, args.separators))
 
-            if args.file_input:
+                if args.file_input:
 
-                cards = ser.read_file_lines(args.file_input)
+                    cards = ser.read_file_lines(args.file_input)
 
-                correct_cards = receiving_data.get_correct_cards(cards, args.separators)
+                    correct_cards = receiving_data.get_correct_cards(cards, args.separators)
 
-                ser.write_json(args.path_object_output, correct_cards)
+                    ser.write_json(args.path_object_output, correct_cards)
 
-        elif args.unhash_card:
+            case args if args.unhash_card:
 
-            bins = ser.read_file_lines(args.bins_file_lines)
+                bins = ser.read_file_lines(args.bins_file_lines)
 
-            if args.value_input:
+                if args.value_input:
 
-                print(
-                    get_cards_according_template(
+                    print(
+                        get_cards_according_template(
+                            bins,
+                            args.last_digits,
+                            args.count_digits_in_card,
+                            args.value_input,
+                            args.max_processing_using_for_unhash,
+                        )
+                    )
+
+                if args.file_input:
+
+                    hash_values = ser.read_file_lines(args.file_input)
+
+                    rehash = receiving_data.get_rehash(
+                        hash_values,
                         bins,
                         args.last_digits,
                         args.count_digits_in_card,
-                        args.value_input,
                         args.max_processing_using_for_unhash,
+                        args.name_conf_in_output,
                     )
+
+                    ser.write_json(args.path_object_output, rehash)
+
+            case args if args.gen_default_file_bins:
+
+                bins = receiving_data.generate_bins(
+                    DEFAULT_PREFIX_TEMPLATES_FOUR_DIGIT_SBERBANK_MASTERCARD_CREDIT,
+                    DEFAULT_COUNT_DIGITS_INTO_BIN_SBERBANK_MASTERCARD,
                 )
 
-            if args.file_input:
+                ser.write_file_lines(args.path_object_output, bins)
 
+            case args if args.draw_diagrams:
+            
+                bins = ser.read_file_lines(args.bins_file_lines)
                 hash_values = ser.read_file_lines(args.file_input)
-
-                rehash = receiving_data.get_rehash(
+    
+                times_dict = measure_execution_time(
                     hash_values,
                     bins,
                     args.last_digits,
                     args.count_digits_in_card,
                     args.max_processing_using_for_unhash,
-                    args.name_conf_in_output,
                 )
-
-                ser.write_json(args.path_object_output, rehash)
-
-        elif args.gen_default_file_bins:
-
-            bins = receiving_data.generate_bins(
-                DEFAULT_PREFIX_TEMPLATES_FOUR_DIGIT_SBERBANK_MASTERCARD_CREDIT,
-                DEFAULT_COUNT_DIGITS_INTO_BIN_SBERBANK_MASTERCARD,
-            )
-
-            ser.write_file_lines(args.path_object_output, bins)
-
-        elif args.draw_diagrams:
-
-            bins = ser.read_file_lines(args.bins_file_lines)
-            hash_values = ser.read_file_lines(args.file_input)
-
-            times_dict = measure_execution_time(
-                hash_values,
-                bins,
-                args.last_digits,
-                args.count_digits_in_card,
-                args.max_processing_using_for_unhash,
-            )
-
-            plot_graphs_from_dict(times_dict, args.path_object_output)
+    
+                plot_graphs_from_dict(times_dict, args.path_object_output)
 
     except Exception as e:
 
