@@ -141,4 +141,3 @@ def read_private_key(path_to_file_key: str) -> RSAPrivateKey:
 
     except Exception as e:
         logger.error(f"Read[{path_to_file_key}] RSA private key error: {e}")
-        
