@@ -3,6 +3,8 @@ import logging
 import tabulate
 import argparse
 
+from ast import match_case
+
 import src.serialization as ser
 import src.hybrid_tripleDES as hybrid
 
@@ -121,64 +123,62 @@ def main():
                        ' - %(message)s')
             logger = logging.getLogger(__name__)
 
-        if args.generate_keys:
+        match args:
+            case args if args.generate_keys:
+                """
+                Generate hybrid encryption key pair.
 
-            """
-            Generate hybrid encryption key pair.
+                This function generates a hybrid encryption key pair using TripleD
+                ES and RSA. The generated key pair consists of a TripleDES key
+                encrypted with an RSA private key. The RSA private key is used
+                to decrypt the TripleDES key, which is then used to encrypt
+                and decrypt data.
+                """
 
-            This function generates a hybrid encryption key pair using TripleD
-            ES and RSA. The generated key pair consists of a TripleDES key
-            encrypted with an RSA private key. The RSA private key is used
-            to decrypt the TripleDES key, which is then used to encrypt
-            and decrypt data.
-            """
+                symmetrical_encrypted, private_key = \
+                    hybrid.generate_hybrid_tripleDes(args.len_rsa_key,
+                                                     args.len_symmetrical_key,
+                                                     args.type_len_symmetrical)
+                ser.save_private_key(args.file_private_key,
+                                     private_key)
+                ser.save_bytes(args.file_encrypted_symmetric_key,
+                                            symmetrical_encrypted)
 
-            symmetrical_encrypted, private_key = \
-                hybrid.generate_hybrid_tripleDes(args.len_rsa_key,
-                                                 args.len_symmetrical_key,
-                                                 args.type_len_symmetrical)
-            ser.save_private_key(args.file_private_key,
-                                 private_key)
-            ser.save_bytes(args.file_encrypted_symmetric_key,
-                                        symmetrical_encrypted)
+            case args if args.encrypt:
+                """
+                Encrypt data using hybrid encryption key pair.
 
-        elif args.encrypt:
+                This function encrypts data using a hybrid encryption key pair.
+                The data is encrypted using the TripleDES key, which is decrypted
+                using the RSA private key.
+                """
 
-            """
-            Encrypt data using hybrid encryption key pair.
+                private_key = ser.read_private_key(args.file_private_key)
+                symmetrical_encrypted = ser.read_bytes(args.file_encrypted_symmetric_key)
+                text = ser.read_bytes(args.file_input)
 
-            This function encrypts data using a hybrid encryption key pair.
-            The data is encrypted using the TripleDES key, which is decrypted
-            using the RSA private key.
-            """
+                cipher = hybrid.encrypt_text(text,
+                                             symmetrical_encrypted,
+                                             private_key)
+                ser.save_bytes(args.path_object_output, cipher)
 
-            private_key = ser.read_private_key(args.file_private_key)
-            symmetrical_encrypted = ser.read_bytes(args.file_encrypted_symmetric_key)
-            text = ser.read_bytes(args.file_input)
+            case args if args.decryption:
+                """
+                Decrypt data using hybrid encryption key pair.
 
-            cipher = hybrid.encrypt_text(text,
-                                         symmetrical_encrypted,
-                                         private_key)
-            ser.save_bytes(args.path_object_output, cipher)
+                This function decrypts data using a hybrid encryption key pair.
+                The data is decrypted using the TripleDES key, which is decrypted
+                using the RSA private key.
+                """
 
-        elif args.decryption:
+                private_key = ser.read_private_key(args.file_private_key)
+                symmetrical_encrypted = ser.read_bytes(args.file_encrypted_symmetric_key)
+                cipher = ser.read_bytes(args.file_input)
 
-            """
-            Decrypt data using hybrid encryption key pair.
-
-            This function decrypts data using a hybrid encryption key pair.
-            The data is decrypted using the TripleDES key, which is decrypted
-            using the RSA private key.
-            """
-
-            private_key = ser.read_private_key(args.file_private_key)
-            symmetrical_encrypted = ser.read_bytes(args.file_encrypted_symmetric_key)
-            cipher = ser.read_bytes(args.file_input)
-
-            transalte = hybrid.decrypt_cipher(cipher,
-                                              symmetrical_encrypted,
-                                              private_key)
-            ser.save_bytes(args.path_object_output, transalte)
+                transalte = hybrid.decrypt_cipher(cipher,
+                                                  symmetrical_encrypted,
+                                                  private_key)
+                ser.save_bytes(args.path_object_output, transalte)
 
     except Exception as e:
 
