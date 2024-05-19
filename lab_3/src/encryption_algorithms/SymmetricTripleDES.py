@@ -6,9 +6,9 @@ from cryptography.hazmat.primitives.ciphers import Cipher
 from cryptography.hazmat.primitives.ciphers.modes import CBC
 from cryptography.hazmat.primitives.ciphers.algorithms import TripleDES
 
-from .TypeArgument import TypeArgument
+from TypeArgument import TypeArgument
 
-from .consts import KEY_COUNT_BITS_FOR_TRIPLEDES, \
+from consts import KEY_COUNT_BITS_FOR_TRIPLEDES, \
                     INIT_VECTOR_COUNT_BYTE_FOR_TRIPLEDES, \
                     BLOCK_LEN_BITS_PADDING_FOR_TRIPLEDES, \
                     DEFAULT_KEY_BYTES_FOR_TRIPLEDES, \
@@ -16,6 +16,7 @@ from .consts import KEY_COUNT_BITS_FOR_TRIPLEDES, \
 
 
 class SymmetricTripleDES:
+    
     """
     This class provides methods for symmetric encryption and decryption 
     using the TripleDES algorithm in CBC mode with ANSIX923 padding.
@@ -72,30 +73,24 @@ class SymmetricTripleDES:
             raise ValueError(f"Generate init_vector error: {e}")
 
 
-    def __init__(self, encrypted_key: bytes = None, init_vector: bytes = None):
+    # def __init__(self, encrypted_key: bytes = None, init_vector: bytes = None):
 
-        try:
+    #     try:
 
-            if not encrypted_key:
-                raise ValueError(f"The encrypted key must be present, using it you get a symmetric key,")
+    #         if not encrypted_key:
+    #             raise ValueError(f"The encrypted key must be present, using it you get a symmetric key,")
             
-            if not init_vector:
-                init_vector = SymmetricTripleDES.generate_init_vector()
+    #         if not init_vector:
+    #             init_vector = SymmetricTripleDES.generate_init_vector()
 
-            self.__encrypted_key = encrypted_key
-            self.__init_vector = init_vector
+    #         self.__encrypted_key = encrypted_key
+    #         self.__init_vector = init_vector
 
-        except Exception as e:
-            raise ValueError(f"Create object SymmetricTripleDES error: {e}")
+    #     except Exception as e:
+    #         raise ValueError(f"Create object SymmetricTripleDES error: {e}")
 
-
-    @property
-    def encrypted_key(self) -> bytes:
-        return self.__encrypted_key
-
-
-    def encrypt(self,
-                text: bytes,
+    @staticmethod
+    def encrypt(text: bytes,
                 symmetrical_key: bytes,
                 len_block_padding: int = DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES,
                 type_len_block_padding: TypeArgument = TypeArgument.BYTE
@@ -127,15 +122,17 @@ class SymmetricTripleDES:
 
             padder = padding.ANSIX923(int(len_block_padding * type_len_block_padding.bits)).padder()
             padded_text = padder.update(text) + padder.finalize()
-            encryptor = Cipher(TripleDES(symmetrical_key), CBC(self.__init_vector)).encryptor()
+            init_vector = SymmetricTripleDES.generate_init_vector()
+            encryptor = Cipher(TripleDES(symmetrical_key), CBC(init_vector)).encryptor()
 
-            return encryptor.update(padded_text) + encryptor.finalize()
+            return init_vector + encryptor.update(padded_text) + encryptor.finalize()
 
         except Exception as e:
             raise ValueError(f"Encrypt text symmetrical method error: {e}")
 
-
-    def decrypt(self, cipher: bytes, symmetrical_key: bytes,
+    @staticmethod
+    def decrypt(cipher: bytes, 
+                symmetrical_key: bytes,
                 len_block_padding: int = DEFAULT_LEN_BYTES_PADDING_BLOCK_FOR_TRIPLEDES,
                 type_len_block_padding: TypeArgument = TypeArgument.BYTE) -> bytes:
         """
@@ -163,10 +160,12 @@ class SymmetricTripleDES:
                         f"{len_block_padding * type_len_block_padding.bits}" \
                         f" bits, need to {BLOCK_LEN_BITS_PADDING_FOR_TRIPLEDES}")
 
+            init_vector = cipher[:INIT_VECTOR_COUNT_BYTE_FOR_TRIPLEDES]
+            cipher_real = cipher[INIT_VECTOR_COUNT_BYTE_FOR_TRIPLEDES:]
+
             unpadder = padding.ANSIX923(int(len_block_padding * type_len_block_padding.bits)).unpadder()
-            
-            decryptor = Cipher(TripleDES(symmetrical_key), CBC(self.__init_vector)).decryptor()
-            decrypt_text = decryptor.update(cipher) + decryptor.finalize()
+            decryptor = Cipher(TripleDES(symmetrical_key), CBC(init_vector)).decryptor()
+            decrypt_text = decryptor.update(cipher_real) + decryptor.finalize()
 
             return unpadder.update(decrypt_text) + unpadder.finalize()
 
