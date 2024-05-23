@@ -42,4 +42,3 @@ class TypeArgument(Enum):
             TypeArgument.BIT: 1,
             TypeArgument.BYTE: 8,
         }[self]
-        
