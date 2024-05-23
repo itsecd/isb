@@ -1,0 +1,6 @@
+{
+  "folder" : "files",
+  "input" : "input.txt",
+  "key" : "key.json",
+  "decrypt" : "decrypt.txt"
+}
