@@ -1,0 +1,2 @@
+SIGNS = {".", ','}
+PATH = "\paths.json"
