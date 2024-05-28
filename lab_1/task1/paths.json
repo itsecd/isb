@@ -1,5 +1,6 @@
 {
   "input" : "files/input.txt",
   "key" : "files/key.txt",
-  "encrypt" : "files/encrypt.txt"
+  "encrypt" : "files/encrypt.txt",
+  "constants": "constants.json"
 }
