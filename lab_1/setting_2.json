@@ -1,0 +1,12 @@
+{
+    "fold_lab" : "lab_1",
+    "fold_task" : "second_task",
+
+    "cipherTxt" : "cod2.txt",
+    "decryptedTxt" : "decrypted.txt",
+    "statsJson" : "stats.json",
+    "keyJson" : "key.json",
+
+    "oldSymbols" : ">РrОХДЕ2А71a9ФМУb308tc<ЫЯЙБЬЛКИ\nз",
+    "newSymbols" : "звсампротинедлцкжгбйчзыьющуэхфшя "
+}
