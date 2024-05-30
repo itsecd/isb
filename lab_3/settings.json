@@ -1,0 +1,11 @@
+{
+    "initial_file": "texts/text.txt",
+    "encrypted_file": "texts/encrypted_text.txt",
+    "decrypted_file": "texts/decrypted_text.txt",
+    "symmetric_key": "keys/symmetric_key.txt",
+    "asym_public_key": "keys/public_key.pem",
+    "asym_private_key": "keys/private_key.pem",
+    "nonce": "keys/sym_nonce.txt",
+    "encrypted_symmetric_key": "keys/encrypted_symmetric_key.txt",
+    "decrypted_symmetric_key": "keys/decrypted_symmetric_key.txt"
+}
