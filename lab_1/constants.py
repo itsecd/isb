@@ -1,0 +1,9 @@
+alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+key1 = "C:\\Users\\User\\Desktop\\oib\\isb\\lab_1\\task 1\\key1.json"
+text1 = "task 1\\text.txt"
+encrypted_text = "task 1\\encrypted_text.txt"
+cipher = "task 2\\cipher.txt"
+unsecret_text = "task 2\\unsecret_text.txt"
+key2 = 'task 2\\key2.json'
+probabilities = "task 2\\probabilities.json"
+ru = "lab_1\\ru.json"
