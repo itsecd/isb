@@ -1,0 +1,9 @@
+{
+    "folder": "lab_3",
+    "sym_path": "symmetric_key.txt",
+    "public_path": "public.pem",
+    "private_path": "private.pem",
+    "text": "text.txt",
+    "encrypted_text": "encrypted_text.txt",
+    "decrypted_text": "decrypted_text.txt"
+}

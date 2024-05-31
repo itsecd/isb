@@ -1,0 +1,6 @@
+{
+  "folder" : "files",
+  "input" : "files/input.txt",
+  "key" : "files/key.txt",
+  "encrypt" : "files/encrypt.txt"
+}
