@@ -1,0 +1,11 @@
+C++
+
+frequency_bitwise_test: 0.8596837951986662
+consecutive_bits_test: 0.997795599059169
+longest_sequence_in_block_test: 0.0701426138069578
+
+Java
+
+frequency_bitwise_test: 0.1572992070502852
+consecutive_bits_test: 0.719471396865544
+longest_sequence_in_block_test: 0.134700829828348
