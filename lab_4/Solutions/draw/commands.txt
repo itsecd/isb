@@ -1,0 +1,3 @@
+флаги -sl и -lp для логов
+
+python3 main.py -dr -b ./Solutions/draw/bins.txt -x ./Solutions/draw/hashes.txt -ld 2301 -mp 24 -o ./Solutions/draw/output.png -sl ./Solutions/draw/draw.log -lp True

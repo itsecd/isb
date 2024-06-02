@@ -1,0 +1,23 @@
+флаги -sl и -lp для логов
+
+0. - Сгенерировать список дефолтных бинов для поиска.
+python3 main.py -gen -o ./Solutions/rehash/bins_default.txt -sl ./Solutions/rehash/gen_bins.log -lp True
+
+
+1. Для рехеша карт по одному значению:
+python3 main.py -un -b ./Solutions/rehash/bins_parser.txt -i 140495200b351b7f18a46e3796f2875ebdf0023568933ef3b99efb285af3f06b -ld 2301 -sl ./Solutions/rehash/default_bins.log -lp True
+
+140495200b351b7f18a46e3796f2875ebdf0023568933ef3b99efb285af3f06b rehash: 100%|████████████████████████████████████| 59/59 [00:04<00:00, 12.37it/s]
+
+Вывод: {'5479054156572301'}
+
+
+2. Для рехеша карт по файлу хешов(с конфигурацией можно без, не указав -cnf): 
+
+python3 main.py -un -b ./Solutions/rehash/bins_parser.txt -x ./Solutions/rehash/hashes.txt -o ./Solutions/rehash/output_default_bins.json -ld 2301 -cnf conf -sl ./Solutions/rehash/default_hashes_bins.log -lp True
+
+140495200b351b7f18a46e3796f2875ebdf0023568933ef3b99efb285af3f06b rehash: 100%|████████████████████████████████████| 59/59 [00:04<00:00, 12.34it/s]
+140495200b351b7f18a46e3796f2875ebdf0023568933ef3b99efb285af3f06a rehash: 100%|████████████████████████████████████| 59/59 [00:04<00:00, 13.52it/s]
+Rehash lines: 100%|█████████████████████████████████████████████████████████████████████████████████████████████████| 2/2 [00:09<00:00,  4.60s/it]
+
+Вывод: в файле ./Solutions/rehash/output_default_bins.json
