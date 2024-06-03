@@ -40,8 +40,8 @@ class HybridSystemAlgorithm:
             symmetric_key = self.symmetric_crypto.generate_key()
             private_key, public_key = self.asymmetric_crypto.generate_key_pair(2048)
 
-            self.asymmetric_crypto.serialize_private_key(private_key)
-            self.asymmetric_crypto.serialize_public_key(public_key)
+            SerializeDeserialize(self.asymmetric_crypto.private_key_path).serialize_private_key(private_key)
+            SerializeDeserialize(self.asymmetric_crypto.public_key_path).serialize_public_key(public_key)
 
             encrypted_symmetric_key = self.asymmetric_crypto.encrypt_with_public_key(public_key, symmetric_key)
             key = SerializeDeserialize(f"{self.symmetric_key_path[:-4]}_{self.symmetric_crypto.key_len}.txt")
@@ -59,7 +59,7 @@ class HybridSystemAlgorithm:
             key = SerializeDeserialize(f"{self.symmetric_key_path[:-4]}_{self.symmetric_crypto.key_len}.txt")
             symmetric_key = key.deserialize_key()
             symmetric_key = self.asymmetric_crypto.decrypt_with_private_key(
-                self.asymmetric_crypto.deserialize_private_key(), symmetric_key)
+                SerializeDeserialize(self.asymmetric_crypto.private_key_path).deserialize_private_key(), symmetric_key)
             text_file = SerializeDeserialize(self.text_path)
             plaintext = bytes(text_file.read_text_file("r", "UTF-8"), "UTF-8")
             encrypted_text = self.symmetric_crypto.encrypt_text(symmetric_key, plaintext)
@@ -77,7 +77,7 @@ class HybridSystemAlgorithm:
             sym_key = SerializeDeserialize(f"{self.symmetric_key_path[:-4]}_{self.symmetric_crypto.key_len}.txt")
             symmetric_key = sym_key.deserialize_key()
             symmetric_key = self.asymmetric_crypto.decrypt_with_private_key(
-                self.asymmetric_crypto.deserialize_private_key(), symmetric_key)
+                SerializeDeserialize(self.asymmetric_crypto.private_key_path).deserialize_private_key(), symmetric_key)
             enc_file = SerializeDeserialize(self.encrypted_text_path)
             encrypted_text = bytes(enc_file.read_text_file("rb"))
             decrypted_text = self.symmetric_crypto.decrypt_text(symmetric_key, encrypted_text)
