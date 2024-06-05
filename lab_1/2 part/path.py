@@ -1,0 +1,5 @@
+decryption_key = '2 part/key.json'
+decryption_input = '2 part/code4.txt'
+decryption_output = '2 part/decoded.txt'
+decryption_rus_frequencies = '2 part/rus_frequencies.json'
+decryption_tex_frequencies = '2 part/tex_frequencies.json'
