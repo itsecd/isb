@@ -1,2 +1,0 @@
-print("fff")
-print("fff")
