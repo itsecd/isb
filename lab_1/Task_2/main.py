@@ -177,7 +177,7 @@ def main():
     text = replace_chars(text, "С", "ж")
     text = replace_chars(text, "Л", "т")
     text = replace_chars(text, "М", "ь")
-    text = replace_chars(text, "У", "д") #
+    text = replace_chars(text, "У", "д")
     #
     text = replace_chars(text, "Ю", "х")
     text = replace_chars(text, "Щ", "э")
@@ -191,39 +191,43 @@ def main():
     text = replace_chars(text, "О", " ") #1
 
 
-    # crypt_key = {
-    #     "r": "п",
-    #     "w": "с",
-    #     "t": "р",
-    #
-    #     "1": "л",
-    #     "2": "м",
-    #     "4": "ц",
-    #     "5": "ч",
-    #     "7": "ь",
-    #     "8": "э",
-    #
-    #     "А": "й",
-    #     "Б": "к",
-    #     "Д": "н",
-    #     "Е": "о",
-    #     "И": "с",
-    #     "Й": "т",
-    #     "К": "у",
-    #     "Л": "ф",
-    #     "М": "х",
-    #     "О": "ш",
-    #     "П": "щ",
-    #     "У": "ю",
-    #     "Ф": "я",
-    #     "Х": " ",
-    #     "Ч": "а",
-    #     "Щ": "в",
-    #     "Ъ": "г",
-    #     "Ы": "е",
-    #     "Ь": "ж",
-    #     "Я": "з",
-    # }
+    crypt_key = {
+        "=": "р",
+        "<": "ч",
+        "%": "г",
+
+        "7": "о",
+        "1": "в",
+        "9": "з",
+        "3": "й",
+
+        "Q": "е",
+        "U": "т",
+        "N": "ь",
+        "Z": "ф",
+        "Y": "ж",
+        "s": "у",
+        "R": "ю",
+        "i": "ш",
+        "F": "щ",
+        "G": "э",
+
+        "О": " ",
+        "Ё": "и",
+        "Ж": "н",
+        "П": "с",
+        "Я": "а",
+        "Д": "я",
+        "И": "п",
+        "ю": "х",
+        "Й": "б",
+        "г": "ц",
+        "Х": "м",
+        "Т": "л",
+        "К": "ы",
+        "у": "д",
+        "Р": "к",
+    }
 
     print(text)
     print("\n")
@@ -231,7 +235,7 @@ def main():
     #Запись в файлы
     write_to_file("encrypted_text.txt", task_text)
     write_to_file("decrypted_text.txt", text)
-    #write_to_file("decrypt_key.txt", str(crypt_key))
+    write_to_file("decrypt_key.txt", str(crypt_key))
 
 if __name__ == "__main__":
     main()
