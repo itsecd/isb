@@ -7,7 +7,15 @@ def text_encryption(data: str, key: dict[str, str]) -> str:
     """
     result = ""
 
-    for symbol in data.upper():
-        result += str(key.get(symbol, None))
+    for symbol in data:
+        new_symbol = key.get(symbol.upper())
+
+        if new_symbol is not None:
+            if symbol.isupper():
+                result += new_symbol
+            else:
+                result += new_symbol.lower()
+        else:
+            result += symbol
 
     return result

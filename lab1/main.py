@@ -3,10 +3,13 @@ from task1.text_encryption import text_encryption
 
 
 def main():
-    text = read_from_file("task1/text.txt")
-    key = read_key("task1/key.json")
-    new_text = text_encryption(text, key)
-    write_to_file("task1/encrypted_text.txt", new_text)
+    try:
+        text = read_from_file("task1/text.txt")
+        key = read_key("task1/key.json")
+        encrypted_text = text_encryption(text, key)
+        write_to_file("task1/encrypted_text.txt", encrypted_text)
+    except Exception as e:
+        print(f"Something went wrong: {e}")
 
 
 if __name__ == "__main__":
