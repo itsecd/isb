@@ -1,3 +1,6 @@
+import json
+
+
 def read_from_file(directory: str) -> str:
     """
     The function opens a text file and reads the data into a string
@@ -17,3 +20,13 @@ def write_to_file(directory: str, data: str) -> None:
     """
     with open(directory, mode="w", encoding="utf-8") as file:
         file.write(data)
+
+
+def read_key(directory: str) -> dict[str, int]:
+    """
+    The function opens a json file and reads the key as a dictionary
+    :param directory: json file directory
+    :return: key as a dictionary
+    """
+    with open(directory, mode="r", encoding="utf-8") as file:
+        return json.load(file)
