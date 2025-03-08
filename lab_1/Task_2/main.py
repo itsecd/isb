@@ -130,6 +130,7 @@ def main():
             text = text.replace("<", "Ы")
         elif text[i] == "%":
             text = text.replace("%", "Ь")
+
     print("______________________________________________________________\n\nСвод к единому алфавиту:\n")
     print(text)
 
@@ -147,43 +148,44 @@ def main():
     print("\n______________________________________________________________\n\nДешифрованный текст:\n")
 
 
-    text = replace_chars(text, "Q", "и") #
-    text = replace_chars(text, "7", "о") #2
-    # text = replace_chars(text, "Д", "н") #
-    # text = replace_chars(text, "Ч", "а") #
+    text = replace_chars(text, "З", "е") # (Q)
+    text = replace_chars(text, "А", "о") #2 (7)
+    text = replace_chars(text, "Х", "м") #
+    text = replace_chars(text, "Р", "к") #
     #
-    text = replace_chars(text, "Д", "е") #
-    # text = replace_chars(text, "Ц", "р")
-    # text = replace_chars(text, "Й", "т")
-    # text = replace_chars(text, "Н", "л")
+    text = replace_chars(text, "Д", "я") #
+    text = replace_chars(text, "Ц", "ю")
+    text = replace_chars(text, "Й", "б")
+    text = replace_chars(text, "Ь", "г")
     #
-    # text = replace_chars(text, "З", "м")
-    # text = replace_chars(text, "Ж", "ь")
-    # text = replace_chars(text, "И", "с")
-    # text = replace_chars(text, "Б", "к") #
+    text = replace_chars(text, "Ч", "ш")
+    text = replace_chars(text, "Ж", "н") #
+    text = replace_chars(text, "И", "п")
+    text = replace_chars(text, "Б", "в")
     #
-    # text = replace_chars(text, "Я", "з")
-    # text = replace_chars(text, "Щ", "в")
-    # text = replace_chars(text, "Э", "ы")
-    # text = replace_chars(text, "Т", "п")
+    text = replace_chars(text, "Я", "а")
+    text = replace_chars(text, "Н", "ф")
+    text = replace_chars(text, "Ш", "щ")
+    text = replace_chars(text, "Ё", "и")
+    text = replace_chars(text, "Т", "л")
     #
-    # text = replace_chars(text, "К", "у")
-    # text = replace_chars(text, "С", "д")
-    # text = replace_chars(text, "Ф", "я")
-    # text = replace_chars(text, "Ъ", "г")
+    text = replace_chars(text, "К", "ы")
+    text = replace_chars(text, "Е", "й")
+    text = replace_chars(text, "Ф", "у")
+    text = replace_chars(text, "Ъ", "р")
     #
-    # text = replace_chars(text, "Т", "ж")
-    # text = replace_chars(text, "Л", "ф")
-    # text = replace_chars(text, "М", "х")
-    # text = replace_chars(text, "У", "ю")
+    text = replace_chars(text, "С", "ж")
+    text = replace_chars(text, "Л", "т")
+    text = replace_chars(text, "М", "ь")
+    text = replace_chars(text, "У", "д") #
     #
-    # text = replace_chars(text, "Ю", "ц")
-    # text = replace_chars(text, "О", "ш")
-    # text = replace_chars(text, "Г", "ч")
-    # text = replace_chars(text, "П", "щ")
+    text = replace_chars(text, "Ю", "х")
+    text = replace_chars(text, "Щ", "э")
+    text = replace_chars(text, "Г", "ц")
+    text = replace_chars(text, "П", "с")
     #
-    # text = replace_chars(text, "А", "й")
-    # text = replace_chars(text, "В", "э")
+    text = replace_chars(text, "Ы", "ч")
+    text = replace_chars(text, "В", "з")
     #
     # #Замена в конце дабы исключить повторения символа " " в алфавите
     text = replace_chars(text, "О", " ") #1
