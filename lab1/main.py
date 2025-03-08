@@ -1,4 +1,4 @@
-from file_work import *
+from file_work import read_from_file, read_key, write_to_file
 from task1.text_encryption import text_encryption
 
 
