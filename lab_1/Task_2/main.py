@@ -85,34 +85,56 @@ def main():
     print("\nЗашифрованный текст:\n")
     print(text)
 
-    # #Свод к единому алфавиту для удобства
-    # for i in range(len(text)):
-    #     if text[i] == "8":
-    #         text = text.replace("8", "В")
-    #     elif text[i] == "5":
-    #         text = text.replace("5", "Г")
-    #     elif text[i] == "4":
-    #         text = text.replace("4", "Ю")
-    #     elif text[i] == "7":
-    #         text = text.replace("7", "Ж")
-    #     elif text[i] == "2":
-    #         text = text.replace("2", "З")
-    #     elif text[i] == "1":
-    #         text = text.replace("1", "Н")
-    #     elif text[i] == "w":
-    #         text = text.replace("w", "С")
-    #     elif text[i] == "r":
-    #         text = text.replace("r", "Т")
-    #     elif text[i] == "t":
-    #         text = text.replace("t", "Ц")
-    #     elif text[i] == ">":
-    #         text = text.replace(">", "Э")
-    # print("______________________________________________________________\n\nСвод к единому алфавиту:\n")
-    # print(text)
+    #Свод к единому алфавиту для удобства
+    for i in range(len(text)):
+        if text[i] == "ю":
+            text = text.replace("ю", "Ю")
+        elif text[i] == "г":
+            text = text.replace("г", "Г")
+        elif text[i] == "у":
+            text = text.replace("у", "У")
+
+        elif text[i] == "7":
+            text = text.replace("7", "А")
+        elif text[i] == "1":
+            text = text.replace("1", "Б")
+        elif text[i] == "9":
+            text = text.replace("9", "В")
+        elif text[i] == "3":
+            text = text.replace("3", "Е")
+
+        elif text[i] == "Q":
+            text = text.replace("Q", "З")
+        elif text[i] == "U":
+            text = text.replace("U", "Л")
+        elif text[i] == "N":
+            text = text.replace("N", "М")
+        elif text[i] == "Z":
+            text = text.replace("Z", "Н")
+        elif text[i] == "Y":
+            text = text.replace("Y", "С")
+        elif text[i] == "s":
+            text = text.replace("s", "Ф")
+        elif text[i] == "R":
+            text = text.replace("R", "Ц")
+        elif text[i] == "i":
+            text = text.replace("i", "Ч")
+        elif text[i] == "F":
+            text = text.replace("F", "Ш")
+        elif text[i] == "G":
+            text = text.replace("G", "Щ")
+
+        elif text[i] == "=":
+            text = text.replace("=", "Ъ")
+        elif text[i] == "<":
+            text = text.replace("<", "Ы")
+        elif text[i] == "%":
+            text = text.replace("%", "Ь")
+    print("______________________________________________________________\n\nСвод к единому алфавиту:\n")
+    print(text)
 
 
     #Процентное соотношения
-
     percent_dict = calculate_char_percentages(text)
 
     #Сортировка значений ключей
@@ -125,12 +147,12 @@ def main():
     print("\n______________________________________________________________\n\nДешифрованный текст:\n")
 
 
-    # text = replace_chars(text, " ", "и") #
-    # text = replace_chars(text, "Е", "о") #
+    text = replace_chars(text, "Q", "и") #
+    text = replace_chars(text, "7", "о") #2
     # text = replace_chars(text, "Д", "н") #
     # text = replace_chars(text, "Ч", "а") #
     #
-    # text = replace_chars(text, "Ы", "е") #
+    text = replace_chars(text, "Д", "е") #
     # text = replace_chars(text, "Ц", "р")
     # text = replace_chars(text, "Й", "т")
     # text = replace_chars(text, "Н", "л")
@@ -150,7 +172,7 @@ def main():
     # text = replace_chars(text, "Ф", "я")
     # text = replace_chars(text, "Ъ", "г")
     #
-    # text = replace_chars(text, "Ь", "ж")
+    # text = replace_chars(text, "Т", "ж")
     # text = replace_chars(text, "Л", "ф")
     # text = replace_chars(text, "М", "х")
     # text = replace_chars(text, "У", "ю")
@@ -164,7 +186,7 @@ def main():
     # text = replace_chars(text, "В", "э")
     #
     # #Замена в конце дабы исключить повторения символа " " в алфавите
-    text = replace_chars(text, "О", " ")
+    text = replace_chars(text, "О", " ") #1
 
 
     # crypt_key = {
