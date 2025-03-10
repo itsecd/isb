@@ -66,11 +66,8 @@ def frequency(data: str) -> dict:
     :return:frequency of occurrence of symbols
     """
     dic = dict()
-    for i in data:
-        if i in dic:
-            dic[i] += 1
-        else:
-            dic[i] = 1
+    for i in set(data):
+        dic[i] = data.count(i)
     for k in dic:
         dic[k] = dic[k] / len(data)
     return dic
