@@ -1,0 +1,35 @@
+﻿html {
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;
+}
+
+body {
+    min-width: 1000px;
+}
+
+body > * {
+    text-align: center;
+}
+
+.fields {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.fields > * {
+    margin: 10px;
+}
+
+.inputs {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px;
+}
+
+textarea {
+    resize: none;
+}
