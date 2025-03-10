@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Cipher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+</head>
+<body>
+    <div class="fields">
+        <h1>Encryptor</h1>
+        <div class="alphabets">
+            <h3>Common alphabets:</h3>
+            <p>
+                абвгдеёжзийклмнопрстуфхцчшщъыьэюя<br>
+                abcdefghijklmnopqrstuvwxyz<br>
+                0123456789
+            </p>
+
+        </div>
+    
+        <div id="input">
+            <form action="/cipher" method="post" id="cipherForm">
+                <p>
+                    <textarea name="plain-text" rows="20" cols="80"></textarea>
+                </p>
+                <p>
+                  <label for="cipher-select">Cipher</label>
+                  <select name="cipher-select" id="cipher-select">
+                    <option selected value="">-- Select cipher --</option>
+                    <option value="sub">Substitution</option>
+                    <option value="caesar">Caesar</option>
+                    <option value="vig">Vigener</option>
+                  </select>
+                </p>
+                <p>
+                    <label for="to-upper">UPPER</label> 
+                    <input type="checkbox" name="to-upper" placeholder="upper">
+                </p>
+                <div id="inputs">
+                </div>
+              </form>
+        </div>
+
+        
+        <div id="output">
+            <p {{ hidden }}>{{ error_text }}</p>
+            <textarea rows="20" cols="80">{{ cipher_text }}</textarea>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script>loadState();</script>
+</body>
+</html>
