@@ -70,7 +70,8 @@ def frequency(data: str) -> dict:
         dic[i] = data.count(i)
     for k in dic:
         dic[k] = dic[k] / len(data)
-    return dic
+    sorted_dic = dict(sorted(dic.items(), key=lambda item: item[1], reverse=True))
+    return sorted_dic
 
 
 def save_frequency(file_path: str, text: str) -> None:
