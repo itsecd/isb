@@ -1,0 +1,6 @@
+{
+  "alphabet_en": "abcdefghijklmnopqrstuvwxyz",
+  "alphabet_ru": "абвгдеёжзийклмнопрстуфхцчшщъыьэюя",
+  "input_file": "input.txt",
+  "output_file": "output.txt"
+}
