@@ -1,3 +1,4 @@
+from audioop import reverse
 from collections import Counter
 import json
 
@@ -74,8 +75,7 @@ def get_key(filename: str)->dict:
     """
     with open(filename, 'r', encoding='utf-8') as file:
         key=json.load(file)
-    reverse_key = {char: k for k, char in key.items()}
-    return reverse_key
+    return key
 
 def get_decryption(encrypted_text: str, key: dict)->str:
     """
