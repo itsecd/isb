@@ -16,6 +16,7 @@ def create_parser()->tuple:
     args=parser.parse_args()
     return args.key, args.input_text, args.encrypted_text, args.task2_key, args.task2_encrypted, args.task2_result
 
+
 def main():
     try:
         key = functions.read_file(create_parser()[0])

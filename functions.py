@@ -1,6 +1,7 @@
-from audioop import reverse
-from collections import Counter
 import json
+from collections import Counter
+
+import const
 
 def read_file(filename: str)->str:
     """
@@ -10,6 +11,7 @@ def read_file(filename: str)->str:
     """
     with open(filename, 'r', encoding='utf-8') as file:
         return file.read()
+
 
 def write_file(filename: str, data:str)->int:
     """
@@ -21,6 +23,7 @@ def write_file(filename: str, data:str)->int:
     with open(filename, 'w', encoding='utf-8') as file:
         return file.write(data)
 
+
 def tritemius_cipher(text: str, key: str)->str:
     """
     Gets encrypted text using Trithemius Cipher
@@ -28,9 +31,8 @@ def tritemius_cipher(text: str, key: str)->str:
     :param key: word that will be using for encryption
     :return: encrypted text as a string
     """
-    alphabet = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789"
-    char_to_num = {char: i + 1 for i, char in enumerate(alphabet)}
-    num_to_char = {i + 1: char for i, char in enumerate(alphabet)}
+    char_to_num = {char: const.ALPHABET.index(char) for char in const.ALPHABET}
+    num_to_char = {i + 1: const.ALPHABET[i] for i in range(len(const.ALPHABET))}
 
     text = text.upper()
     key = key.upper()
@@ -45,8 +47,8 @@ def tritemius_cipher(text: str, key: str)->str:
             key_num = char_to_num[key_char]
 
             encrypted_num = text_num + key_num
-            if encrypted_num > len(alphabet):
-                encrypted_num -= len(alphabet)
+            if encrypted_num > len(const.ALPHABET):
+                encrypted_num -= len(const.ALPHABET)
             encrypted_text.append(num_to_char[encrypted_num])
 
             key_id+=1
@@ -54,6 +56,7 @@ def tritemius_cipher(text: str, key: str)->str:
             encrypted_text.append(char)
 
     return ''.join(encrypted_text)
+
 
 def get_frequency(filename: str)->None:
     """
@@ -67,6 +70,7 @@ def get_frequency(filename: str)->None:
     with open("frequency_analysis.json", 'w', encoding='utf-8') as file:
         json.dump(sorted_char_frequency, file, ensure_ascii=False, indent=4)
 
+
 def get_key(filename: str)->dict:
     """
     Gets a key for decryption the text
@@ -76,6 +80,7 @@ def get_key(filename: str)->dict:
     with open(filename, 'r', encoding='utf-8') as file:
         key=json.load(file)
     return key
+
 
 def get_decryption(encrypted_text: str, key: dict)->str:
     """
