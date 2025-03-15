@@ -1,3 +1,16 @@
+def make_dict_upper(data: dict[str, str]) -> dict[str, str]:
+    """
+    The function changes the case of the key and value
+    :param data: dictionary to make changes to
+    :return: dictionary with keys and values in uppercase
+    """
+    result = dict()
+    for key, value in data.items():
+        result[key.upper()] = value.upper()
+
+    return result
+
+
 def text_encryption(data: str, key: dict[str, str]) -> str:
     """
     The function encrypts the text with the specified key
@@ -7,14 +20,12 @@ def text_encryption(data: str, key: dict[str, str]) -> str:
     """
     result = ""
 
-    for symbol in data:
-        new_symbol = key.get(symbol.upper())
+    key = make_dict_upper(key)
+    for symbol in data.upper():
+        new_symbol = key.get(symbol)
 
         if new_symbol is not None:
-            if symbol.isupper():
-                result += new_symbol
-            else:
-                result += new_symbol.lower()
+            result += new_symbol
         else:
             result += symbol
 
