@@ -22,7 +22,7 @@ def write_to_file(directory: str, data: str) -> None:
         file.write(data)
 
 
-def read_data(directory: str) -> dict[str, int]:
+def read_data(directory: str) -> dict[str, str]:
     """
     The function opens a json file and reads the key as a dictionary
     :param directory: json file directory
