@@ -1,5 +1,5 @@
 from file_work import read_from_file, read_data, write_to_file, save_data
-from task1.text_encryption import text_encryption, make_dict_upper
+from task1.text_encryption import text_encryption
 from task2.frequency_analysis import frequency_count, sort_dict
 
 
